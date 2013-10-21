@@ -9,7 +9,9 @@ class UsersController extends CController
 	 */
 	public function actionIndex()
 	{
-		echo '13';
+        $this->layout='admin';
+
+        $this->render('users');
 	}
 	
 	
