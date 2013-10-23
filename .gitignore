@@ -67,3 +67,4 @@ requirements/views/zh_tw/index.php
 .idea/scopes/scope_settings.xml
 .idea/vcs.xml
 .idea/workspace.xml
+nbproject/private/private.xml
