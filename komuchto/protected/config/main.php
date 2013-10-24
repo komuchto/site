@@ -33,7 +33,8 @@ return array(
 			'rules'=>array(
                             //'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
                             'login'=>'site/login',
-                            'users/<id:\d+>'=>'users/view'
+                            'users/<id:\d+>'=>'users/view',
+                            'admin'=>'admin/stat/index',
 			),
 		),
             'db'=>array(

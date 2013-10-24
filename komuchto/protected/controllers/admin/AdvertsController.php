@@ -1,6 +1,6 @@
 <?php
 
-class UsersController extends Controller
+class AdvertsController extends Controller
 {
 
         
@@ -9,8 +9,8 @@ class UsersController extends Controller
 	 */
 	public function actionIndex()
 	{
-            echo'users';
-            $this->render('users');
+
+            $this->render('adverts');
 	}
 	
 	

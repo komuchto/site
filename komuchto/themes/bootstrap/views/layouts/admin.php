@@ -22,6 +22,7 @@
     <link rel="apple-touch-icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="<?php echo Yii::app()->request->baseUrl; ?>/images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="<?php echo Yii::app()->request->baseUrl; ?>/images/apple-touch-icon-114x114.png">
+    <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/script.js"></script>
 </head>
 
 <body>
@@ -34,16 +35,16 @@
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'items'=>array(
-                array('label'=>'Настройки', 'url'=>'/admin/settings/'),
-                array('label'=>'Пользователи', 'url'=>'/admin/users/'),
-                array('label'=>'Объявления', 'url'=>'/admin/adverts/'),
+                array('label'=>'Статистика', 'url'=>'/admin#!/stat/'),
+                array('label'=>'Пользователи', 'url'=>'/admin#!/users/'),
+                array('label'=>'Объявления', 'url'=>'/admin#!/adverts/'),
             ),
         ),
     ),
 )); ?>
-
+<div id="main" style="margin-top:50px">
 <?php echo $content; ?>
-
+</div>
 <footer class="footer">
     <div class="container">
 
