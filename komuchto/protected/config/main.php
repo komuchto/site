@@ -98,8 +98,8 @@ return array(
                     'vkontakte' => array(
                         // register your app here: https://vk.com/editapp?act=create&site=1
                         'class' => 'VKontakteOAuthService',
-                        'client_id' => '...',
-                        'client_secret' => '...',
+                        'client_id' => '3954224',
+                        'client_secret' => 'VqOH2Ql8mEP7UcW7FXOl',
                     ),
                     'mailru' => array(
                         // register your app here: http://api.mail.ru/sites/my/add
