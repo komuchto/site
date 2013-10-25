@@ -67,21 +67,21 @@ return array(
                     'twitter' => array(
                         // register your app here: https://dev.twitter.com/apps/new
                         'class' => 'TwitterOAuthService',
-                        'key' => '...',
-                        'secret' => '...',
+                        'key' => '75CcmZ68bI6I3sM6JMixbQ',
+                        'secret' => 'awuqsBravvOw2zgfwtY3wwYGK31Ik24xY1kiBDBHvHk',
                     ),
                     'google_oauth' => array(
                         // register your app here: https://code.google.com/apis/console/
                         'class' => 'GoogleOAuthService',
-                        'client_id' => '...',
-                        'client_secret' => '...',
+                        'client_id' => '981344715246.apps.googleusercontent.com',
+                        'client_secret' => 'AepOwm6_az7hP8e7GpjT6UvD',
                         'title' => 'Google (OAuth)',
                     ),
                     'facebook' => array(
                         // register your app here: https://developers.facebook.com/apps/
                         'class' => 'FacebookOAuthService',
-                        'client_id' => '...',
-                        'client_secret' => '...',
+                        'client_id' => '585402121519001',
+                        'client_secret' => 'ca63657204271284c3a9e00529f097e5',
                     ),
                     'linkedin' => array(
                         // register your app here: https://www.linkedin.com/secure/developer
@@ -104,14 +104,14 @@ return array(
                     'mailru' => array(
                         // register your app here: http://api.mail.ru/sites/my/add
                         'class' => 'MailruOAuthService',
-                        'client_id' => '...',
-                        'client_secret' => '...',
+                        'client_id' => '712092',
+                        'client_secret' => '429d572a64c9ab71c3f416706554442a',
                     ),
                     'moikrug' => array(
                         // register your app here: https://oauth.yandex.ru/client/my
                         'class' => 'MoikrugOAuthService',
-                        'client_id' => '...',
-                        'client_secret' => '...',
+                        'client_id' => '50b0fbb556d24105822947729895a640',
+                        'client_secret' => '80a1d519c828431691179543899bb064',
                     ),
                     'odnoklassniki' => array(
                         // register your app here: http://dev.odnoklassniki.ru/wiki/pages/viewpage.action?pageId=13992188
