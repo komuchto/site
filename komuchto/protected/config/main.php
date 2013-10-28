@@ -117,9 +117,9 @@ return array(
                         // register your app here: http://dev.odnoklassniki.ru/wiki/pages/viewpage.action?pageId=13992188
                         // ... or here: http://www.odnoklassniki.ru/dk?st.cmd=appsInfoMyDevList&st._aid=Apps_Info_MyDev
                         'class' => 'OdnoklassnikiOAuthService',
-                        'client_id' => '...',
-                        'client_public' => '...',
-                        'client_secret' => '...',
+                        'client_id' => '199865088',
+                        'client_public' => 'CBAELKOMABABABABA',
+                        'client_secret' => '141EB7EE5288C47F41B8E29D',
                         'title' => 'Odnokl.',
                     ),
                 ),
