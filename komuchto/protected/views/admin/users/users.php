@@ -1,7 +1,7 @@
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
-   //'dataProvider' => $person->search(),
+   'dataProvider' => $dataProvider,
    //'filter' => $person,
-   'template' => "{items}",
+   //'template' => "{items}",
    'columns' => array(
         array(
             'name' => 'id',
