@@ -68,3 +68,4 @@ requirements/views/zh_tw/index.php
 .idea/vcs.xml
 .idea/workspace.xml
 nbproject/private/private.xml
+/nbproject/private/

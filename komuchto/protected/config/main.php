@@ -26,22 +26,27 @@ return array(
 
 	// application components
 	'components'=>array(
-		'urlManager'=>array(
-			'urlFormat'=>'path',
-			'showScriptName'=>false,
-			'urlSuffix'=>'/',
-			'rules'=>array(
-                            //'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-                            'login'=>'site/login',
-                            'users/<id:\d+>'=>'users/view',
-                            'admin'=>'admin/stat/index',
-			),
-		),
+            'urlManager'=>array(
+                    'urlFormat'=>'path',
+                    'showScriptName'=>false,
+                    'urlSuffix'=>'/',
+                    'rules'=>array(
+                        //'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                        'login'=>'site/login',
+                        'users/<id:\d+>'=>'users/view',
+                        'admin'=>'admin/stat/index',
+                    ),
+            ),
             'db'=>array(
                 'class'=>'CDbConnection',
                 'connectionString'=>'mysql:host=localhost;dbname=komuchto',
                 'username'=>'root',
                 'password'=>'',
+                'charset' => 'utf8',
+            ),
+            'authManager'=>array(
+                'class'=>'CDbAuthManager',
+                'defaultRoles'=>array('user', 'moderator', 'admin'),
             ),
             'errorHandler'=>array(
                 'errorAction'=>'site/error',

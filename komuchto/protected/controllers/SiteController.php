@@ -9,7 +9,7 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		echo '12';
+		
 	}
 	
 	public function actionLogin()
@@ -23,16 +23,14 @@ class SiteController extends Controller
 
                 try {
                     if ($eauth->authenticate()) {
-                        //var_dump($eauth->getIsAuthenticated(), $eauth->getAttributes());
                         $identity = new EAuthUserIdentity($eauth);
-
+                        
                         // successful authentication
                         if ($identity->authenticate()) {
-                            Yii::app()->user->login($identity);
                             
+                            //Yii::app()->user->login($identity);
                             $user = new Users();
                             $id = $user->login($identity);
-
                             //var_dump(Yii::app()->user->id);exit;
 
                             // special redirect with closing popup window

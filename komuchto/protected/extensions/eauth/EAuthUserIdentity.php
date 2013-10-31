@@ -22,7 +22,7 @@ class EAuthUserIdentity extends CBaseUserIdentity {
 	/**
 	 * @var string the unique identifier for the identity.
 	 */
-	protected $id;
+	protected $identity;
 	
 	/**
 	 * @var string the display name for the identity.
@@ -44,10 +44,10 @@ class EAuthUserIdentity extends CBaseUserIdentity {
 	 */
 	public function authenticate() {		
 		if ($this->service->isAuthenticated) {
-			$this->id = $this->service->id;
+			$this->identity = $this->service->id;
 			$this->name = $this->service->getAttribute('name');
 			
-			$this->setState('id', $this->id);
+			$this->setState('identity', $this->identity);
 			$this->setState('name', $this->name);
 			$this->setState('service', $this->service->serviceName);
 			
@@ -65,7 +65,7 @@ class EAuthUserIdentity extends CBaseUserIdentity {
 	 * @return string the unique identifier for the identity.
 	 */
 	public function getId() {
-		return $this->id;
+		return $this->identity;
 	}
 
 	/**

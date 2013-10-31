@@ -14,28 +14,31 @@ class Users extends CActiveRecord
     
     public function login($identity)
     {
+        
         $criteria=new CDbCriteria;
         $criteria->condition='identity=:id';
-        $criteria->params=array(':id'=>$identity->id);
-        $criteria->select = 'id';
+        $criteria->params=array(':id'=>$identity->getId());
+        $criteria->select = 'id, permission';
+        $user = $this->find($criteria);
+        Yii::app()->user->setState('permission', $user->permission);
         
-        $count = $this->find($criteria);
-        
-        if(!$count->id){ 
-            $this->identity = $identity->id;
+        if(!$user->id){ 
+            $this->identity = $identity->getId();
             $this->name = $identity->name;
             $this->save();
-            $count->id = Yii::app()->db->getLastInsertID();
+            $user->id = Yii::app()->db->getLastInsertID();
+            Yii::app()->user->id = $user->id;
+            Yii::app()->user->setState('permission', 0);
         }
-        
-        return $count->id;
+
+        return $user->id;
     }
 
     public function getUser($id)
     {
         $criteria=new CDbCriteria;
         $criteria->condition='identity=:identity AND id=:id';
-        $criteria->params=array(':identity'=>Yii::app()->user->id, ':id'=>$id);
+        $criteria->params=array(':identity'=>Yii::app()->user->identity, ':id'=>$id);
         $criteria->select = '*';
         return $this->find($criteria);
     }

@@ -4,15 +4,15 @@
     'enableAjaxValidation'=>false,
 )); ?>
  
-    <?php// echo $form->errorSummary($model); ?>
+    <?php //echo $form->errorSummary($model); ?>
  
     <div class="row">
-        <?php echo $form->label($model, 'Псевдоним пользователя'); ?>
+        <?php echo $form->label($model, 'name', array('label' => 'Псевдоним пользователя')); ?>
         <?php echo $form->textField($model,'name') ?>
     </div>
  
     <div class="row">
-        <?php echo $form->label($model,'email'); ?>
+        <?php echo $form->label($model,'email', array('label' => 'E-mail')); ?>
         <?php echo $form->emailField($model,'email') ?>
     </di
  
