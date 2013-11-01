@@ -1,15 +1,5 @@
 $(document).ready(function(){
     
-    render();
-    
-    $(window).bind('hashchange', function(e) { 
-        
-        //alert(pathname + hash);
-        render();
-        
-
-    });
-    
     var render = function(){
         var hash = window.location.hash.substring(2);
         var pathname = window.location.pathname;
@@ -21,6 +11,18 @@ $(document).ready(function(){
             $( "#main" ).html( msg );
         });
     }
+    
+    render();
+    
+    $(window).bind('hashchange', function(e) { 
+        
+        //alert(pathname + hash);
+        render();
+        
+
+    });
+    
+    
 });
 
 

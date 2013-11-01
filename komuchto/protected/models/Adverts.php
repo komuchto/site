@@ -16,13 +16,11 @@ class Adverts extends CActiveRecord
     {
         return array(
             array('phone', 'required', 'message'=>'Номер телефона обязателен'),
+            array('text', 'required', 'message'=>'Текст объявления обязателен'),
             array('phone', 'numerical',
                     'integerOnly'=>true,
-                    'min'=>11,
-                    'max'=>11,
-                    'tooSmall'=>'Номер телефона должен быть в формате 89876543210',
-                    'tooBig'=>'Номер телефона должен быть в формате 89876543210'),
-            //array('image', 'file', 'types'=>'jpg, jpeg','allowEmpty' => FALSE, 'message'=>'Разрешено загрузать лишь фотографии с расширением jpg или jpeg',),
+                    ),
+            array('img', 'file', 'types'=>'jpg, jpeg, gif, png', 'message'=>'Разрешено загрузать лишь фотографии с расширением jpg, jpeg, gif, png',),
             
         );
     }

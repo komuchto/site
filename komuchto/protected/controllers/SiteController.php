@@ -14,6 +14,8 @@ class SiteController extends Controller
 	
 	public function actionLogin()
 	{
+            //if(Yii::app()->user->id) $this->redirect('/users/'+Yii::app()->user->id);
+
             $serviceName = Yii::app()->request->getQuery('service');
             if (isset($serviceName)) {
                 /** @var $eauth EAuthServiceBase */

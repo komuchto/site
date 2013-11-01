@@ -17,10 +17,10 @@
     </div>
     
     <div class="row">
-        <?php echo $form->label($model,'img[]',array('label'=>'Изображения')); ?>
-        <?php echo $form->fileField($model,'img[]') ?>
-        <?php echo $form->fileField($model,'img[]') ?>
-        <?php echo $form->fileField($model,'img[]') ?>
+        <?php echo $form->label($model,'img',array('label'=>'Изображения')); ?>
+        <?php echo $form->fileField($model,'img') ?>
+        <?php// echo $form->fileField($model,'img1') ?>
+        <?php// echo $form->fileField($model,'img2') ?>
     </div>
     
      <div class="row">

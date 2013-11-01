@@ -13,13 +13,14 @@ return array(
 
 	// autoloading model and component classes
 	'import'=>array(
-		'application.models.*',
-		'application.components.*',
-        'ext.eoauth.*',
-        'ext.eoauth.lib.*',
-        'ext.lightopenid.*',
-        'ext.eauth.*',
-        'ext.eauth.services.*',
+            'application.models.*',
+            'application.components.*',
+            'ext.eoauth.*',
+            'ext.eoauth.lib.*',
+            'ext.lightopenid.*',
+            'ext.eauth.*',
+            'ext.eauth.services.*',
+            'ext.EUploadedImage',
 	),
 
 	'defaultController'=>'site',
@@ -88,18 +89,6 @@ return array(
                         'client_id' => '585402121519001',
                         'client_secret' => 'ca63657204271284c3a9e00529f097e5',
                     ),
-                    'linkedin' => array(
-                        // register your app here: https://www.linkedin.com/secure/developer
-                        'class' => 'LinkedinOAuthService',
-                        'key' => '...',
-                        'secret' => '...',
-                    ),
-                    'github' => array(
-                        // register your app here: https://github.com/settings/applications
-                        'class' => 'GitHubOAuthService',
-                        'client_id' => '...',
-                        'client_secret' => '...',
-                    ),
                     'vkontakte' => array(
                         // register your app here: https://vk.com/editapp?act=create&site=1
                         'class' => 'VKontakteOAuthService',
@@ -125,10 +114,15 @@ return array(
                         'client_id' => '199865088',
                         'client_public' => 'CBAELKOMABABABABA',
                         'client_secret' => '141EB7EE5288C47F41B8E29D',
-                        'title' => 'Odnokl.',
+                        'title' => 'Одноклассники',
                     ),
                 ),
             ),
-	)
+	),
+        'params' => array(
+            'adminPerPage' => 50,
+            'advertsPerPage' => 20,
+            'advertsImgDir'=>dirname(__FILE__).'/../../uploads/adverts/'
+        ),
 
 );

@@ -26,7 +26,7 @@ class Controller extends CController {
         return array(
             array('deny',
                 'controllers'=>array('admin/users','admin/stat','admin/adverts'),
-                'roles'=>array('user'),
+                'roles'=>array('user','guest'),
             ),
             array('deny',
                 'actions'=>array('delete'),
