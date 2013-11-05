@@ -32,7 +32,7 @@ class AdvertsController extends Controller{
                         'dir'=>'thumb'
                     );
                     $filename = date('YmdHis').'_'.Yii::app()->user->id;
-                    if ($model->img->saveAs(Yii::getPathOfAlias('webroot').'/uploads/adverts/'.$filename.'.jpg'))
+                    if ($model->img->saveAs(Yii::getPathOfAlias('webroot').'/images/adverts/'.$filename.'.jpg'))
                             $model->img = $filename.'.jpg,thumb/min_'.$filename.'.jpg';
                     
                     $model->created = date('Y-m-d H:i:s'); 

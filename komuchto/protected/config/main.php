@@ -20,7 +20,8 @@ return array(
             'ext.lightopenid.*',
             'ext.eauth.*',
             'ext.eauth.services.*',
-            'ext.lyiightbox.*',
+            'ext.EUploadedImage',
+            'ext.lyiightbox.*'
 	),
 
 	'defaultController'=>'site',
@@ -125,7 +126,6 @@ return array(
         'params' => array(
             'adminPerPage' => 50,
             'advertsPerPage' => 20,
-            'advertsImgDir'=>dirname(__FILE__).'/../../images/adverts/'
         ),
 
 );

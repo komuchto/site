@@ -47,7 +47,7 @@
                     'class'=>'bootstrap.widgets.TbMenu',
                     'htmlOptions'=>array('class'=>'pull-right'),
                     'items'=>array(
-                        array('label'=>'Войти', 'url'=>'/login'),
+                        ((Yii::app()->user->isGuest) ? array('label'=>'Войти', 'url'=>'/login') : array('label'=>Yii::app()->user->name, 'url'=>'/users/'.Yii::app()->user->id))
 
                     ),
                 ),
@@ -63,11 +63,16 @@
                 'method'=>'get',
                 'htmlOptions'=>array('class'=>'well'),
             )); ?>
-
+            
+            <a style="width:150px;float:left;margin-right:100px" href="/" class="thumbnail" rel="tooltip" data-title="Tooltip">
+                <img src="http://placehold.it/150x50" alt="">
+            </a>
+            
             <?php echo CHtml::textField('search', $_GET['search'], array('class'=>'input-medium')) ?>
 
             <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Поиск','htmlOptions'=>array('name'=>''))); ?>
-
+            <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'link', 'type'=>'danger', 'label'=>'Подать объявление','url'=>'/adverts/add','htmlOptions'=>array('name'=>'','class'=>'pull-right'))); ?>
+            <div style="clear:both"></div>
             <?php $this->endWidget(); ?>
             
             <?php echo $content; ?>
