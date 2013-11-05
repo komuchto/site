@@ -20,7 +20,7 @@ return array(
             'ext.lightopenid.*',
             'ext.eauth.*',
             'ext.eauth.services.*',
-            'ext.EUploadedImage',
+            'ext.lyiightbox.*',
 	),
 
 	'defaultController'=>'site',
@@ -28,14 +28,17 @@ return array(
 	// application components
 	'components'=>array(
             'urlManager'=>array(
+                    'baseUrl'=>'http://komuchto',
                     'urlFormat'=>'path',
                     'showScriptName'=>false,
                     'urlSuffix'=>'/',
                     'rules'=>array(
                         //'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                        '/'=>'adverts/list',
                         'login'=>'site/login',
                         'users/<id:\d+>'=>'users/view',
                         'admin'=>'admin/stat/index',
+                        'adverts/<id:\d+>'=>'adverts/view',
                     ),
             ),
             'db'=>array(
@@ -122,7 +125,7 @@ return array(
         'params' => array(
             'adminPerPage' => 50,
             'advertsPerPage' => 20,
-            'advertsImgDir'=>dirname(__FILE__).'/../../uploads/adverts/'
+            'advertsImgDir'=>dirname(__FILE__).'/../../images/adverts/'
         ),
 
 );

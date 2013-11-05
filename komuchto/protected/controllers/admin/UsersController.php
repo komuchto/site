@@ -39,6 +39,8 @@ class UsersController extends Controller
         }
         public function actionDelete()
         {
-            
+            $post=Users::model()->findByPk($_GET['id']);
+            $post->delete();
+            $this->redirect('/admin/users/');
         }
 }

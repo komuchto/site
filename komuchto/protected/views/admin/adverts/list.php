@@ -10,22 +10,23 @@
             'htmlOptions' => array('color' =>'width: 60px'),
         ),
         array(
-            'name' => 'name',
-            'header' => 'Псевдоним пользователя',
+            'name' => 'img',
+            'header' => 'Изображения',
+            'type'=>'html',
+            'value'=>  'CHtml::image("/komuchto/images/adverts/".substr($data->img, strrpos($data->img, ",")+1), "", array("width"=>"50px"))',
         ),
         array(
-            'name' => 'email',
-            'header' => 'E-mail',
+            'name' => 'text',
+            'header' => 'Текст объявления',
         ),
         array(
-            'name' => 'identity',
-            'header' => 'Страница пользователя',
+            'name' => 'created',
+            'header' => 'Создано',
         ),
        array(
-            'name' => 'permission',
-            'header' => 'Права пользователя',
-            'value'=>'($data->permission == 0) ? "Пользователь" : (($data->permission == 1) ? "Модератор" : "Администратор")',
-        ),
+            'name' => 'updated',
+            'header' => 'Обновлено',
+       ),
        array(
             'class'=>'bootstrap.widgets.TbButtonColumn',
             'htmlOptions'=>array('style'=>'width: 50px'),

@@ -42,7 +42,7 @@
         ),
     ),
 )); ?>
-<div id="main" style="margin-top:50px">
+<div id="main" class="container" style="margin-top:50px">
 <?php echo $content; ?>
 </div>
 <footer class="footer">

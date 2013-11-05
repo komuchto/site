@@ -48,7 +48,8 @@ class AdvertsController extends Controller{
     
     public function actionView()
     {
-        
+        $model = Adverts::model()->findByPk($_GET['id']);
+        $this->render('view', array('model'=>$model));
     }
     
     public function actionList()
@@ -62,6 +63,19 @@ class AdvertsController extends Controller{
             ),
         ));
         $this->render('list', array('dataProvider'=>$dataProvider));
+    }
+    
+    public function actionDynamicrubric()
+    {
+        $data=Sub::model()->findAll('rub=:id', 
+              array(':id'=>(int) $_POST['Adverts']['rub']));
+
+        $data=CHtml::listData($data,'id','name');
+
+        foreach($data as $value=>$name)
+        {
+            echo CHtml::tag('option',array('value'=>$value),CHtml::encode($name),true);
+        }
     }
 
 }

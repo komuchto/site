@@ -33,7 +33,7 @@ class Users extends CActiveRecord
             Yii::app()->user->setState('permission', 0);
         }else{
             Yii::app()->user->id = $user->id;
-            Yii::app()->user->identity = $user->identity;
+            Yii::app()->user->setState('identity', $user->identity);
             Yii::app()->user->name = $user->name;
             Yii::app()->user->setState('permission', $user->permission);
             $user->lastvisited = date('Y-m-d H:i:s');

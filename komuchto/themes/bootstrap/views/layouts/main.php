@@ -25,10 +25,54 @@
 </head>
 
 <body>
+        <div style="width:950px;height:90px;margin:10px auto;border:1px solid gray;text-align: center;">950x90</div>
+        
+        <?php $this->widget('bootstrap.widgets.TbNavbar', array(
+            'type'=>'inverse', // null or 'inverse'
+            'brand'=>'',
+            'brandUrl'=>'',
+            'fixed'=>false,
+            'collapse'=>true, // requires bootstrap-responsive.css
+            'items'=>array(
+                array(
+                    'class'=>'bootstrap.widgets.TbMenu',
+                    'items'=>array(
+                        array('label'=>'Афиша', 'url'=>'/billboard/'),
+                        array('label'=>'Новости', 'url'=>'/news/'),
+                        array('label'=>'Гороскоп', 'url'=>'/horoscope/'),
+                        array('label'=>'Контакты', 'url'=>'/contacts/'),
+                    ),
+                ),
+                 array(
+                    'class'=>'bootstrap.widgets.TbMenu',
+                    'htmlOptions'=>array('class'=>'pull-right'),
+                    'items'=>array(
+                        array('label'=>'Войти', 'url'=>'/login'),
+
+                    ),
+                ),
+            ),
+        )); ?>
 
 	<div class="container">
-	<?php echo $content; ?>
-	</div>
+            
+            <?php /** @var BootActiveForm $form */
+            $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+                'id'=>'searchForm',
+                'type'=>'search',
+                'method'=>'get',
+                'htmlOptions'=>array('class'=>'well'),
+            )); ?>
+
+            <?php echo CHtml::textField('search', $_GET['search'], array('class'=>'input-medium')) ?>
+
+            <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Поиск','htmlOptions'=>array('name'=>''))); ?>
+
+            <?php $this->endWidget(); ?>
+            
+            <?php echo $content; ?>
+	
+        </div>
 	<footer class="footer">
 		<div class="container">
 
