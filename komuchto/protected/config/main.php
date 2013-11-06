@@ -59,6 +59,11 @@ return array(
             'bootstrap'=>array(
                 'class'=>'bootstrap.components.Bootstrap',
             ),
+            'geoip' => array(
+                'class' => 'application.extensions.geoip.CGeoIP',
+                'filename' => dirname(__FILE__).'/../../files/GeoLiteCity.dat',
+                'mode' => 'STANDARD',
+            ),
             'loid' => array(
                 'class' => 'ext.lightopenid.loid',
             ),

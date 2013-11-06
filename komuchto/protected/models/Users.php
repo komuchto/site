@@ -22,13 +22,16 @@ class Users extends CActiveRecord
         $criteria->params=array(':id'=>$identity->getId());
         $criteria->select = 'id, permission, name, identity';
         $user = $this->find($criteria);
-        //Yii::app()->user->setState('permission', $user->permission);
+        $ip = CHttpRequest::getUserHostAddress();
+        $location = Yii::app()->geoip->lookupLocation($ip);
         
         if(!$user){ 
             $this->identity = $identity->getId();
             $this->name = $identity->name;
             $this->created = date('Y-m-d H:i:s');
             $this->lastvisited = date('Y-m-d H:i:s');
+            $this->ip = $ip;
+            $this->city = $location->city;
             $this->save();
             $id = Yii::app()->db->getLastInsertID();
             Yii::app()->user->id = $id;
@@ -40,6 +43,8 @@ class Users extends CActiveRecord
             Yii::app()->user->name = $user->name;
             Yii::app()->user->setState('permission', $user->permission);
             $user->lastvisited = date('Y-m-d H:i:s');
+            $user->ip = $ip;
+            $user->city = $location->city;
             $user->save();
         }
 
