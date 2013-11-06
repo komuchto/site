@@ -4,6 +4,11 @@
     'enableAjaxValidation'=>false,
     'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
+    
+    <div class="row">
+        <?php echo $form->label($model, 'act', array('label' => 'Действие')); ?>
+        <?php echo $form->dropDownList($model,'act', CHtml::listData(Act::model()->findAll('type=:type', array(':type'=>0)),'id','name')) ?>
+    </div>
  
    <div class="row">
         <?php echo $form->label($model, 'rub', array('label' => 'Рубрика')); ?>
