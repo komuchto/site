@@ -17,7 +17,6 @@
                 //'data'=>'js:javascript statement' 
                 //leave out the data key to pass all form values through
             ))); ?>
-        <?php// echo $form->dropDownList($model, 'rub', CHtml::listData(Rub::model()->findAll(),'id','name')); ?>
     </div>
     
     <div class="row">
@@ -34,8 +33,6 @@
     <div class="row">
         <?php echo $form->label($model,'img',array('label'=>'Изображения')); ?>
         <?php echo $form->fileField($model,'img') ?>
-        <?php// echo $form->fileField($model,'img1') ?>
-        <?php// echo $form->fileField($model,'img2') ?>
     </div>
     
      <div class="row">

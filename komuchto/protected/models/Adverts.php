@@ -1,6 +1,9 @@
 <?php
 class Adverts extends CActiveRecord
-{        
+{     
+    
+    public $count;
+    public $date;
 
     public static function model($className=__CLASS__)
     {

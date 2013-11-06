@@ -36,7 +36,7 @@ return array(
                     'rules'=>array(
                         //'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
                         '/'=>'adverts/list',
-                        'login'=>'site/login',
+                        'login'=>'users/login',
                         'users/<id:\d+>'=>'users/view',
                         'admin'=>'admin/stat/index',
                         'adverts/<id:\d+>'=>'adverts/view',

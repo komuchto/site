@@ -5,5 +5,5 @@ if (Yii::app()->user->hasFlash('error')) {
 ?>
     <h2>Авторизация:</h2>
 <?php
-$this->widget('ext.eauth.EAuthWidget', array('action' => 'site/login'));
+$this->widget('ext.eauth.EAuthWidget', array('action' => 'users/login'));
 ?>

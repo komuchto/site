@@ -1,7 +1,9 @@
 <?
 class Users extends CActiveRecord
 {        
-
+    public $count;
+    public $date;
+    
     public static function model($className=__CLASS__)
     {
         return parent::model($className);
@@ -22,14 +24,15 @@ class Users extends CActiveRecord
         $user = $this->find($criteria);
         //Yii::app()->user->setState('permission', $user->permission);
         
-        if(!$user->id){ 
+        if(!$user){ 
             $this->identity = $identity->getId();
             $this->name = $identity->name;
             $this->created = date('Y-m-d H:i:s');
             $this->lastvisited = date('Y-m-d H:i:s');
             $this->save();
-            $user->id = Yii::app()->db->getLastInsertID();
-            Yii::app()->user->id = $user->id;
+            $id = Yii::app()->db->getLastInsertID();
+            Yii::app()->user->id = $id;
+            Yii::app()->user->name = $this->name;
             Yii::app()->user->setState('permission', 0);
         }else{
             Yii::app()->user->id = $user->id;
@@ -40,7 +43,7 @@ class Users extends CActiveRecord
             $user->save();
         }
 
-        return $user->id;
+        return Yii::app()->user->id;
     }
 
     public function getUser($id)
