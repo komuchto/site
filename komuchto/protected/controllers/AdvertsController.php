@@ -54,10 +54,12 @@ class AdvertsController extends Controller{
     
     public function actionList()
     {
+        $criteria = new CDbCriteria;
+        $criteria->with = array('act', 'sub', 'rub');
+        $criteria->order = 't.id DESC';
+        
         $dataProvider = new CActiveDataProvider('Adverts', array(
-            'criteria'=>array(
-              'order'=>'id DESC',
-            ),
+            'criteria'=>$criteria,
             'pagination' => array(
                 'pageSize' => Yii::app()->params['advertsPerPage'],
             ),
@@ -76,6 +78,23 @@ class AdvertsController extends Controller{
         {
             echo CHtml::tag('option',array('value'=>$value),CHtml::encode($name),true);
         }
+    }
+    
+    public function actionFav()
+    {
+        if(!Yii::app()->user->isGuest)
+        {
+            $fav = Favorits::model()->findByPk(array('user'=>Yii::app()->user->id, 'advert'=>(int)$_GET['id']));
+
+            if($fav)
+                $fav->delete();
+            else{
+                $fav = new Favorits;
+                $fav->user = Yii::app()->user->id;
+                $fav->advert = $_GET['id'];
+                $fav->save();
+            }
+        }    
     }
 
 }

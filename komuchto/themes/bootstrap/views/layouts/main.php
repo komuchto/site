@@ -22,10 +22,11 @@
 	<link rel="apple-touch-icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo Yii::app()->request->baseUrl; ?>/images/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo Yii::app()->request->baseUrl; ?>/images/apple-touch-icon-114x114.png">
+        <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/script.js"></script>
 </head>
 
 <body>
-        <div style="width:950px;height:90px;margin:10px auto;border:1px solid gray;text-align: center;">950x90</div>
+        <div style="width:950px;height:90px;margin:10px auto;border:1px solid gray;text-align: center;">950x90 <?=$this->city?></div>
         
         <?php $this->widget('bootstrap.widgets.TbNavbar', array(
             'type'=>'inverse', // null or 'inverse'

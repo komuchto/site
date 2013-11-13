@@ -10,6 +10,9 @@ return array(
 	'name'=>'Кому-что',
         'theme'=>'bootstrap',
         'charset'=>'utf-8',
+        'preload' => array(
+            'debug',
+        ),
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -21,11 +24,10 @@ return array(
             'ext.eauth.*',
             'ext.eauth.services.*',
             'ext.EUploadedImage',
-            'ext.lyiightbox.*'
+            'ext.lyiightbox.*',
 	),
 
 	'defaultController'=>'site',
-
 	// application components
 	'components'=>array(
             'urlManager'=>array(
@@ -40,6 +42,7 @@ return array(
                         'users/<id:\d+>'=>'users/view',
                         'admin'=>'admin/stat/index',
                         'adverts/<id:\d+>'=>'adverts/view',
+                        'adverts/fav/<id:\d+>'=>'adverts/fav',
                     ),
             ),
             'db'=>array(
@@ -48,6 +51,13 @@ return array(
                 'username'=>'root',
                 'password'=>'',
                 'charset' => 'utf8',
+                // включаем профайлер 
+                'enableProfiling'=>true, 
+                // показываем значения параметров 
+                'enableParamLogging' => true, 
+            ),
+            'debug' => array(
+                'class' => 'ext.yii2-debug.Yii2Debug',
             ),
             'authManager'=>array(
                 'class'=>'CDbAuthManager',

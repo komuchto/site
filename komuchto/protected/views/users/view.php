@@ -22,3 +22,16 @@
  
 <?php $this->endWidget(); ?>
 </div><!-- form -->
+
+<h4>Избранные объявления</h4>
+<?php $this->widget('zii.widgets.CListView', array(
+    'dataProvider'=>$favorits,
+    'itemView'=>'/adverts/_advertItem',
+    
+)); ?>
+<h4 style="clear:both">Мои объявления</h4>
+<?php $this->widget('zii.widgets.CListView', array(
+    'dataProvider'=>$myAdverts,
+    'itemView'=>'/adverts/_advertItem',
+    
+)); ?>

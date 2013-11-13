@@ -60,6 +60,9 @@ class UsersController extends Controller
             else {
                 $model = Users::model()->findByPk(Yii::app()->user->id);
                 
+                $favorits = Adverts::model()->favoritsAdverts();
+                $myAdverts = Adverts::model()->myAdverts();
+                
                 if (Yii::app()->request->getPost('Users')) {
                     
                     foreach($_POST['Users'] as $name=>$value){  
@@ -72,7 +75,7 @@ class UsersController extends Controller
                 }
                                              
                 $this->render('view', array(
-                    'model' => $model
+                    'model' => $model, 'favorits'=>$favorits, 'myAdverts'=>$myAdverts
                 ));
             }
         }

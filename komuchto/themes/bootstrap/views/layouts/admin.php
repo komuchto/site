@@ -35,9 +35,9 @@
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'items'=>array(
-                array('label'=>'Статистика', 'url'=>'/admin#!/stat/'),
-                array('label'=>'Пользователи', 'url'=>'/admin#!/users/'),
-                array('label'=>'Объявления', 'url'=>'/admin#!/adverts/'),
+                array('label'=>'Статистика', 'url'=>'/admin/stat/'),
+                array('label'=>'Пользователи', 'url'=>'/admin/users/'),
+                array('label'=>'Объявления', 'url'=>'/admin/adverts/'),
             ),
         ),
     ),

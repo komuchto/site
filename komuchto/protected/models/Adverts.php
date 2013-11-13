@@ -15,17 +15,60 @@ class Adverts extends CActiveRecord
         return 'adverts';
     }
     
+    public function relations()
+    {
+        return array(
+            'user'=>array(self::BELONGS_TO, 'Users', 'id'),
+            'favorits'=>array(self::MANY_MANY, 'Users', 'favorits(advert, user)'),
+            'act'=>array(self::HAS_ONE, 'Act', 'id'),
+            'rub'=>array(self::HAS_ONE, 'Rub', 'id'),
+            'sub'=>array(self::HAS_ONE, 'Sub', 'id'),
+        );
+    }
+    
     public function rules()
     {
         return array(
             array('phone', 'required', 'message'=>'Номер телефона обязателен'),
             array('text', 'required', 'message'=>'Текст объявления обязателен'),
-            array('phone', 'numerical',
-                    'integerOnly'=>true,
-                    ),
+            array('phone', 'numerical', 'integerOnly'=>true),
+            array('price', 'numerical', 'integerOnly'=>true),
             array('img', 'file', 'types'=>'jpg, jpeg, gif, png', 'message'=>'Разрешено загрузать лишь фотографии с расширением jpg, jpeg, gif, png',),
             
         );
+    }
+    
+    public function favoritsAdverts()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->with = array('favorits');
+        $criteria->condition = 'favorits_favorits.user=:user';
+        $criteria->params = array(':user'=>Yii::app()->user->id);
+        $criteria->together = true;
+
+        return new CActiveDataProvider($this, array(
+            'criteria'=>$criteria,
+
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['advertsPerPage'],
+            ),
+        ));
+    }
+    
+    public function myAdverts()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->condition = 'user=:user';
+        $criteria->params = array(':user'=>Yii::app()->user->id);
+        $criteria->together = true;
+
+        return new CActiveDataProvider($this, array(
+            'criteria'=>$criteria,
+
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['advertsPerPage'],
+            ),
+        ));
     }
     
     /*public function login($identity)

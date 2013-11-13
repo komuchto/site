@@ -22,9 +22,9 @@ CREATE TABLE IF NOT EXISTS `act` (
   `type` int(11) unsigned DEFAULT '0',
   `name` varchar(255) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы komuchto.act: 5 rows
+-- Дамп данных таблицы komuchto.act: ~5 rows (приблизительно)
 DELETE FROM `act`;
 /*!40000 ALTER TABLE `act` DISABLE KEYS */;
 INSERT INTO `act` (`id`, `type`, `name`) VALUES
@@ -40,6 +40,7 @@ INSERT INTO `act` (`id`, `type`, `name`) VALUES
 DROP TABLE IF EXISTS `adverts`;
 CREATE TABLE IF NOT EXISTS `adverts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `city` int(11) unsigned NOT NULL DEFAULT '0',
   `act` int(11) unsigned NOT NULL DEFAULT '0',
   `rub` int(11) unsigned DEFAULT NULL,
   `sub` int(11) unsigned DEFAULT NULL,
@@ -51,15 +52,15 @@ CREATE TABLE IF NOT EXISTS `adverts` (
   `created` datetime DEFAULT NULL,
   `updated` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы komuchto.adverts: 3 rows
+-- Дамп данных таблицы komuchto.adverts: ~3 rows (приблизительно)
 DELETE FROM `adverts`;
 /*!40000 ALTER TABLE `adverts` DISABLE KEYS */;
-INSERT INTO `adverts` (`id`, `act`, `rub`, `sub`, `user`, `phone`, `text`, `img`, `price`, `created`, `updated`) VALUES
-	(5, 0, 2, 1, 3, 89173238930, 'рап', '20131105141010_3.jpg,thumb/min_20131105141010_3.jpg', NULL, '2013-11-05 14:10:11', '2013-11-05 15:10:11'),
-	(4, 0, 1, 2, 3, 89173238930, 'Ауди 80', '20131105110235_3.jpg,thumb/min_20131105110235_3.jpg', NULL, '2013-11-05 11:02:36', '2013-11-05 12:02:36'),
-	(6, 0, 1, 1, 3, 89173238930, 'Тазик', '20131105141353_3.jpg,thumb/min_20131105141353_3.jpg', NULL, '2013-11-05 14:13:54', '2013-11-05 15:13:54');
+INSERT INTO `adverts` (`id`, `city`, `act`, `rub`, `sub`, `user`, `phone`, `text`, `img`, `price`, `created`, `updated`) VALUES
+	(4, 0, 0, 1, 2, 3, 89173238930, 'Ауди 80', '20131105110235_3.jpg,thumb/min_20131105110235_3.jpg', NULL, '2013-11-05 11:02:36', '2013-11-05 12:02:36'),
+	(5, 0, 0, 2, 1, 3, 89173238930, 'рап', '20131105141010_3.jpg,thumb/min_20131105141010_3.jpg', NULL, '2013-11-05 14:10:11', '2013-11-05 15:10:11'),
+	(6, 0, 0, 1, 1, 3, 89173238930, 'Тазик', '20131105141353_3.jpg,thumb/min_20131105141353_3.jpg', NULL, '2013-11-05 14:13:54', '2013-11-05 15:13:54');
 /*!40000 ALTER TABLE `adverts` ENABLE KEYS */;
 
 
@@ -117,6 +118,42 @@ CREATE TABLE IF NOT EXISTS `AuthItemChild` (
 DELETE FROM `AuthItemChild`;
 /*!40000 ALTER TABLE `AuthItemChild` DISABLE KEYS */;
 /*!40000 ALTER TABLE `AuthItemChild` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица komuchto.city
+DROP TABLE IF EXISTS `city`;
+CREATE TABLE IF NOT EXISTS `city` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `region` int(11) unsigned DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы komuchto.city: 2 rows
+DELETE FROM `city`;
+/*!40000 ALTER TABLE `city` DISABLE KEYS */;
+INSERT INTO `city` (`id`, `region`, `name`) VALUES
+	(1, NULL, 'Саратов'),
+	(2, NULL, 'Энгельс');
+/*!40000 ALTER TABLE `city` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица komuchto.favorits
+DROP TABLE IF EXISTS `favorits`;
+CREATE TABLE IF NOT EXISTS `favorits` (
+  `user` int(11) unsigned NOT NULL DEFAULT '0',
+  `advert` int(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`advert`,`user`),
+  UNIQUE KEY `Индекс 1` (`user`,`advert`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы komuchto.favorits: 2 rows
+DELETE FROM `favorits`;
+/*!40000 ALTER TABLE `favorits` DISABLE KEYS */;
+INSERT INTO `favorits` (`user`, `advert`) VALUES
+	(3, 5),
+	(3, 6);
+/*!40000 ALTER TABLE `favorits` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица komuchto.params
@@ -205,7 +242,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `service`, `ip`, `city`, `permission`, `identity`, `email`, `name`, `created`, `lastvisited`) VALUES
-	(3, 'undefined', '', '', '2', 'https://www.google.com/accounts/o8/id?id=AItOawn6rLF6HkD0GnV1w8t626mS5Z99WkX30kc', 'admin@garyk.ru', 'Игорь', '2013-11-04 10:34:51', '2013-11-06 09:52:40'),
+	(3, 'undefined', '127.0.0.1', '', '2', 'https://www.google.com/accounts/o8/id?id=AItOawn6rLF6HkD0GnV1w8t626mS5Z99WkX30kc', 'admin@garyk.ru', 'Игорь', '2013-11-04 10:34:51', '2013-11-13 15:21:12'),
 	(4, 'undefined', '', '', '0', 'http://openid.yandex.ru/s0ber89/', NULL, 's0ber89', '2013-11-06 09:37:04', '2013-11-06 09:37:04');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

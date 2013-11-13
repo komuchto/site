@@ -1,17 +1,21 @@
 <?php
 class Controller extends CController {
+    
+    public $city = null;
+    
     public function init() {
         parent::init();
         
         $parts = explode('/', Yii::app()->request->requestUri);
-        //var_dump($parts);
+
         if($parts[1] == 'admin')
             $this->layout = 'admin';
         else $this->layout = 'main';
         
-        if (Yii::app()->request->getIsAjaxRequest()) {
+        if (Yii::app()->request->getIsAjaxRequest())
                    $this->layout = 'ajax';
-       }
+       
+        $this->city = "City";
     }
     
     public function filters()
@@ -37,5 +41,10 @@ class Controller extends CController {
                 'roles'=>array('moderator'),
             ),
         );
+    }
+    
+    private function geo()
+    {
+        
     }
 }

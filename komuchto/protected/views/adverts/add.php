@@ -6,6 +6,11 @@
 )); ?>
     
     <div class="row">
+        <?php echo $form->label($model, 'city', array('label' => 'Город')); ?>
+        <?php echo $form->dropDownList($model,'city', CHtml::listData(City::model()->findAll(),'id','name')) ?>
+    </div>
+    
+    <div class="row">
         <?php echo $form->label($model, 'act', array('label' => 'Действие')); ?>
         <?php echo $form->dropDownList($model,'act', CHtml::listData(Act::model()->findAll('type=:type', array(':type'=>0)),'id','name')) ?>
     </div>
@@ -45,7 +50,13 @@
         <?php echo $form->textArea($model,'text') ?>
          <?php echo $form->error($model,'text'); ?>
     </div>
- 
+    
+    <div class="row">
+        <?php echo $form->label($model,'price',array('label'=>'Цена (руб)')); ?>
+        <?php echo $form->telField($model,'price') ?>
+        <?php echo $form->error($model,'price'); ?>
+    </div>
+    
     <div class="row submit">
         <?php echo CHtml::submitButton('Подать объявление'); ?>
     </div>

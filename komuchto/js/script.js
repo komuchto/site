@@ -21,7 +21,13 @@ $(document).ready(function(){
 
     });
     */
-    
+     $('.fav').click(function(){
+        var href = $(this).attr('href');
+        $.ajax({url: href}).done(function(){
+            alert('Добавлено в избранное');
+        });
+        return false;
+    });
 });
 
 

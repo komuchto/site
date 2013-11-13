@@ -14,6 +14,14 @@ class Users extends CActiveRecord
         return 'users';
     }
     
+    public function relations()
+    {
+        return array(
+            'adverts'=>array(self::HAS_MANY, 'Adverts', 'user'),
+            'favorits'=>array(self::MANY_MANY, 'Adverts', 'favorits(user, advert)'),
+        );
+    }
+    
     public function login($identity)
     {
         
