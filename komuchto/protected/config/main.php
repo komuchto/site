@@ -41,8 +41,8 @@ return array(
                         'login'=>'users/login',
                         'users/<id:\d+>'=>'users/view',
                         'admin'=>'admin/stat/index',
-                        'adverts/<id:\d+>'=>'adverts/view',
-                        'adverts/fav/<id:\d+>'=>'adverts/fav',
+                        '<id:\d+>'=>'adverts/view',
+                        'fav/<id:\d+>'=>'adverts/fav',
                     ),
             ),
             'db'=>array(

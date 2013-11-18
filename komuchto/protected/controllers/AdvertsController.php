@@ -32,7 +32,7 @@ class AdvertsController extends Controller{
                         'dir'=>'thumb'
                     );
                     $filename = date('YmdHis').'_'.Yii::app()->user->id;
-                    if ($model->img->saveAs(Yii::getPathOfAlias('webroot').'/images/adverts/'.$filename.'.jpg'))
+                    if ($model->img->saveAs(Yii::getPathOfAlias('webroot').'/images/art/'.$filename.'.jpg'))
                             $model->img = $filename.'.jpg,thumb/min_'.$filename.'.jpg';
                     
                     $model->created = date('Y-m-d H:i:s'); 
@@ -54,17 +54,28 @@ class AdvertsController extends Controller{
     
     public function actionList()
     {
-        $criteria = new CDbCriteria;
-        $criteria->with = array('act', 'sub', 'rub');
-        $criteria->order = 't.id DESC';
-        
-        $dataProvider = new CActiveDataProvider('Adverts', array(
-            'criteria'=>$criteria,
-            'pagination' => array(
-                'pageSize' => Yii::app()->params['advertsPerPage'],
-            ),
-        ));
-        $this->render('list', array('dataProvider'=>$dataProvider));
+        $model = new Adverts;
+        $model->minmax();
+        $this->render('list', array('model'=>$model,'find'=>$model->find()));
+    }
+    
+    public function actionSearch()
+    {
+        $model = new Search;
+        $criteria=new CDbCriteria;
+        $criteria->condition='query=:url';
+        $criteria->params=array(':url'=> urldecode(http_build_query($_POST)));
+        $url = $model->find($criteria);
+        if(!$url){
+            $model->query = urldecode(http_build_query($_POST));
+            $model->save();
+            $uri = $model->query;
+            $id = Yii::app()->db->getLastInsertID();
+        }else{
+            $id = $url->id;
+            $uri = $url->query;   
+        }
+        echo json_encode(array('id'=>$id,'url'=>$uri));
     }
     
     public function actionDynamicrubric()
@@ -78,6 +89,24 @@ class AdvertsController extends Controller{
         {
             echo CHtml::tag('option',array('value'=>$value),CHtml::encode($name),true);
         }
+    }
+    
+    public function actionSubAjax()
+    {
+        $subs = Yii::app()->db->createCommand("SELECT sub.*, count(DISTINCT sub.id), count(adverts.id) as count FROM sub LEFT OUTER JOIN adverts ON  sub.id = adverts.sub_id WHERE sub.rub = ".$_POST['Adverts']['rub']." GROUP BY sub.id")->queryAll();
+        foreach($subs as $r){
+            $sub[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('data-id'=>$r['id']));
+        }
+        $this->widget('bootstrap.widgets.TbButtonGroup', array(
+            'toggle' => 'checkbox',
+            'buttons' => $sub,
+        ));
+    }
+    
+    public function actionListAjax()
+    {
+        $model = new Adverts;
+        $this->render('list', array('model'=>$model));
     }
     
     public function actionFav()

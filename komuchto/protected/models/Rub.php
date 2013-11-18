@@ -12,6 +12,11 @@ class Rub extends CActiveRecord
     {
         return 'rub';
     }
+    
+    public function relations()
+    {
+        return array('adverts'=>array(self::HAS_MANY, 'Adverts', 'id'));
+    }
 }
 
 ?>

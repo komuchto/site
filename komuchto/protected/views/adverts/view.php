@@ -1,7 +1,7 @@
 <?$img = explode(',', $model->img)?>
 <?$this->widget('ext.lyiightbox.LyiightBox2', array(
-    'thumbnail' => '/komuchto/images/adverts/'.$img[1],
-    'image' => '/komuchto/images/adverts/'.$img[0],
+    'thumbnail' => '/komuchto/images/art/'.$img[1],
+    'image' => '/komuchto/images/art/'.$img[0],
     'title' => '',
     'group' => 'advert'
 ));?>

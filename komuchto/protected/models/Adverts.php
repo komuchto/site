@@ -4,7 +4,9 @@ class Adverts extends CActiveRecord
     
     public $count;
     public $date;
-
+    public $maxprice;
+    public $minprice;
+    
     public static function model($className=__CLASS__)
     {
         return parent::model($className);
@@ -20,9 +22,10 @@ class Adverts extends CActiveRecord
         return array(
             'user'=>array(self::BELONGS_TO, 'Users', 'id'),
             'favorits'=>array(self::MANY_MANY, 'Users', 'favorits(advert, user)'),
-            'act'=>array(self::HAS_ONE, 'Act', 'id'),
-            'rub'=>array(self::HAS_ONE, 'Rub', 'id'),
-            'sub'=>array(self::HAS_ONE, 'Sub', 'id'),
+            'act'=>array(self::BELONGS_TO, 'Act', 'act_id'),
+            'rub'=>array(self::BELONGS_TO, 'Rub', 'rub_id'),
+            'sub'=>array(self::BELONGS_TO, 'Sub', 'sub_id'),
+            'city'=>array(self::BELONGS_TO, 'City', 'city_id'),
         );
     }
     
@@ -69,6 +72,50 @@ class Adverts extends CActiveRecord
                 'pageSize' => Yii::app()->params['advertsPerPage'],
             ),
         ));
+    }
+    
+    public function search()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->with = array('act', 'sub', 'rub');
+        $criteria->order = 't.id DESC';
+        $criteria->condition = 't.moderate = 1';
+        if(isset($_POST['Adverts']['act'])) $criteria->addCondition("t.act_id = ".$_POST['Adverts']['act']);
+        if(isset($_POST['Adverts']['rub'])) $criteria->addCondition("t.rub_id = ".$_POST['Adverts']['rub']);
+        if(isset($_POST['Adverts']['maxprice'])) $criteria->addCondition("t.price <= ".$_POST['Adverts']['maxprice']);
+        if(isset($_POST['Adverts']['minprice'])) $criteria->addCondition("t.price >= ".$_POST['Adverts']['minprice']);
+        if(isset($_POST['Adverts']['sub'])) $criteria->addInCondition("t.sub_id", $_POST['Adverts']['sub']);
+        
+        return new CActiveDataProvider('Adverts', array(
+            'criteria'=>$criteria,
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['advertsPerPage'],
+            ),
+        ));
+    }
+    public function find()
+    {
+        $rub = Yii::app()->db->createCommand("SELECT rub.*, count(DISTINCT rub.id), count(adverts.id) as count FROM rub LEFT OUTER JOIN adverts ON  rub.id = adverts.rub_id GROUP BY rub.id")->queryAll(); 
+        foreach($rub as $r){
+            $rubs[$r['id']] = $r['name'].' ('.$r['count'].')';
+        }
+        $act = Act::model()->findAll();
+        
+        $subs = Yii::app()->db->createCommand("SELECT sub.*, count(DISTINCT sub.id), count(adverts.id) as count FROM sub LEFT OUTER JOIN adverts ON  sub.id = adverts.sub_id WHERE sub.rub = 1 GROUP BY sub.id")->queryAll();
+        foreach($subs as $r){
+            $sub[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('data-id'=>$r['id']));
+        }
+        return array('rub'=>$rubs, 'act'=>$act, 'sub'=>$sub);
+    }
+    
+    public function minmax()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->select='MAX(price) as maxprice, count(DISTINCT id)';
+        $criteria->group = 'id, price';
+        $price = $this->findAll($criteria);
+        $this->maxprice = $price[0]->maxprice;
+        $this->minprice = $price[0]->minprice;
     }
     
     /*public function login($identity)

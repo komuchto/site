@@ -7,8 +7,8 @@
     <?php //echo $form->errorSummary($model); ?>
  
     <div class="row">
-        <?php echo $form->label($model, 'rub', array('label' => 'Рубрика')); ?>
-        <?php echo $form->dropDownList($model, 'rub', CHtml::listData(Rub::model()->findAll(),'id','name'),
+        <?php echo $form->label($model, 'rub_id', array('label' => 'Рубрика')); ?>
+        <?php echo $form->dropDownList($model, 'rub_id', CHtml::listData(Rub::model()->findAll(),'id','name'),
             array(
                 'ajax' => array(
                 'type'=>'POST', //request type
@@ -22,8 +22,8 @@
     </div>
     
     <div class="row">
-        <?php echo $form->label($model, 'sub', array('label' => 'Подрубрика')); ?>
-        <?php echo $form->dropDownList($model,'sub', CHtml::listData(Sub::model()->findAll('rub=:rub', array(':rub'=>$model->rub)),'id','name')) ?>
+        <?php echo $form->label($model, 'sub_id', array('label' => 'Подрубрика')); ?>
+        <?php echo $form->dropDownList($model,'sub_id', CHtml::listData(Sub::model()->findAll('rub=:rub', array(':rub'=>$model->rub)),'id','name')) ?>
     </div>
  
     <div class="row">

@@ -12,6 +12,12 @@ class Act extends CActiveRecord
     {
         return 'act';
     }
+
+    public function relations()
+    {
+        return array('adverts'=>array(self::HAS_MANY, 'Adverts', 'act_id'));
+    }
+
 }
 
 ?>

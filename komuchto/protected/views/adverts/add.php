@@ -6,18 +6,18 @@
 )); ?>
     
     <div class="row">
-        <?php echo $form->label($model, 'city', array('label' => 'Город')); ?>
-        <?php echo $form->dropDownList($model,'city', CHtml::listData(City::model()->findAll(),'id','name')) ?>
+        <?php echo $form->label($model, 'city_id', array('label' => 'Город')); ?>
+        <?php echo $form->dropDownList($model,'city_id', CHtml::listData(City::model()->findAll(),'id','name')) ?>
     </div>
     
     <div class="row">
-        <?php echo $form->label($model, 'act', array('label' => 'Действие')); ?>
-        <?php echo $form->dropDownList($model,'act', CHtml::listData(Act::model()->findAll('type=:type', array(':type'=>0)),'id','name')) ?>
+        <?php echo $form->label($model, 'act_id', array('label' => 'Действие')); ?>
+        <?php echo $form->dropDownList($model,'act_id', CHtml::listData(Act::model()->findAll('type=:type', array(':type'=>0)),'id','name')) ?>
     </div>
  
    <div class="row">
-        <?php echo $form->label($model, 'rub', array('label' => 'Рубрика')); ?>
-        <?php echo $form->dropDownList($model, 'rub', CHtml::listData(Rub::model()->findAll(),'id','name'),
+        <?php echo $form->label($model, 'rub_id', array('label' => 'Рубрика')); ?>
+        <?php echo $form->dropDownList($model, 'rub_id', CHtml::listData(Rub::model()->findAll(),'id','name'),
             array(
                 'ajax' => array(
                 'type'=>'POST', //request type
@@ -30,8 +30,8 @@
     </div>
     
     <div class="row">
-        <?php echo $form->label($model, 'sub', array('label' => 'Подрубрика')); ?>
-        <?php echo $form->dropDownList($model,'sub', CHtml::listData(Sub::model()->findAll('rub=:rub', array(':rub'=>1)),'id','name')) ?>
+        <?php echo $form->label($model, 'sub_id', array('label' => 'Подрубрика')); ?>
+        <?php echo $form->dropDownList($model,'sub_id', CHtml::listData(Sub::model()->findAll('rub=:rub', array(':rub'=>1)),'id','name')) ?>
     </div>
  
     <div class="row">
