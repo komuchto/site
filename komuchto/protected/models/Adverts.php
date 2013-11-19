@@ -83,7 +83,7 @@ class Adverts extends CActiveRecord
         if(isset($_POST['Adverts']['act'])) $criteria->addCondition("t.act_id = ".$_POST['Adverts']['act']);
         if(isset($_POST['Adverts']['rub'])) $criteria->addCondition("t.rub_id = ".$_POST['Adverts']['rub']);
         if(isset($_POST['Adverts']['maxprice'])) $criteria->addCondition("t.price <= ".$_POST['Adverts']['maxprice']);
-        if(isset($_POST['Adverts']['minprice'])) $criteria->addCondition("t.price >= ".$_POST['Adverts']['minprice']);
+        if(isset($_POST['Adverts']['minprice'])) $criteria->addCondition("t.price >= ".(int)$_POST['Adverts']['minprice']);
         if(isset($_POST['Adverts']['sub'])) $criteria->addInCondition("t.sub_id", $_POST['Adverts']['sub']);
         
         return new CActiveDataProvider('Adverts', array(

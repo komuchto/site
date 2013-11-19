@@ -33,18 +33,16 @@
             $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
                 'id'=>'searchForm',
                 'type'=>'search',
-                'method'=>'get',
-                'htmlOptions'=>array('class'=>'well'),
+                'method'=>'post',
             )); ?>
             
-            <a style="width:150px;float:left;margin-right:100px" href="/" class="thumbnail" rel="tooltip" data-title="Tooltip">
-                <img src="http://placehold.it/150x50" alt="">
-            </a>
-            
-            <?php echo CHtml::textField('search', $_GET['search'], array('class'=>'input-medium')) ?>
-
-            <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Поиск','htmlOptions'=>array('name'=>''))); ?>
-            <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'link', 'type'=>'danger', 'label'=>'Подать объявление','url'=>'/adverts/add','htmlOptions'=>array('name'=>'','class'=>'pull-right'))); ?>
+            <a href="/" class="logo"></a>
+            <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'link', 'label'=>'','url'=>(Yii::app()->user->isGuest ? '/login' : '/users/'.Yii::app()->user->id),'htmlOptions'=>array('name'=>'','class'=>'user pull-right'))); ?>
+            <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'link', 'type'=>'danger', 'label'=>'Подать объявление','url'=>'/art/add','htmlOptions'=>array('name'=>'','class'=>'pull-right'))); ?>
+            <div class="search">
+                <?php echo CHtml::textField('search', $_GET['search'], array('class'=>'input-medium')) ?>
+                <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Поиск','htmlOptions'=>array('name'=>''))); ?>
+            </div>
             <div style="clear:both"></div>
             <?php $this->endWidget(); ?>
             

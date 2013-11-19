@@ -31,11 +31,11 @@ $(window).bind('hashchange', function(e) {
 var find = function(query){
     var data = $('#find').serialize()+(query ? query : "");
     console.log(data);
-    $.ajax({url:'adverts/search', data: data,type:'POST',dataType:'json',
+    $.ajax({url:'art/search', data: data,type:'POST',dataType:'json',
     success:function(msg){
         window.location.hash = '!'+msg.id;
     }});
-    $.ajax({url:'adverts/listajax',data: data, type:'POST',
+    $.ajax({url:'art/listajax',data: data, type:'POST',
     success:function(html){
         $('#content').replaceWith(html);
     }});

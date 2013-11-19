@@ -11,7 +11,7 @@
             'labelOptions' => array("label" => false),
             'ajax' => array(
                 'type'=>'POST',
-                'url'=>CController::createUrl('/adverts/subajax'),
+                'url'=>CController::createUrl('/art/subajax'),
                 'update'=>'#sub_find',
         ))); ?>
 

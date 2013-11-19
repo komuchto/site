@@ -43,6 +43,7 @@ return array(
                         'admin'=>'admin/stat/index',
                         '<id:\d+>'=>'adverts/view',
                         'fav/<id:\d+>'=>'adverts/fav',
+                        'art/<action:\w+>'=>'adverts/<action>',
                     ),
             ),
             'db'=>array(
