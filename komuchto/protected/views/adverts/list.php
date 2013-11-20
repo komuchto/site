@@ -7,14 +7,17 @@
         )); ?>
 
         <!-- Рубрика -->
+        <div class="select">
         <?php echo $form->dropDownListRow($model, 'rub', $params['rub'], array(
             'labelOptions' => array("label" => false),
+            'onchange'=>'otherParams(true)', //очищает доп параметры
             'ajax' => array(
                 'type'=>'POST',
                 'url'=>CController::createUrl('/art/subajax'),
                 'update'=>'#sub_find',
         ))); ?>
-
+        </div>
+            
         <!-- Подрубрики -->
         <div id="sub_find">
         <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -25,9 +28,11 @@
         <!-- Подрубрики -->
 
         <!-- Фильтры -->
+        <div class="select">
         <?php echo $form->dropDownListRow($model, 'act', CHtml::listData(Act::model()->findAll(),'id','name'), array('labelOptions' => array("label" => false))); ?>
         <?php echo $form->dropDownListRow($model, 'city', CHtml::listData(City::model()->findAll(),'id','name'), array('labelOptions' => array("label" => false))); ?>
-        <input type="text" id="amount-range" style="border:0; color:#f6931f; font-weight:bold;" value="<?=(!empty($model->minprice) ? $model->minprice : 0 ).'-'.$model->maxprice?>" />
+        </div>
+        <input type="text" id="amount-range" style="border:0; font-weight:bold;" value="<?=(!empty($model->minprice) ? $model->minprice : 0 ).'-'.$model->maxprice?>" readonly/>
         <?php $this->widget('zii.widgets.jui.CJuiSliderInput', array(
                 'model'=>$model,
                 'attribute'=>'minprice',
@@ -44,6 +49,16 @@
                 ),
             ));
           ?>
+        <!-- Доп Фильтры -->
+        <?php $this->widget('bootstrap.widgets.TbButton', array(
+            'label'=>'Больше параметров',
+            'buttonType'=>'link',
+            'type'=>'link',
+            'htmlOptions'=>array('onclick'=>'otherParams()'),
+        )); ?>
+        <div id="otherParams">
+        <? echo $params['other'];?>
+        </div>
         <?php $this->endWidget(); ?>
 
     </div>

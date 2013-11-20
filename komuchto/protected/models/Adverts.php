@@ -76,15 +76,24 @@ class Adverts extends CActiveRecord
     
     public function search()
     {
+        if(isset($_POST['pathname']))
+        {
+            $query = Search::model()->findByPk($_POST['pathname']);
+            parse_str($query->query, $_POST);
+        }
+        
         $criteria = new CDbCriteria;
         $criteria->with = array('act', 'sub', 'rub');
         $criteria->order = 't.id DESC';
         $criteria->condition = 't.moderate = 1';
         if(isset($_POST['Adverts']['act'])) $criteria->addCondition("t.act_id = ".$_POST['Adverts']['act']);
+        if(isset($_POST['Adverts']['transmission'])) $criteria->addCondition("t.transmission = ".$_POST['Adverts']['transmission']);
+        if(isset($_POST['Adverts']['type_object'])) $criteria->addCondition("t.type_object' = ".$_POST['Adverts']['type_object']);
         if(isset($_POST['Adverts']['rub'])) $criteria->addCondition("t.rub_id = ".$_POST['Adverts']['rub']);
         if(isset($_POST['Adverts']['maxprice'])) $criteria->addCondition("t.price <= ".$_POST['Adverts']['maxprice']);
         if(isset($_POST['Adverts']['minprice'])) $criteria->addCondition("t.price >= ".(int)$_POST['Adverts']['minprice']);
         if(isset($_POST['Adverts']['sub'])) $criteria->addInCondition("t.sub_id", $_POST['Adverts']['sub']);
+        
         
         return new CActiveDataProvider('Adverts', array(
             'criteria'=>$criteria,
@@ -105,6 +114,7 @@ class Adverts extends CActiveRecord
         foreach($subs as $r){
             $sub[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('data-id'=>$r['id']));
         }
+
         return array('rub'=>$rubs, 'act'=>$act, 'sub'=>$sub);
     }
     
@@ -118,32 +128,5 @@ class Adverts extends CActiveRecord
         $this->minprice = $price[0]->minprice;
     }
     
-    /*public function login($identity)
-    {
-        $criteria=new CDbCriteria;
-        $criteria->condition='identity=:id';
-        $criteria->params=array(':id'=>$identity->id);
-        $criteria->select = 'id';
-        
-        $count = $this->find($criteria);
-        
-        if(!$count->id){ 
-            $this->identity = $identity->id;
-            $this->name = $identity->name;
-            $this->save();
-            $count->id = Yii::app()->db->getLastInsertID();
-        }
-        
-        return $count->id;
-    }
-
-    public function getUser($id)
-    {
-        $criteria=new CDbCriteria;
-        $criteria->condition='identity=:identity AND id=:id';
-        $criteria->params=array(':identity'=>Yii::app()->user->id, ':id'=>$id);
-        $criteria->select = '*';
-        return $this->find($criteria);
-    }*/
 }
 ?>

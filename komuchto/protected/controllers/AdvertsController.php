@@ -95,7 +95,7 @@ class AdvertsController extends Controller{
     {
         $subs = Yii::app()->db->createCommand("SELECT sub.*, count(DISTINCT sub.id), count(adverts.id) as count FROM sub LEFT OUTER JOIN adverts ON  sub.id = adverts.sub_id WHERE sub.rub = ".$_POST['Adverts']['rub']." GROUP BY sub.id")->queryAll();
         foreach($subs as $r){
-            $sub[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('data-id'=>$r['id']));
+            $sub[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('data-id'=>$r['id'],'onclick'=>'find()'));
         }
         $this->widget('bootstrap.widgets.TbButtonGroup', array(
             'toggle' => 'checkbox',
@@ -107,6 +107,11 @@ class AdvertsController extends Controller{
     {
         $model = new Adverts;
         $this->render('list', array('model'=>$model));
+    }
+    
+    public function actionOtherParamsAjax()
+    {
+        $this->render('otherParams', array('rub'=>$_POST['Adverts']['rub']));
     }
     
     public function actionFav()

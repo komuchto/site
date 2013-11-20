@@ -1,34 +1,60 @@
-/*
+var findByPathname = function(pathname){
+    
+    $.ajax({url:'art/listajax',data: 'pathname='+pathname, type:'POST',
+    success:function(html){
+        $('#content').replaceWith(html);
+    }});
+}
+
 var render = function(){
     var hash = window.location.hash.substring(2);
     var pathname = window.location.pathname;
-    $.ajax({
-        type: "POST",
-        url: pathname + hash
-    }).done(function( msg ) {
-        $( "#main" ).html( msg );
-    });
+    if(hash < 10000000 && hash > 1000000){
+        $.ajax({
+            type: "POST",
+            url: pathname + hash
+        }).done(function( msg ) {
+            $( "#content" ).html( msg );
+        });
+    }
+
+    if(hash > 1000000){
+        findByPathname(hash);
+    }
 }
 
 render();
 
 $(window).bind('hashchange', function(e) { 
-
-    //alert(pathname + hash);
     render();
-
-
 });
-*/
+
  $('.fav').click(function(){
-    var href = $(this).attr('href');
-    $.ajax({url: href}).done(function(){
+    var el = $(this);
+    $.ajax({url: el.attr('href')}).done(function(){
+        el.toggleClass('active');
         alert('Добавлено в избранное');
     });
     return false;
 });
 
-var find = function(query){
+var find = function(sub){
+    var query = "";
+    var notQuery = 0;
+    
+    if(sub){
+        if(sub.hasClass('active') == false)
+            query = "&Adverts[sub][]="+sub.attr('data-id');
+        else
+            notQuery = sub.attr('data-id');
+    }
+    
+    
+    
+    $('#find .btn-group a.active').each(function(){
+        if(notQuery != $(this).attr('data-id')) query += '&Adverts[sub][]='+$(this).attr('data-id');
+    });
+    
     var data = $('#find').serialize()+(query ? query : "");
     console.log(data);
     $.ajax({url:'art/search', data: data,type:'POST',dataType:'json',
@@ -45,15 +71,14 @@ $('#find select').change(function(){
    find();      
 });
 $('#find .btn-group a').bind('click', function(){
-    var query = "";
-    var notQuery = 0;
-
-    if($(this).hasClass('active') == false)
-        query = "&Adverts[sub][]="+$(this).attr('data-id');
-    else
-        notQuery = $(this).attr('data-id');
-    $('#find .btn-group a.active').each(function(){
-        if($(this).attr('data-id') != notQuery) query += '&Adverts[sub][]='+$(this).attr('data-id');
-    });
-    find(query);      
+    find($(this));      
 });
+
+var otherParams = function(bool){
+    if(bool === true) {$( "#otherParams" ).empty(); return false;}
+    $.ajax({url:'art/otherparamsajax', data: $('#find').serialize(),type:'POST',
+    success:function(msg){
+        $( "#otherParams" ).html( msg );
+    }});
+    
+}

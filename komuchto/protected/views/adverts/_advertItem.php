@@ -1,15 +1,16 @@
 
 
-<div class="advert" style="clear:both">
+<div class="art">
     <?$img = explode(',', $data->img)?>
-    <a style="width:150px;float:left" href="/<?=$data->id?>" class="thumbnail" rel="tooltip" data-title="Tooltip">
-        <img width="150" src="/komuchto/images/art/<?=$img[1]?>" alt="">
+    <a href="/<?=$data->id?>" rel="tooltip" class="art-img">
+        <img src="/komuchto/images/art/<?=$img[1]?>" alt="">
     </a>
     
-    <a href=""><?=$data->act->name?> <?=$data->sub->name?></a>
+    <div class="info">
+        <a class="fav" href="/fav/<?=$data->id?>"></a>
+        <a href="/#!<?=$data->id?>"><?=$data->act->name?> <?=$data->sub->name?></a>  
+    <span><?=$data->text?></span>
+    <span class="price"><?=$data->price?> руб.</span>
+    </div>
     
-    <?=$data->text?>
-    <?=$data->price?>
-    <a style="float:right" href="/<?=$data->id?>">читать далее...</a>
-    <a class="fav" style="float:right" href="/fav/<?=$data->id?>">В избранное</a>
 </div>
