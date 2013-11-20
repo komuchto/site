@@ -10,13 +10,7 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Дамп структуры базы данных komuchto
-CREATE DATABASE IF NOT EXISTS `komuchto` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `komuchto`;
-
-
 -- Дамп структуры для таблица komuchto.act
-DROP TABLE IF EXISTS `act`;
 CREATE TABLE IF NOT EXISTS `act` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `type` int(11) unsigned DEFAULT '0',
@@ -37,7 +31,6 @@ INSERT INTO `act` (`id`, `type`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.adverts
-DROP TABLE IF EXISTS `adverts`;
 CREATE TABLE IF NOT EXISTS `adverts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `city_id` int(11) unsigned NOT NULL DEFAULT '0',
@@ -73,19 +66,18 @@ CREATE TABLE IF NOT EXISTS `adverts` (
   KEY `FK_adverts_act` (`act_id`),
   KEY `FK_adverts_city` (`city_id`),
   KEY `FK_adverts_rub` (`rub_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1000004 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы komuchto.adverts: 2 rows
 DELETE FROM `adverts`;
 /*!40000 ALTER TABLE `adverts` DISABLE KEYS */;
 INSERT INTO `adverts` (`id`, `city_id`, `act_id`, `rub_id`, `sub_id`, `user`, `phone`, `text`, `img`, `img1`, `img2`, `img3`, `img4`, `marka`, `model`, `body_type`, `transmission`, `year`, `probeg`, `etazh`, `komnaty_count`, `etazh_count`, `etazh_build`, `vid_object`, `type_object`, `plosch`, `price`, `moderate`, `created`, `updated`) VALUES
-	(1, 1, 1, 1, 1, 3, 89173238930, 'Продам таз', '20131118102905_3.jpg,thumb/min_20131118102905_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 50000, '0', '2013-11-18 10:29:05', '2013-11-18 10:29:05'),
-	(3, 1, 1, 1, 2, 3, 89173238930, 'текст', '20131118153411_3.jpg,thumb/min_20131118153411_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '0', '2013-11-18 15:34:11', '2013-11-18 15:34:11');
+	(1000001, 1, 1, 1, 1, 3, 89173238930, 'Продам таз', '20131118102905_3.jpg,thumb/min_20131118102905_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 50000, '0', '2013-11-18 10:29:05', '2013-11-18 10:29:05'),
+	(1000003, 1, 1, 1, 2, 3, 89173238930, 'текст', '20131118153411_3.jpg,thumb/min_20131118153411_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '0', '2013-11-18 15:34:11', '2013-11-18 15:34:11');
 /*!40000 ALTER TABLE `adverts` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица komuchto.AuthAssignment
-DROP TABLE IF EXISTS `AuthAssignment`;
 CREATE TABLE IF NOT EXISTS `AuthAssignment` (
   `itemname` varchar(64) NOT NULL,
   `userid` varchar(64) NOT NULL,
@@ -102,7 +94,6 @@ DELETE FROM `AuthAssignment`;
 
 
 -- Дамп структуры для таблица komuchto.AuthItem
-DROP TABLE IF EXISTS `AuthItem`;
 CREATE TABLE IF NOT EXISTS `AuthItem` (
   `name` varchar(64) NOT NULL,
   `type` int(11) NOT NULL,
@@ -124,7 +115,6 @@ INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.AuthItemChild
-DROP TABLE IF EXISTS `AuthItemChild`;
 CREATE TABLE IF NOT EXISTS `AuthItemChild` (
   `parent` varchar(64) NOT NULL,
   `child` varchar(64) NOT NULL,
@@ -141,7 +131,6 @@ DELETE FROM `AuthItemChild`;
 
 
 -- Дамп структуры для таблица komuchto.city
-DROP TABLE IF EXISTS `city`;
 CREATE TABLE IF NOT EXISTS `city` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `region` int(11) unsigned DEFAULT NULL,
@@ -159,7 +148,6 @@ INSERT INTO `city` (`id`, `region`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.favorits
-DROP TABLE IF EXISTS `favorits`;
 CREATE TABLE IF NOT EXISTS `favorits` (
   `user` int(11) unsigned NOT NULL DEFAULT '0',
   `advert` int(11) unsigned NOT NULL DEFAULT '0',
@@ -177,11 +165,10 @@ INSERT INTO `favorits` (`user`, `advert`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.params
-DROP TABLE IF EXISTS `params`;
 CREATE TABLE IF NOT EXISTS `params` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `sub_other` int(11) unsigned DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
+  `rub_id` int(11) unsigned DEFAULT NULL,
+  `params_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -192,7 +179,6 @@ DELETE FROM `params`;
 
 
 -- Дамп структуры для таблица komuchto.rub
-DROP TABLE IF EXISTS `rub`;
 CREATE TABLE IF NOT EXISTS `rub` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -211,14 +197,13 @@ INSERT INTO `rub` (`id`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.search
-DROP TABLE IF EXISTS `search`;
 CREATE TABLE IF NOT EXISTS `search` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `query` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10000017 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10000023 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы komuchto.search: 1 rows
+-- Дамп данных таблицы komuchto.search: 19 rows
 DELETE FROM `search`;
 /*!40000 ALTER TABLE `search` DISABLE KEYS */;
 INSERT INTO `search` (`id`, `query`) VALUES
@@ -238,12 +223,17 @@ INSERT INTO `search` (`id`, `query`) VALUES
 	(10000013, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=12000&Adverts[maxprice]=50000'),
 	(10000014, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=6000&Adverts[maxprice]=50000'),
 	(10000015, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=5000&Adverts[maxprice]=50000&Adverts[sub][0]=1'),
-	(10000016, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=0&Adverts[maxprice]=50000');
+	(10000016, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=0&Adverts[maxprice]=50000'),
+	(10000017, 'Adverts[rub]=3&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=0&Adverts[maxprice]=50000'),
+	(10000018, 'Adverts[rub]=3&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=0&Adverts[maxprice]=50000&Adverts[sub][0]=1'),
+	(10000019, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=50000&Adverts[transmission]=2'),
+	(10000020, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=50000&Adverts[transmission]=1'),
+	(10000021, 'Adverts[rub]=2&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=50000&Adverts[transmission]=1'),
+	(10000022, 'Adverts[rub]=2&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=50000&Adverts[type_object]=2');
 /*!40000 ALTER TABLE `search` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица komuchto.sub
-DROP TABLE IF EXISTS `sub`;
 CREATE TABLE IF NOT EXISTS `sub` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rub` int(11) DEFAULT '0',
@@ -265,7 +255,6 @@ INSERT INTO `sub` (`id`, `rub`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.sub_other
-DROP TABLE IF EXISTS `sub_other`;
 CREATE TABLE IF NOT EXISTS `sub_other` (
   `id` int(11) unsigned NOT NULL,
   `name` varchar(255) DEFAULT NULL,
@@ -279,8 +268,40 @@ DELETE FROM `sub_other`;
 /*!40000 ALTER TABLE `sub_other` ENABLE KEYS */;
 
 
+-- Дамп структуры для таблица komuchto.transmission
+CREATE TABLE IF NOT EXISTS `transmission` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы komuchto.transmission: ~0 rows (приблизительно)
+DELETE FROM `transmission`;
+/*!40000 ALTER TABLE `transmission` DISABLE KEYS */;
+INSERT INTO `transmission` (`id`, `name`) VALUES
+	(1, 'Ручная'),
+	(2, 'Автоматическая');
+/*!40000 ALTER TABLE `transmission` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица komuchto.type_object
+CREATE TABLE IF NOT EXISTS `type_object` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы komuchto.type_object: ~0 rows (приблизительно)
+DELETE FROM `type_object`;
+/*!40000 ALTER TABLE `type_object` DISABLE KEYS */;
+INSERT INTO `type_object` (`id`, `name`) VALUES
+	(1, 'Кирпичный'),
+	(2, 'Панельный'),
+	(3, 'Блочный');
+/*!40000 ALTER TABLE `type_object` ENABLE KEYS */;
+
+
 -- Дамп структуры для таблица komuchto.users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `service` varchar(255) NOT NULL DEFAULT 'undefined',
@@ -299,7 +320,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `service`, `ip`, `city`, `permission`, `identity`, `email`, `name`, `created`, `lastvisited`) VALUES
-	(3, 'undefined', '127.0.0.1', '', '2', 'https://www.google.com/accounts/o8/id?id=AItOawn6rLF6HkD0GnV1w8t626mS5Z99WkX30kc', 'admin@garyk.ru', 'Игорь', '2013-11-04 10:34:51', '2013-11-18 15:30:48'),
+	(3, 'undefined', '127.0.0.1', '', '2', 'https://www.google.com/accounts/o8/id?id=AItOawn6rLF6HkD0GnV1w8t626mS5Z99WkX30kc', 'admin@garyk.ru', 'Игорь', '2013-11-04 10:34:51', '2013-11-20 12:44:55'),
 	(4, 'undefined', '', '', '0', 'http://openid.yandex.ru/s0ber89/', NULL, 's0ber89', '2013-11-06 09:37:04', '2013-11-06 09:37:04');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
