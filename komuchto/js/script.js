@@ -17,10 +17,6 @@ var render = function(){
             $( "#content" ).html( msg );
         });
     }
-
-    if(hash > 1000000){
-        findByPathname(hash);
-    }
 }
 
 render();
@@ -33,7 +29,6 @@ $(window).bind('hashchange', function(e) {
     var el = $(this);
     $.ajax({url: el.attr('href')}).done(function(){
         el.toggleClass('active');
-        alert('Добавлено в избранное');
     });
     return false;
 });
@@ -70,8 +65,16 @@ var find = function(sub){
 $('#find select').change(function(){
    find();      
 });
-$('#find .btn-group a').bind('click', function(){
+$('#find #filters .btn-group a').bind('click', function(){
     find($(this));      
+});
+$('#rub_find a').click(function(){
+    var el = $(this);
+    $('#rub_find a').hide( "fast", function() {     
+        $('#filters').show(500);
+        $("#Adverts_rub option[value='"+el.attr('data-id')+"']").attr('selected','selected');
+        $('#rub_find').css('display','none');
+    });
 });
 
 var otherParams = function(bool){

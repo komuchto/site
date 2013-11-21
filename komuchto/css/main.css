@@ -1,8 +1,9 @@
-html, body{background-color: #fff;}
+html, body, .footer{background-color: #fff;}
 input[type='text'], button.btn, a.btn, a.btn.active, select, #find .ui-state-default {border-radius: 0; box-shadow: none; transition: 0; -webkit-box-shadow:none; box-shadow: none; background: #fff}
 a.btn-link, a.btn-link:hover{border:0; padding:0;color:#01669a; background: none}
 
 a.logo{float:left;width:181px;height:44px;background: url(/komuchto/images/logo.png)}
+#searchForm{margin-bottom: 0}
 #searchForm input{width:400px; border-right: 0;background: url(/komuchto/images/lupa.jpg) right no-repeat}
 #searchForm button{color:#cc0001; margin-left: -4px; border-left: 0;padding: 5px 10px;}
 #searchForm .search{float: right}
@@ -10,11 +11,14 @@ a.logo{float:left;width:181px;height:44px;background: url(/komuchto/images/logo.
 #searchForm a.user{background: url(/komuchto/images/user.jpg) no-repeat center #656565; height: 22px; width:20px; border: 0;}
 
 .container .left, .container #content{margin-left: 0}
+.container .left{margin-top: 16px;}
 
 #find .select{width:250px;overflow: hidden}
 #find select, #find select:focus{border: 0; width:300px;}
 #find select#Adverts_rub{border-bottom: 1px solid #01669a; background: transparent;}
-#sub_find .btn{border-right:0; border-left: 3px solid #dedede; margin:1px 0;width: 227px;}
+#filters{display:none}
+#sub_find .btn, #rub_find a{border-right:0; border-left: 3px solid #dedede; margin:1px 0;width: 227px;}
+#rub_find{margin-top: 27px;}
 #sub_find .btn:hover, #sub_find .btn.active{background-color: #e6eff6; color:#01669a}
 #sub_find .btn.active{border-left: 3px solid #01669a;}
 #find .ui-state-default, #find .ui-slider-range{background: #01669a}

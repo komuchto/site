@@ -107,6 +107,7 @@ class Adverts extends CActiveRecord
         $rub = Yii::app()->db->createCommand("SELECT rub.*, count(DISTINCT rub.id), count(adverts.id) as count FROM rub LEFT OUTER JOIN adverts ON  rub.id = adverts.rub_id GROUP BY rub.id")->queryAll(); 
         foreach($rub as $r){
             $rubs[$r['id']] = $r['name'].' ('.$r['count'].')';
+            $rub_array[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('data-id'=>$r['id']));
         }
         $act = Act::model()->findAll();
         
@@ -115,7 +116,7 @@ class Adverts extends CActiveRecord
             $sub[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('data-id'=>$r['id']));
         }
 
-        return array('rub'=>$rubs, 'act'=>$act, 'sub'=>$sub);
+        return array('rub'=>$rubs, 'act'=>$act, 'sub'=>$sub, 'rub_array'=>$rub_array);
     }
     
     public function minmax()
