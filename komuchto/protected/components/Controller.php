@@ -6,6 +6,8 @@ class Controller extends CController {
     public function init() {
         parent::init();
         
+        Yii::import('system.zii..widgets.CListView');
+        
         $parts = explode('/', Yii::app()->request->requestUri);
 
         if($parts[1] == 'admin')

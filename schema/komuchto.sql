@@ -11,6 +11,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Дамп структуры для таблица komuchto.act
+DROP TABLE IF EXISTS `act`;
 CREATE TABLE IF NOT EXISTS `act` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `type` int(11) unsigned DEFAULT '0',
@@ -31,13 +32,14 @@ INSERT INTO `act` (`id`, `type`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.adverts
+DROP TABLE IF EXISTS `adverts`;
 CREATE TABLE IF NOT EXISTS `adverts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `city_id` int(11) unsigned NOT NULL DEFAULT '0',
   `act_id` int(11) unsigned NOT NULL DEFAULT '0',
   `rub_id` int(11) unsigned DEFAULT NULL,
   `sub_id` int(11) unsigned DEFAULT NULL,
-  `user` int(11) unsigned DEFAULT NULL,
+  `user_id` int(11) unsigned DEFAULT NULL,
   `phone` bigint(11) unsigned DEFAULT NULL,
   `text` text,
   `img` varchar(500) DEFAULT NULL,
@@ -66,18 +68,28 @@ CREATE TABLE IF NOT EXISTS `adverts` (
   KEY `FK_adverts_act` (`act_id`),
   KEY `FK_adverts_city` (`city_id`),
   KEY `FK_adverts_rub` (`rub_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1000004 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1000013 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы komuchto.adverts: 2 rows
+-- Дамп данных таблицы komuchto.adverts: 11 rows
 DELETE FROM `adverts`;
 /*!40000 ALTER TABLE `adverts` DISABLE KEYS */;
-INSERT INTO `adverts` (`id`, `city_id`, `act_id`, `rub_id`, `sub_id`, `user`, `phone`, `text`, `img`, `img1`, `img2`, `img3`, `img4`, `marka`, `model`, `body_type`, `transmission`, `year`, `probeg`, `etazh`, `komnaty_count`, `etazh_count`, `etazh_build`, `vid_object`, `type_object`, `plosch`, `price`, `moderate`, `created`, `updated`) VALUES
+INSERT INTO `adverts` (`id`, `city_id`, `act_id`, `rub_id`, `sub_id`, `user_id`, `phone`, `text`, `img`, `img1`, `img2`, `img3`, `img4`, `marka`, `model`, `body_type`, `transmission`, `year`, `probeg`, `etazh`, `komnaty_count`, `etazh_count`, `etazh_build`, `vid_object`, `type_object`, `plosch`, `price`, `moderate`, `created`, `updated`) VALUES
 	(1000001, 1, 1, 1, 1, 3, 89173238930, 'Продам таз', '20131118102905_3.jpg,thumb/min_20131118102905_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 50000, '0', '2013-11-18 10:29:05', '2013-11-18 10:29:05'),
-	(1000003, 1, 1, 1, 2, 3, 89173238930, 'текст', '20131118153411_3.jpg,thumb/min_20131118153411_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '0', '2013-11-18 15:34:11', '2013-11-18 15:34:11');
+	(1000003, 1, 1, 1, 2, 3, 89173238930, 'текст', '20131118153411_3.jpg,thumb/min_20131118153411_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '0', '2013-11-18 15:34:11', '2013-11-18 15:34:11'),
+	(1000004, 1, 1, 1, 1, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122094510_3.jpg,thumb/min_20131122094510_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 150000, '0', '2013-11-22 09:45:10', '2013-11-22 09:45:10'),
+	(1000005, 1, 1, 1, 1, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122094528_3.jpg,thumb/min_20131122094528_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 200000, '0', '2013-11-22 09:45:28', '2013-11-22 09:45:28'),
+	(1000006, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122094542_3.jpg,thumb/min_20131122094542_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 500000, '0', '2013-11-22 09:45:42', '2013-11-22 09:45:42'),
+	(1000007, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122094613_3.jpg,thumb/min_20131122094613_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 500000, '0', '2013-11-22 09:46:13', '2013-11-22 09:46:13'),
+	(1000008, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122094624_3.jpg,thumb/min_20131122094624_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1500000, '0', '2013-11-22 09:46:25', '2013-11-22 09:46:25'),
+	(1000009, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122095551_3.jpg,thumb/min_20131122095551_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 25000, '0', '2013-11-22 09:55:51', '2013-11-22 09:55:51'),
+	(1000010, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122095623_3.jpg,thumb/min_20131122095623_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 225000, '0', '2013-11-22 09:56:23', '2013-11-22 09:56:23'),
+	(1000011, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122095635_3.jpg,thumb/min_20131122095635_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 24025000, '0', '2013-11-22 09:56:35', '2013-11-22 09:56:35'),
+	(1000012, 1, 1, 1, 1, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122095646_3.jpg,thumb/min_20131122095646_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 24025000, '0', '2013-11-22 09:56:46', '2013-11-22 09:56:46');
 /*!40000 ALTER TABLE `adverts` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица komuchto.AuthAssignment
+DROP TABLE IF EXISTS `AuthAssignment`;
 CREATE TABLE IF NOT EXISTS `AuthAssignment` (
   `itemname` varchar(64) NOT NULL,
   `userid` varchar(64) NOT NULL,
@@ -94,6 +106,7 @@ DELETE FROM `AuthAssignment`;
 
 
 -- Дамп структуры для таблица komuchto.AuthItem
+DROP TABLE IF EXISTS `AuthItem`;
 CREATE TABLE IF NOT EXISTS `AuthItem` (
   `name` varchar(64) NOT NULL,
   `type` int(11) NOT NULL,
@@ -115,6 +128,7 @@ INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.AuthItemChild
+DROP TABLE IF EXISTS `AuthItemChild`;
 CREATE TABLE IF NOT EXISTS `AuthItemChild` (
   `parent` varchar(64) NOT NULL,
   `child` varchar(64) NOT NULL,
@@ -131,6 +145,7 @@ DELETE FROM `AuthItemChild`;
 
 
 -- Дамп структуры для таблица komuchto.city
+DROP TABLE IF EXISTS `city`;
 CREATE TABLE IF NOT EXISTS `city` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `region` int(11) unsigned DEFAULT NULL,
@@ -148,6 +163,7 @@ INSERT INTO `city` (`id`, `region`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.favorits
+DROP TABLE IF EXISTS `favorits`;
 CREATE TABLE IF NOT EXISTS `favorits` (
   `user` int(11) unsigned NOT NULL DEFAULT '0',
   `advert` int(11) unsigned NOT NULL DEFAULT '0',
@@ -160,11 +176,14 @@ DELETE FROM `favorits`;
 /*!40000 ALTER TABLE `favorits` DISABLE KEYS */;
 INSERT INTO `favorits` (`user`, `advert`) VALUES
 	(3, 5),
-	(3, 6);
+	(3, 6),
+	(3, 1000010),
+	(3, 1000012);
 /*!40000 ALTER TABLE `favorits` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица komuchto.params
+DROP TABLE IF EXISTS `params`;
 CREATE TABLE IF NOT EXISTS `params` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `rub_id` int(11) unsigned DEFAULT NULL,
@@ -179,6 +198,7 @@ DELETE FROM `params`;
 
 
 -- Дамп структуры для таблица komuchto.rub
+DROP TABLE IF EXISTS `rub`;
 CREATE TABLE IF NOT EXISTS `rub` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -197,13 +217,14 @@ INSERT INTO `rub` (`id`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.search
+DROP TABLE IF EXISTS `search`;
 CREATE TABLE IF NOT EXISTS `search` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `query` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10000023 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10000041 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы komuchto.search: 19 rows
+-- Дамп данных таблицы komuchto.search: 35 rows
 DELETE FROM `search`;
 /*!40000 ALTER TABLE `search` DISABLE KEYS */;
 INSERT INTO `search` (`id`, `query`) VALUES
@@ -229,11 +250,30 @@ INSERT INTO `search` (`id`, `query`) VALUES
 	(10000019, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=50000&Adverts[transmission]=2'),
 	(10000020, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=50000&Adverts[transmission]=1'),
 	(10000021, 'Adverts[rub]=2&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=50000&Adverts[transmission]=1'),
-	(10000022, 'Adverts[rub]=2&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=50000&Adverts[type_object]=2');
+	(10000022, 'Adverts[rub]=2&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=50000&Adverts[type_object]=2'),
+	(10000023, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=0&Adverts[maxprice]=50000&Adverts[transmission]=1&Adverts[sub][0]=2'),
+	(10000024, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=0&Adverts[maxprice]=50000&Adverts[transmission]=1'),
+	(10000025, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=0&Adverts[maxprice]=50000&Adverts[transmission]=1&Adverts[sub][0]=1'),
+	(10000026, 'Adverts[rub]=2&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=50000&Adverts[sub][0]=1'),
+	(10000027, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=24025000&Adverts[sub][0]=1&Adverts[sub][1]=1'),
+	(10000028, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=24025000&Adverts[sub][0]=2&Adverts[sub][1]=1&Adverts[sub][2]=1'),
+	(10000029, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=24025000&Adverts[sub][0]=2'),
+	(10000030, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=24025000&Adverts[transmission]=2&Adverts[sub][0]=1'),
+	(10000031, 'Adverts[rub]=2&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=24025000&Adverts[sub][0]=1'),
+	(10000032, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=24025000&Adverts[sub][0]=1'),
+	(10000033, 'Adverts[rub]=1&Adverts[act]=2&Adverts[city]=1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[sub][0]=1'),
+	(10000034, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[sub][0]=1'),
+	(10000035, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=24025000'),
+	(10000036, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=24025000&Adverts[search]=Автозапчасти'),
+	(10000037, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=24025000&Adverts[search]=Продаю'),
+	(10000038, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=24025000&Adverts[search]=Lorem'),
+	(10000039, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=24025000&Adverts[search]='),
+	(10000040, 'Adverts[rub]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=&Adverts[maxprice]=24025000&Adverts[search]=текст');
 /*!40000 ALTER TABLE `search` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица komuchto.sub
+DROP TABLE IF EXISTS `sub`;
 CREATE TABLE IF NOT EXISTS `sub` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rub` int(11) DEFAULT '0',
@@ -245,7 +285,7 @@ CREATE TABLE IF NOT EXISTS `sub` (
 DELETE FROM `sub`;
 /*!40000 ALTER TABLE `sub` DISABLE KEYS */;
 INSERT INTO `sub` (`id`, `rub`, `name`) VALUES
-	(1, 1, 'Автомобили с пробегом'),
+	(1, 1, 'С пробегом'),
 	(2, 1, 'Новые автомобили'),
 	(3, 2, 'Квартиры'),
 	(4, 2, 'Комнаты'),
@@ -255,6 +295,7 @@ INSERT INTO `sub` (`id`, `rub`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.sub_other
+DROP TABLE IF EXISTS `sub_other`;
 CREATE TABLE IF NOT EXISTS `sub_other` (
   `id` int(11) unsigned NOT NULL,
   `name` varchar(255) DEFAULT NULL,
@@ -269,13 +310,14 @@ DELETE FROM `sub_other`;
 
 
 -- Дамп структуры для таблица komuchto.transmission
+DROP TABLE IF EXISTS `transmission`;
 CREATE TABLE IF NOT EXISTS `transmission` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы komuchto.transmission: ~0 rows (приблизительно)
+-- Дамп данных таблицы komuchto.transmission: ~2 rows (приблизительно)
 DELETE FROM `transmission`;
 /*!40000 ALTER TABLE `transmission` DISABLE KEYS */;
 INSERT INTO `transmission` (`id`, `name`) VALUES
@@ -285,13 +327,14 @@ INSERT INTO `transmission` (`id`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.type_object
+DROP TABLE IF EXISTS `type_object`;
 CREATE TABLE IF NOT EXISTS `type_object` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы komuchto.type_object: ~0 rows (приблизительно)
+-- Дамп данных таблицы komuchto.type_object: ~3 rows (приблизительно)
 DELETE FROM `type_object`;
 /*!40000 ALTER TABLE `type_object` DISABLE KEYS */;
 INSERT INTO `type_object` (`id`, `name`) VALUES
@@ -302,11 +345,12 @@ INSERT INTO `type_object` (`id`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.users
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `service` varchar(255) NOT NULL DEFAULT 'undefined',
-  `ip` varchar(255) NOT NULL,
-  `city` varchar(255) NOT NULL,
+  `ip` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
   `permission` enum('0','1','2') NOT NULL DEFAULT '0',
   `identity` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -320,7 +364,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `service`, `ip`, `city`, `permission`, `identity`, `email`, `name`, `created`, `lastvisited`) VALUES
-	(3, 'undefined', '127.0.0.1', '', '2', 'https://www.google.com/accounts/o8/id?id=AItOawn6rLF6HkD0GnV1w8t626mS5Z99WkX30kc', 'admin@garyk.ru', 'Игорь', '2013-11-04 10:34:51', '2013-11-20 12:44:55'),
+	(3, 'undefined', '127.0.0.1', NULL, '2', 'https://www.google.com/accounts/o8/id?id=AItOawn6rLF6HkD0GnV1w8t626mS5Z99WkX30kc', 'admin@garyk.ru', 'Игорь', '2013-11-04 10:34:51', '2013-11-22 09:44:11'),
 	(4, 'undefined', '', '', '0', 'http://openid.yandex.ru/s0ber89/', NULL, 's0ber89', '2013-11-06 09:37:04', '2013-11-06 09:37:04');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

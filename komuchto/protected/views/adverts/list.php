@@ -1,5 +1,5 @@
 <?if(!Yii::app()->request->getIsAjaxRequest()):?>
-    <div class="left span3">
+    <div class="left">
         <?php /** @var BootActiveForm $form */
         $params = $model->find();
         $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
@@ -74,10 +74,14 @@
     </div>
 <?endif;?>
 <div id="content" class="span8">
-<?php $this->widget('zii.widgets.CListView', array(
+<?php $this->widget('application.widgets.AdvertsCListView', array(
     'dataProvider'=>$model->search(),
     'itemView'=>'_advertItem',
-    
+    'template'=>'{summary}{sorter}{items}{pager}',
+    'sortableAttributes'=>array(
+        'price',
+        'created'
+    )
 )); ?>
 </div>
 <?if(!Yii::app()->request->getIsAjaxRequest()):?>

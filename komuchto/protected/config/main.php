@@ -10,6 +10,7 @@ return array(
 	'name'=>'Кому-что',
         'theme'=>'bootstrap',
         'charset'=>'utf-8',
+        'language'=>'ru',
         'preload' => array(
             'debug',
         ),
@@ -141,7 +142,7 @@ return array(
 	),
         'params' => array(
             'adminPerPage' => 50,
-            'advertsPerPage' => 20,
+            'advertsPerPage' => 10,
         ),
 
 );

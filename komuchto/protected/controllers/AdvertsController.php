@@ -13,7 +13,7 @@ class AdvertsController extends Controller{
 
         if (isset($_POST['Adverts']))
         {
-                $model->user = Yii::app()->user->id;
+                $model->user_id = Yii::app()->user->id;
                 foreach($_POST['Adverts'] as $name=>$value){  
                     $model->$name=$value;  
                 } 
@@ -22,12 +22,12 @@ class AdvertsController extends Controller{
                 {
                     //$image = CUploadedFile::getInstanceByName('Adverts[img]');
                     $model->img = EUploadedImage::getInstance($model,'img');
-                    $model->img->maxWidth = 600;
-                    $model->img->maxHeight = 300;
+                    $model->img->maxWidth = 800;
+                    $model->img->maxHeight = 600;
 
                     $model->img->thumb = array(
-                        'maxWidth' => 200,
-                        'maxHeight' => 160,
+                        'maxWidth' => 400,
+                        'maxHeight' => 400,
                         'prefix' => 'min_',
                         'dir'=>'thumb'
                     );

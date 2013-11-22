@@ -40,8 +40,8 @@
             <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'link', 'label'=>'','url'=>(Yii::app()->user->isGuest ? '/login' : '/users/'.Yii::app()->user->id),'htmlOptions'=>array('name'=>'','class'=>'user pull-right'))); ?>
             <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'link', 'type'=>'danger', 'label'=>'Подать объявление','url'=>'/art/add','htmlOptions'=>array('name'=>'','class'=>'pull-right'))); ?>
             <div class="search">
-                <?php echo CHtml::textField('search', $_GET['search'], array('class'=>'input-medium')) ?>
-                <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Поиск','htmlOptions'=>array('name'=>''))); ?>
+                <?php echo CHtml::textField('search', '', array('class'=>'input-medium','id'=>'searchInput')) ?>
+                <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Поиск', 'htmlOptions'=>array('name'=>'','onclick'=>'find(false, true);return false'))); ?>
             </div>
             <div style="clear:both"></div>
             <?php $this->endWidget(); ?>

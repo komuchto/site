@@ -20,7 +20,7 @@ class Adverts extends CActiveRecord
     public function relations()
     {
         return array(
-            'user'=>array(self::BELONGS_TO, 'Users', 'id'),
+            'user'=>array(self::BELONGS_TO, 'Users', 'user_id'),
             'favorits'=>array(self::MANY_MANY, 'Users', 'favorits(advert, user)'),
             'act'=>array(self::BELONGS_TO, 'Act', 'act_id'),
             'rub'=>array(self::BELONGS_TO, 'Rub', 'rub_id'),
@@ -84,8 +84,8 @@ class Adverts extends CActiveRecord
         
         $criteria = new CDbCriteria;
         $criteria->with = array('act', 'sub', 'rub');
-        $criteria->order = 't.id DESC';
         $criteria->condition = 't.moderate = 1';
+        if(isset($_POST['Adverts']['search'])) $criteria->compare('text', $_POST['Adverts']['search'], true);
         if(isset($_POST['Adverts']['act'])) $criteria->addCondition("t.act_id = ".$_POST['Adverts']['act']);
         if(isset($_POST['Adverts']['transmission'])) $criteria->addCondition("t.transmission = ".$_POST['Adverts']['transmission']);
         if(isset($_POST['Adverts']['type_object'])) $criteria->addCondition("t.type_object' = ".$_POST['Adverts']['type_object']);
@@ -94,11 +94,24 @@ class Adverts extends CActiveRecord
         if(isset($_POST['Adverts']['minprice'])) $criteria->addCondition("t.price >= ".(int)$_POST['Adverts']['minprice']);
         if(isset($_POST['Adverts']['sub'])) $criteria->addInCondition("t.sub_id", $_POST['Adverts']['sub']);
         
+        $sort = new CSort();
+        $sort->defaultOrder = 't.created DESC';
+        $sort->attributes = array(
+            'price'=>array(
+                'asc'=>'t.price ASC',
+                'desc'=>'t.price DESC',
+            ),
+            'created'=>array(
+                'asc'=>'t.created ASC',
+                'desc'=>'t.created DESC',
+            ),
+        );
         
         return new CActiveDataProvider('Adverts', array(
             'criteria'=>$criteria,
+            'sort'=> $sort,
             'pagination' => array(
-                'pageSize' => Yii::app()->params['advertsPerPage'],
+                'pageSize' => Yii::app()->params['advertsPerPage'], 
             ),
         ));
     }
@@ -123,7 +136,6 @@ class Adverts extends CActiveRecord
     {
         $criteria = new CDbCriteria;
         $criteria->select='MAX(price) as maxprice, count(DISTINCT id)';
-        $criteria->group = 'id, price';
         $price = $this->findAll($criteria);
         $this->maxprice = $price[0]->maxprice;
         $this->minprice = $price[0]->minprice;

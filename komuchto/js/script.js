@@ -6,7 +6,7 @@ var findByPathname = function(pathname){
     }});
 }
 
-var render = function(){
+var render = function(bool){
     var hash = window.location.hash.substring(2);
     var pathname = window.location.pathname;
     if(hash < 10000000 && hash > 1000000){
@@ -17,12 +17,16 @@ var render = function(){
             $( "#content" ).html( msg );
         });
     }
+    
+    if(bool != true && hash > 10000000){
+        findByPathname(hash);
+    }
 }
 
 render();
 
 $(window).bind('hashchange', function(e) { 
-    render();
+    render(true);
 });
 
  $('.fav').click(function(){
@@ -33,7 +37,7 @@ $(window).bind('hashchange', function(e) {
     return false;
 });
 
-var find = function(sub){
+var find = function(sub, search){
     var query = "";
     var notQuery = 0;
     
@@ -44,7 +48,9 @@ var find = function(sub){
             notQuery = sub.attr('data-id');
     }
     
-    
+    if(search)
+        query += "&Adverts[search]="+$('#searchInput').val();
+
     
     $('#find .btn-group a.active').each(function(){
         if(notQuery != $(this).attr('data-id')) query += '&Adverts[sub][]='+$(this).attr('data-id');
