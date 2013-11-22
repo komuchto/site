@@ -76,10 +76,11 @@ $('#find #filters .btn-group a').bind('click', function(){
 });
 $('#rub_find a').click(function(){
     var el = $(this);
-    $('#rub_find a').hide( "fast", function() {     
+    $('#rub_find').hide( "fast", function() {     
         $('#filters').show(500);
         $("#Adverts_rub option[value='"+el.attr('data-id')+"']").attr('selected','selected');
         $('#rub_find').css('display','none');
+        find();
     });
 });
 
