@@ -66,7 +66,7 @@
                 'htmlOptions'=>array('onclick'=>'otherParams()'),
             )); ?>
             <div id="otherParams">
-            <? echo $params['other'];?>
+            <?// echo $params['other'];?>
             </div>
         </div>
         <?php $this->endWidget(); ?>

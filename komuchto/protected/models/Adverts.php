@@ -61,7 +61,7 @@ class Adverts extends CActiveRecord
     public function myAdverts()
     {
         $criteria = new CDbCriteria;
-        $criteria->condition = 'user=:user';
+        $criteria->condition = 'user_id=:user';
         $criteria->params = array(':user'=>Yii::app()->user->id);
         $criteria->together = true;
 
