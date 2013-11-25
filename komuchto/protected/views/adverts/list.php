@@ -15,7 +15,7 @@
 )); ?>
 </div>
 <?if(!Yii::app()->request->getIsAjaxRequest()):?>
-<div class="left span-2">
+<div class="right">
 
 </div>
 <?endif;?>

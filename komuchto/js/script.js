@@ -21,6 +21,16 @@ var render = function(bool){
     if(bool != true && hash > 10000000){
         findByPathname(hash);
         
+        $.ajax({
+                type: "POST",
+                url: '/art/filter',
+                data: 'pathname='+hash,
+            }).done(function( msg ) {
+                $( ".left" ).html( msg );
+                $('#filters').show();
+                $('#rub_find').hide();
+            });
+        /*
          $.ajax({
                 type: "POST",
                 url: '/art/filters',
@@ -45,6 +55,7 @@ var render = function(bool){
                 }});
                 
             });
+            */
     }
     
 }

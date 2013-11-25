@@ -144,6 +144,17 @@ class AdvertsController extends Controller{
         }    
     }
     
+    public function actionFilter()
+    {
+        if(isset($_POST['pathname']))
+        {
+            $query = Search::model()->findByPk($_POST['pathname']);
+            parse_str($query->query, $_POST);
+        }  
+        
+        $this->renderPartial('filters', array('model'=>new Adverts));
+    }
+    
     public function actionDynamicrubric()
     {
         $data=Sub::model()->findAll('rub=:id', 
