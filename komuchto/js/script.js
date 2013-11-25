@@ -20,7 +20,33 @@ var render = function(bool){
     
     if(bool != true && hash > 10000000){
         findByPathname(hash);
+        
+         $.ajax({
+                type: "POST",
+                url: '/art/filters',
+                data: 'pathname='+hash,
+                dataType: 'JSON',
+            }).done(function( msg ) {
+                $('#filters').show();
+                $('#rub_find').hide();
+
+                $("#Adverts_rub option[value='"+msg.Adverts.rub+"']").attr('selected','selected');
+                $("#Adverts_city option[value='"+msg.Adverts.city+"']").attr('selected','selected');
+                $("#Adverts_act option[value='"+msg.Adverts.act+"']").attr('selected','selected');
+                   
+                var sub = '';
+                if(msg.Adverts.sub){
+                    for(var m in msg.Adverts.sub)
+                        sub += '&Adverts[sub][]='+msg.Adverts.sub[m];
+                }
+                $.ajax({url:'art/subajax', data: 'Adverts[rub]='+msg.Adverts.rub+sub,type:'POST',
+                success:function(msg){
+                    $( "#sub_find" ).html( msg );
+                }});
+                
+            });
     }
+    
 }
 
 render();
@@ -52,10 +78,14 @@ var find = function(sub, search){
         query += "&Adverts[search]="+$('#searchInput').val();
 
     
-    $('#find .btn-group a.active').each(function(){
+    $('#sub_find .btn-group a.active').each(function(){
         if(notQuery != $(this).attr('data-id')) query += '&Adverts[sub][]='+$(this).attr('data-id');
     });
     
+    if($('.sorter a.created').hasClass('asc')) query += '&Adverts[sort]=created';
+    if($('.sorter a.price').hasClass('asc')) query += '&Adverts[sort]=price';
+    if($('.sorter a.price').hasClass('desc')) query += '&Adverts[sort]=price.desc'
+
     var data = $('#find').serialize()+(query ? query : "");
     console.log(data);
     $.ajax({url:'art/search', data: data,type:'POST',dataType:'json',
@@ -67,7 +97,6 @@ var find = function(sub, search){
         $('#content').replaceWith(html);
     }});
 }
-
 $('#find select').change(function(){
    find();      
 });

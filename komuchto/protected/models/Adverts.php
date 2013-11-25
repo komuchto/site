@@ -37,7 +37,10 @@ class Adverts extends CActiveRecord
             array('phone', 'numerical', 'integerOnly'=>true),
             array('price', 'numerical', 'integerOnly'=>true),
             array('img', 'file', 'types'=>'jpg, jpeg, gif, png', 'message'=>'Разрешено загрузать лишь фотографии с расширением jpg, jpeg, gif, png',),
-            
+            array('img1', 'file', 'types'=>'jpg, jpeg, gif, png', 'message'=>'Разрешено загрузать лишь фотографии с расширением jpg, jpeg, gif, png',),
+            array('img2', 'file', 'types'=>'jpg, jpeg, gif, png', 'message'=>'Разрешено загрузать лишь фотографии с расширением jpg, jpeg, gif, png',),
+            array('img3', 'file', 'types'=>'jpg, jpeg, gif, png', 'message'=>'Разрешено загрузать лишь фотографии с расширением jpg, jpeg, gif, png',),
+            array('img4', 'file', 'types'=>'jpg, jpeg, gif, png', 'message'=>'Разрешено загрузать лишь фотографии с расширением jpg, jpeg, gif, png',),
         );
     }
     
@@ -85,14 +88,17 @@ class Adverts extends CActiveRecord
         $criteria = new CDbCriteria;
         $criteria->with = array('act', 'sub', 'rub');
         $criteria->condition = 't.moderate = 1';
+        
+        if(isset($_POST['Adverts']['sort'])) $_GET = $_POST['Adverts'];
+        
         if(isset($_POST['Adverts']['search'])) $criteria->compare('text', $_POST['Adverts']['search'], true);
-        if(isset($_POST['Adverts']['act'])) $criteria->addCondition("t.act_id = ".$_POST['Adverts']['act']);
-        if(isset($_POST['Adverts']['transmission'])) $criteria->addCondition("t.transmission = ".$_POST['Adverts']['transmission']);
-        if(isset($_POST['Adverts']['type_object'])) $criteria->addCondition("t.type_object' = ".$_POST['Adverts']['type_object']);
-        if(isset($_POST['Adverts']['rub'])) $criteria->addCondition("t.rub_id = ".$_POST['Adverts']['rub']);
+        if(isset($_POST['Adverts']['act']) && $_POST['Adverts']['transmission'] > 0) $criteria->addCondition("t.act_id = ".$_POST['Adverts']['act']);
+        if(isset($_POST['Adverts']['transmission']) && $_POST['Adverts']['transmission'] > 0) $criteria->addCondition("t.transmission = ".$_POST['Adverts']['transmission']);
+        if(isset($_POST['Adverts']['type_object']) && $_POST['Adverts']['type_object'] > 0) $criteria->addCondition("t.type_object' = ".$_POST['Adverts']['type_object']);
+        if(isset($_POST['Adverts']['rub']) && $_POST['Adverts']['rub'] > 0) $criteria->addCondition("t.rub_id = ".$_POST['Adverts']['rub']);
         if(isset($_POST['Adverts']['maxprice'])) $criteria->addCondition("t.price <= ".$_POST['Adverts']['maxprice']);
         if(isset($_POST['Adverts']['minprice'])) $criteria->addCondition("t.price >= ".(int)$_POST['Adverts']['minprice']);
-        if(isset($_POST['Adverts']['sub'])) $criteria->addInCondition("t.sub_id", $_POST['Adverts']['sub']);
+        if(isset($_POST['Adverts']['sub']) && $_POST['Adverts']['sub'] > 0) $criteria->addInCondition("t.sub_id", $_POST['Adverts']['sub']);
         
         $sort = new CSort();
         $sort->defaultOrder = 't.created DESC';
@@ -119,7 +125,7 @@ class Adverts extends CActiveRecord
     {
         $rub = Yii::app()->db->createCommand("SELECT rub.*, count(DISTINCT rub.id), count(adverts.id) as count FROM rub LEFT OUTER JOIN adverts ON  rub.id = adverts.rub_id GROUP BY rub.id")->queryAll(); 
         foreach($rub as $r){
-            $rubs[$r['id']] = $r['name'].' ('.$r['count'].')';
+            $rubs[$r['id']] = $r['name'].' <span>('.$r['count'].')</span>';
             $rub_array[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('data-id'=>$r['id']));
         }
         $act = Act::model()->findAll();

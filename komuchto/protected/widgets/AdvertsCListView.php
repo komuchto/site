@@ -29,16 +29,16 @@ class AdvertsCListView extends CListView{
                     $sorter_type = $_GET['Adverts_sort'];
  
                     if($sorter_type == 'created' && $name == 1) {
-                        echo $sort->link($label, $link_name, $htmlOptions=array('class'=>'active'));
+                        echo $sort->link($label, $link_name, $htmlOptions=array('class'=>'created'));
  
                     } elseif($sorter_type == 'created.desc' && $name == 1) {
-                        echo $sort->link($label, $link_name, $htmlOptions=array('class'=>'active'));
+                        echo $sort->link($label, $link_name, $htmlOptions=array('class'=>'created'));
  
                     } elseif($sorter_type == 'price' && $name == 0) {
-                        echo $sort->link($label, ''.$link_name, $htmlOptions=array('class'=>'active'));
+                        echo $sort->link($label, ''.$link_name, $htmlOptions=array('class'=>'price'));
  
                     } elseif($sorter_type == 'price.desc' && $name == 0) {
-                        echo $sort->link($label, $link_name, $htmlOptions=array('class'=>'active'));
+                        echo $sort->link($label, $link_name, $htmlOptions=array('class'=>'price'));
  
                     } else {
                         echo $sort->link($label, $link_name);
@@ -48,9 +48,9 @@ class AdvertsCListView extends CListView{
                 } else {
  
                     if($label == 'created') {
-                        echo $sort->link($label, $link_name, $htmlOptions=array('class'=>'active'));
+                        echo $sort->link($label, $link_name, $htmlOptions=array('class'=>'created'));
                     } else {
-                        echo $sort->link($label, $link_name);
+                        echo $sort->link($label, $link_name, $htmlOptions=array('class'=>'price'));
                     }
                 }
  

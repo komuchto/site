@@ -15,14 +15,18 @@ a.logo{float:left;width:181px;height:44px;background: url(/komuchto/images/logo.
 .container .left{margin-top: 16px;float:left;width:204px}
 
 #find .select{width:200px;overflow: hidden}
-#find select, #find select:focus{border: 0; width:250px;}
-#find select#Adverts_rub{border-bottom: 1px solid #01669a; background: transparent;}
+#find select, #find select:focus{border:0; border-bottom: 1px solid #dedede; width:250px;height:40px;}
+#find .select.sub select:first-child{border-top: 1px solid #dedede;margin-top:10px;margin-bottom:0;}
+#find .select.sub select, #find #otherParams select{ background: url(/komuchto/images/select.png) no-repeat 75% 50%}
+#find select#Adverts_rub{border-bottom: 1px solid #01669a; background: transparent;font-weight: bold;height: 28px;}
+#find select#Adverts_rub span{display:block;margin-right: 10px}
 #filters{display:none}
-#sub_find .btn, #rub_find a{border-right:0; border-left: 3px solid #dedede; margin:1px 0;width: 170px;}
+#sub_find .btn, #rub_find a{border:0; border-left: 3px solid #dedede; margin:1px 0;width: 177px;}
+#rub_find a::after{border: 1px solid #dedede}
 #rub_find a{border-right: 1px solid #dedede}
 #rub_find{margin-top: 27px;}
-#sub_find .btn:hover, #sub_find .btn.active{background-color: #e6eff6; color:#01669a}
-#sub_find .btn.active{border-left: 3px solid #01669a;}
+#sub_find .btn:hover, #sub_find .btn.active, #rub_find .btn:hover{background-color: #e6eff6; color:#01669a}
+#sub_find .btn.active, #sub_find .btn.active, #rub_find .btn:hover{border-left: 3px solid #01669a;}
 #find .ui-state-default, #find .ui-slider-range{background: #01669a;width:4px;}
 .btn-group, .btn-group .btn{width: 200px;text-align: left}
 .btn-group .btn span{float:right}
@@ -31,6 +35,7 @@ a.logo{float:left;width:181px;height:44px;background: url(/komuchto/images/logo.
 #Adverts_minprice_slider a{height:10px;margin-left: -2px;}
 #find #amount-range{text-align: center;width: 190px;color:#01669a;cursor:default}
 #find .btn-link{width:200px;text-align:center;margin-top:10px}
+#find .otherParams{font-weight: bold; text-decoration: underline; border-top:1px solid #dedede; border-bottom: 1px solid #dedede; margin-top: 20px;padding: 10px 0;}
 
 
 .summary{float:left}

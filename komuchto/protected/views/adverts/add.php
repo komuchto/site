@@ -44,6 +44,22 @@
         <?php echo $form->label($model,'img',array('label'=>'Изображения')); ?>
         <?php echo $form->fileField($model,'img') ?>
     </div>
+    <div class="row">
+        <?php echo $form->label($model,'img1',array('label'=>'Изображения')); ?>
+        <?php echo $form->fileField($model,'img1') ?>
+    </div>
+    <div class="row">
+        <?php echo $form->label($model,'img2',array('label'=>'Изображения')); ?>
+        <?php echo $form->fileField($model,'img2') ?>
+    </div>
+    <div class="row">
+        <?php echo $form->label($model,'img3',array('label'=>'Изображения')); ?>
+        <?php echo $form->fileField($model,'img3') ?>
+    </div>
+    <div class="row">
+        <?php echo $form->label($model,'img4',array('label'=>'Изображения')); ?>
+        <?php echo $form->fileField($model,'img4') ?>
+    </div>
     
      <div class="row">
         <?php echo $form->label($model,'text',array('label'=>'Текст объявления')); ?>
