@@ -11,7 +11,11 @@
     'sortableAttributes'=>array(
         'price',
         'created'
-    )
+    ),
+    'pager'=>array(
+        'cssFile'=>'/komuchto/css/pager.css',
+        'header'=>''
+    ),
 )); ?>
 </div>
 <?if(!Yii::app()->request->getIsAjaxRequest()):?>

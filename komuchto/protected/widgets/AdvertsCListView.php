@@ -5,7 +5,7 @@ class AdvertsCListView extends CListView{
     public function renderSorter()
     {
         //В качестве пейджера используем свой класс, со своими стилями
-        //$this->pager = array('class'=>'MyPager');
+        //$this->pager = array('class'=>'AdvertsPager');
  
         if($this->dataProvider->getItemCount()<=0 || !$this->enableSorting || empty($this->sortableAttributes))
             return;

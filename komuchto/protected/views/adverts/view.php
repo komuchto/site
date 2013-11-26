@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/jcarousel.js"></script>
 <a class="back" href="" onclick="history.go(-1);return false">Назад к объявлениям</a>
 <div class="artView">
     <div class="artHead">
@@ -13,6 +14,22 @@
     'title' => '',
     'group' => 'art'
 ));?>
+<div id="carousel">
+    <ul>
+        <?if($model->img1): $img1 = explode(',', $model->img1)?>
+            <li><a href="/komuchto/images/art/<?=$img1[0]?>"><img width="150" src="/komuchto/images/art/<?=$img1[1]?>"></a></li>
+        <?endif;?>
+        <?if($model->img2): $img2 = explode(',', $model->img2)?>
+            <li><a href="/komuchto/images/art/<?=$img2[0]?>"><img width="150" src="/komuchto/images/art/<?=$img2[1]?>"></a></li>
+        <?endif;?>
+        <?if($model->img3): $img3 = explode(',', $model->img3)?>
+            <li><a href="/komuchto/images/art/<?=$img3[0]?>"><img width="150" src="/komuchto/images/art/<?=$img3[1]?>"></a></li>
+        <?endif;?>
+        <?if($model->img4): $img4 = explode(',', $model->img4)?>
+            <li><a href="/komuchto/images/art/<?=$img4[0]?>"><img width="150" src="/komuchto/images/art/<?=$img4[1]?>"></a></li>
+        <?endif;?>
+    </ul>
+</div>
 
 <div class="text"><?=$model->text?></div>
 <div class="info">
@@ -22,3 +39,6 @@
 <div class="city">Город: <?=$model->city->name?></div>
 </div>
 </div>
+<script>
+    $(document).ready(function(){$('#carousel').jCarouselLite();});
+</script>

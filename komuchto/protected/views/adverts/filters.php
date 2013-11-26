@@ -15,10 +15,10 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 <div id="filters">
     <!-- Рубрика -->
     <div class="select">
-    <?php echo $form->dropDownListRow($model, 'rub', $params['rub'], array(
+    <?php echo $form->dropDownListRow($model, 'rub_id', $params['rub'], array(
         'labelOptions' => array("label" => false),
         'encode'=>false,
-        'onchange'=>'otherParams(true)', //очищает доп параметры
+        'onchange'=>'find();otherParams(true)', //очищает доп параметры
         'ajax' => array(
             'type'=>'POST',
             'url'=>CController::createUrl('/art/subajax'),
@@ -37,8 +37,8 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
     <!-- Фильтры -->
     <div class="select sub">
-    <?php echo $form->dropDownListRow($model, 'act', CHtml::listData(Act::model()->findAll(),'id','name'), array('labelOptions' => array("label" => false))); ?>
-    <?php echo $form->dropDownListRow($model, 'city', CHtml::listData(City::model()->findAll(),'id','name'), array('labelOptions' => array("label" => false))); ?>
+    <?php echo $form->dropDownListRow($model, 'act', CHtml::listData(Act::model()->findAll(),'id','name'), array('labelOptions' => array("label" => false),'onchange'=>'find()')); ?>
+    <?php echo $form->dropDownListRow($model, 'city', CHtml::listData(City::model()->findAll(),'id','name'), array('labelOptions' => array("label" => false),'onchange'=>'find()')); ?>
     </div>
     <input type="text" id="amount-range" style="border:0; font-weight:bold;" value="Цена: <?=(!empty($model->minprice) ? $model->minprice : 0 ).'-'.$model->maxprice?>" readonly/>
     <?php $this->widget('zii.widgets.jui.CJuiSliderInput', array(
@@ -53,7 +53,8 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
                 'range'=>true,
                 'min'=>(!empty($model->minprice) ? $model->minprice : 0 ),
                 'max'=>$model->maxprice,
-                'slide'=>'js:function(event,ui){$("#amount-range").val("Цена: "+ui.values[0]+\'-\'+ui.values[1]);}',
+                'slide'=>'js:function(event,ui){$("#amount-range").val("Цена: "+ui.values[0]+\'-\'+ui.values[1])}',
+                'stop'=>'js:function(e,ui){ v=ui.values; jQuery(\'#Adverts_minprice\').val(v[0]); jQuery(\'#Adverts_minprice_end\').val(v[1]);find() }',
             ),
         ));
       ?>
@@ -69,3 +70,18 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     </div>
 </div>
 <?php $this->endWidget(); ?>
+
+<script>
+    $(document).ready(function(){       
+        $('#Adverts_minprice_slider').slider({
+            'step':1000,
+            'animate':true,
+            'values':[<?=$model->minprice?>,<?=$model->maxprice?>],
+            'range':true,
+            'min':<?=$model->filterminprice?>,
+            'max':<?=$model->filtermaxprice?>,
+            'slide':function(e,ui){$("#amount-range").val("Цена: "+ui.values[0]+'-'+ui.values[1]);},
+            'stop':function(e,ui){ v=ui.values; jQuery('#Adverts_minprice').val(v[0]); jQuery('#Adverts_minprice_end').val(v[1]);find() }
+        });
+    });
+</script>

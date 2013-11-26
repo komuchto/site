@@ -46,8 +46,8 @@ class AdvertsController extends Controller{
                         'dir'=>'thumb'
                     );
                     $filename = date('YmdHis').'1_'.Yii::app()->user->id;
-                    if ($model->img->saveAs(Yii::getPathOfAlias('webroot').'/images/art/'.$filename.'.jpg'))
-                            $model->img = $filename.'.jpg,thumb/min_'.$filename.'.jpg';
+                    if ($model->img1->saveAs(Yii::getPathOfAlias('webroot').'/images/art/'.$filename.'.jpg'))
+                            $model->img1 = $filename.'.jpg,thumb/min_'.$filename.'.jpg';
                     
                     $model->img2 = EUploadedImage::getInstance($model,'img2');
                     $model->img2->maxWidth = 800;
@@ -60,8 +60,8 @@ class AdvertsController extends Controller{
                         'dir'=>'thumb'
                     );
                     $filename = date('YmdHis').'2_'.Yii::app()->user->id;
-                    if ($model->img->saveAs(Yii::getPathOfAlias('webroot').'/images/art/'.$filename.'.jpg'))
-                            $model->img = $filename.'.jpg,thumb/min_'.$filename.'.jpg';
+                    if ($model->img2->saveAs(Yii::getPathOfAlias('webroot').'/images/art/'.$filename.'.jpg'))
+                            $model->img2 = $filename.'.jpg,thumb/min_'.$filename.'.jpg';
                     
                     $model->img3 = EUploadedImage::getInstance($model,'img3');
                     $model->img3->maxWidth = 800;
@@ -74,8 +74,8 @@ class AdvertsController extends Controller{
                         'dir'=>'thumb'
                     );
                     $filename = date('YmdHis').'3_'.Yii::app()->user->id;
-                    if ($model->img->saveAs(Yii::getPathOfAlias('webroot').'/images/art/'.$filename.'.jpg'))
-                            $model->img = $filename.'.jpg,thumb/min_'.$filename.'.jpg';
+                    if ($model->img3->saveAs(Yii::getPathOfAlias('webroot').'/images/art/'.$filename.'.jpg'))
+                            $model->img3 = $filename.'.jpg,thumb/min_'.$filename.'.jpg';
                     
                     $model->img4 = EUploadedImage::getInstance($model,'img4');
                     $model->img4->maxWidth = 800;
@@ -88,8 +88,8 @@ class AdvertsController extends Controller{
                         'dir'=>'thumb'
                     );
                     $filename = date('YmdHis').'4_'.Yii::app()->user->id;
-                    if ($model->img->saveAs(Yii::getPathOfAlias('webroot').'/images/art/'.$filename.'.jpg'))
-                            $model->img = $filename.'.jpg,thumb/min_'.$filename.'.jpg';
+                    if ($model->img4->saveAs(Yii::getPathOfAlias('webroot').'/images/art/'.$filename.'.jpg'))
+                            $model->img4 = $filename.'.jpg,thumb/min_'.$filename.'.jpg';
                     
                     $model->created = date('Y-m-d H:i:s'); 
                             
@@ -134,25 +134,20 @@ class AdvertsController extends Controller{
         echo json_encode(array('id'=>$id,'url'=>$uri));
     }
     
-    public function actionFilters()
-    {
-        if(isset($_POST['pathname']))
-        {
-            $query = Search::model()->findByPk($_POST['pathname']);
-            parse_str($query->query, $res);
-            echo json_encode($res);
-        }    
-    }
-    
     public function actionFilter()
     {
         if(isset($_POST['pathname']))
         {
             $query = Search::model()->findByPk($_POST['pathname']);
             parse_str($query->query, $_POST);
-        }  
-        
-        $this->renderPartial('filters', array('model'=>new Adverts));
+        } 
+        $model = new Adverts;
+        $model->minmax();
+        foreach($_POST['Adverts'] as $k=>$v)
+        {
+            if($k != 'sort') $model->$k = $v;
+        }
+        $this->renderPartial('filters', array('model'=>$model));
     }
     
     public function actionDynamicrubric()
@@ -170,7 +165,7 @@ class AdvertsController extends Controller{
     
     public function actionSubAjax()
     {
-        $subs = Yii::app()->db->createCommand("SELECT sub.*, count(DISTINCT sub.id), count(adverts.id) as count FROM sub LEFT OUTER JOIN adverts ON  sub.id = adverts.sub_id WHERE sub.rub = ".$_POST['Adverts']['rub']." GROUP BY sub.id")->queryAll();
+        $subs = Yii::app()->db->createCommand("SELECT sub.*, count(DISTINCT sub.id), count(adverts.id) as count FROM sub LEFT OUTER JOIN adverts ON  sub.id = adverts.sub_id WHERE sub.rub = ".$_POST['Adverts']['rub_id']." GROUP BY sub.id")->queryAll();
         foreach($subs as $r){
             $sub[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('data-id'=>$r['id'],'onclick'=>'find($(this))','class'=>((isset($_POST['Adverts']['sub']) && in_array($r['id'], $_POST['Adverts']['sub'])) ? 'active' : '')));
         }

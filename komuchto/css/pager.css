@@ -1,0 +1,15 @@
+.pager .page{
+    width: 10px;
+    height: 10px;
+    background: #dedede;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    display:inline-block;
+    margin:0 2px;
+}
+.pager .page.selected{background: #01669a}
+.pager ul.yiiPager a{margin-top:10px;border:0;padding:0}
+.pager ul.yiiPager a:hover{background: none}
+.list-view .pager{text-align: center}
+.pager .last, .pager .first{display:none}
