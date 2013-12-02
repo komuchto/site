@@ -80,8 +80,17 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
             'range':true,
             'min':<?=$model->filterminprice?>,
             'max':<?=$model->filtermaxprice?>,
-            'slide':function(e,ui){$("#amount-range").val("Цена: "+ui.values[0]+'-'+ui.values[1]);},
+            'slide':function(e,ui){$("#amount-range").val('Цена: '+ui.values[0]+'-'+ui.values[1]);},
             'stop':function(e,ui){ v=ui.values; jQuery('#Adverts_minprice').val(v[0]); jQuery('#Adverts_minprice_end').val(v[1]);find() }
+        });
+        $('#rub_find a').click(function(){
+            var el = $(this);
+            $('#rub_find').hide( "fast", function() {     
+                $('#filters').show(500);
+                $("#Adverts_rub_id option[value='"+el.attr('data-id')+"']").attr('selected','selected');
+                $('#rub_find').css('display','none');
+                find();
+            });
         });
     });
 </script>

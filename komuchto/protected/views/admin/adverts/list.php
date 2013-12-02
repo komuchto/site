@@ -13,7 +13,7 @@
             'name' => 'img',
             'header' => 'Изображения',
             'type'=>'html',
-            'value'=>  'CHtml::image("/komuchto/images/adverts/".substr($data->img, strrpos($data->img, ",")+1), "", array("width"=>"50px"))',
+            'value'=>  'CHtml::image("/komuchto/images/art/".substr($data->img, strrpos($data->img, ",")+1), "", array("width"=>"50px"))',
         ),
         array(
             'name' => 'text',
@@ -26,6 +26,10 @@
        array(
             'name' => 'updated',
             'header' => 'Обновлено',
+       ),
+       array(
+            'name' => 'moderate',
+            'header' => 'Модерация',
        ),
        array(
             'class'=>'bootstrap.widgets.TbButtonColumn',

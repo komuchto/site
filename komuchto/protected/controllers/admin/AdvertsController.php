@@ -11,7 +11,7 @@ class AdvertsController extends Controller
 	{
              $dataProvider = new CActiveDataProvider('Adverts', array(
                 'criteria'=>array(
-                  'order'=>'id DESC',
+                  'order'=>'moderate ASC, id DESC',
                 ),
                 'pagination' => array(
                     'pageSize' => Yii::app()->params['adminPerPage'],

@@ -4,7 +4,7 @@
     'enableAjaxValidation'=>false,
 )); ?>
  
-    <?php //echo $form->errorSummary($model); ?>
+    <?php echo $form->errorSummary($model); ?>
  
     <div class="row">
         <?php echo $form->label($model, 'rub_id', array('label' => 'Рубрика')); ?>
@@ -23,17 +23,22 @@
     
     <div class="row">
         <?php echo $form->label($model, 'sub_id', array('label' => 'Подрубрика')); ?>
-        <?php echo $form->dropDownList($model,'sub_id', CHtml::listData(Sub::model()->findAll('rub=:rub', array(':rub'=>$model->rub)),'id','name')) ?>
+        <?php echo $form->dropDownList($model,'sub_id', CHtml::listData(Sub::model()->findAll('rub=:rub', array(':rub'=>$model->rub_id)),'id','name')) ?>
     </div>
  
     <div class="row">
-        <?php echo $form->label($model,'user', array('label' => 'Пользователь')); ?>
-        <?php echo $form->textField($model,'user') ?>
+        <?php echo $form->label($model,'user_id', array('label' => 'Пользователь')); ?>
+        <?php echo $form->textField($model,'user_id') ?>
     </div>
     
     <div class="row">
         <?php echo $form->label($model,'text', array('label' => 'Текст объявления')); ?>
         <?php echo $form->textArea($model,'text') ?>
+    </div>
+    
+    <div class="row">
+        <?php echo $form->label($model,'moderate', array('label' => 'Модерация')); ?>
+        <?php echo $form->dropDownList($model,'moderate', array(0,1)) ?>
     </div>
  
     <div class="row submit">

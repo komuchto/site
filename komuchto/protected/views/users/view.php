@@ -1,4 +1,4 @@
-<div class="form">
+<div class="left form">
 <?php $form=$this->beginWidget('CActiveForm',array(
     'id'=>'account-form',
     'enableAjaxValidation'=>false,
@@ -22,7 +22,7 @@
  
 <?php $this->endWidget(); ?>
 </div><!-- form -->
-
+<div id="content" class="span8">
 <h4>Избранные объявления</h4>
 <?php $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$favorits,

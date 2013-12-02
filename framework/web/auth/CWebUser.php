@@ -79,7 +79,7 @@ class CWebUser extends CApplicationComponent implements IWebUser
 	 * a 403 HTTP exception will be raised instead.
 	 * @see CController::createUrl
 	 */
-	public $loginUrl=array('/site/login');
+	public $loginUrl=array('/login');
 	/**
 	 * @var array the property values (in name-value pairs) used to initialize the identity cookie.
 	 * Any property of {@link CHttpCookie} may be initialized.

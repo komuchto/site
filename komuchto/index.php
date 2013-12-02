@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Europe/Moscow');
 // remove the following line when in production mode
 defined('YII_DEBUG') or define('YII_DEBUG',true);
 

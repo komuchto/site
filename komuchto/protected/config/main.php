@@ -31,6 +31,13 @@ return array(
 	'defaultController'=>'site',
 	// application components
 	'components'=>array(
+            'session' => array (
+                'sessionName' => 'PHPSESSID',
+                'class'=> 'CDbHttpSession',
+                'connectionID' => 'db',
+                'sessionTableName' => 'session',
+                'cookieMode' => 'allow',
+            ),
             'urlManager'=>array(
                     'baseUrl'=>'http://komuchto',
                     'urlFormat'=>'path',

@@ -17,7 +17,7 @@ var render = function(bool){
     
     if(bool != true && hash > 10000000){
         findByPathname(hash);
-        
+       
         $(".left").load("/art/filter", 
         {pathname: hash}, 
         function(){
@@ -65,6 +65,7 @@ var find = function(sub, search){
     if($('.sorter a.price').hasClass('asc')) query += '&Adverts[sort]=price';
     if($('.sorter a.price').hasClass('desc')) query += '&Adverts[sort]=price.desc'
     
+    if($('.search input').attr('value') != '') query += '&Adverts[search]='+$('.search input').val();
     //if($('.page.selected')) query += '&Adverts[page]='+$('.page.selected a').text();
     
     
@@ -79,16 +80,6 @@ var find = function(sub, search){
         $('#content').replaceWith(html);
     }});
 }
-
-$('#rub_find a').click(function(){
-    var el = $(this);
-    $('#rub_find').hide( "fast", function() {     
-        $('#filters').show(500);
-        $("#Adverts_rub_id option[value='"+el.attr('data-id')+"']").attr('selected','selected');
-        $('#rub_find').css('display','none');
-        find();
-    });
-});
 
 var otherParams = function(bool){
     if(bool === true) {$( "#otherParams" ).empty(); return false;}

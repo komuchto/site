@@ -1,25 +1,30 @@
 html, body, .footer{background-color: #fff;}
-input[type='text'], button.btn, a.btn, a.btn.active, select, #find .ui-state-default {border-radius: 0; box-shadow: none; transition: 0; -webkit-box-shadow:none; box-shadow: none; background: #fff}
+input[type='text'], button.btn, a.btn, a.btn.active, select, #find .ui-state-default, a.btn:focus, a.btn:active, a.btn:visited, a.btn:hover {border-radius: 0; box-shadow: none; transition: 0; -webkit-box-shadow:none; box-shadow: none; background: #fff}
 a.btn-link, a.btn-link:hover{border:0; padding:0;color:#01669a; background: none}
 
 a.logo{float:left;width:181px;height:44px;background: url(/komuchto/images/logo.png)}
 #searchForm{margin-bottom: 0}
 #searchForm input{width:700px; border-right: 0;background: url(/komuchto/images/lupa.jpg) right no-repeat;padding:10px}
+#searchForm input:focus{-webkit-box-shadow:none;}
+select:focus{-webkit-box-shadow:none;}
 #searchForm button{color:#cc0001; margin-left: -4px; border-left: 0;padding: 11px 10px;}
 #searchForm button:hover, #searchForm button:focus{background: #fff;}
 #searchForm .search{float: right;margin-right: 10px}
 #searchForm a.btn-danger{background: #cc0001;padding: 11px 10px;}
 #searchForm a.user{background: url(/komuchto/images/user.jpg) no-repeat center #656565; height: 34px; width:20px; border: 0;}
 
-.container .left, .container #content{margin-left: 0}
+.container .left, .container #content[class^='head']{margin-left: 0}
 .container .left{margin-top: 16px;float:left;width:204px}
+.container .right{float:left;width: 175px;margin-left: 20px;}
+
+.right .btn-link, .right .btn-link:hover{text-decoration:underline;display:block;text-align: right; margin-top:20px;border-bottom:1px solid #dedede;padding-bottom:5px;}
 
 #find .select{width:200px;overflow: hidden}
 #find select, #find select:focus{border:0; border-bottom: 1px solid #dedede; width:250px;height:40px;}
 #find .select.sub select:first-child{border-top: 1px solid #dedede;margin-top:10px;margin-bottom:0;}
 #find .select.sub select, #find #otherParams select{ background: url(/komuchto/images/select.png) no-repeat 75% 50%}
-#find select#Adverts_rub{border-bottom: 1px solid #01669a; background: transparent;font-weight: bold;height: 28px;}
-#find select#Adverts_rub span{display:block;margin-right: 10px}
+#find select#Adverts_rub_id{border-bottom: 1px solid #01669a; background: transparent;font-weight: bold;height: 28px;}
+#find select#Adverts_rub_id span{display:block;margin-right: 10px}
 #filters{display:none}
 #sub_find .btn, #rub_find a{border:0; border-left: 3px solid #dedede; margin:1px 0;width: 177px;}
 #rub_find a::after{border: 1px solid #dedede}
@@ -43,7 +48,7 @@ a.logo{float:left;width:181px;height:44px;background: url(/komuchto/images/logo.
 .sorter a{float:right;margin:0 10px}
 .art{border-top:1px solid #cdcdcd;clear:both;padding:5px 0; overflow: hidden;}
 .art img{height:80px}
-.art .art-img{float:left}
+.art .art-img{float:left;width:107px}
 .fav{float:left; width:19px; height:18px;background: url(/komuchto/images/fav_d.png) no-repeat}
 .fav.active{background: url(/komuchto/images/fav.png) no-repeat}
 .art .info{float:left; padding:0 10px;width: 640px;}
@@ -58,3 +63,10 @@ a.back{margin-top:26px;display:block}
 .artView .artHead .fav{margin-top:15px}
 .artView div.price{font-size:20px; font-weight:bold; color: #0088cc; padding:20px 0}
 .artView .text{margin:10px 0}
+
+#addadvert-form label{float:left;width:200px}
+#addadvert-form{margin-top:40px}
+
+#content h4{margin:40px 0 0}
+
+footer{clear:both}
