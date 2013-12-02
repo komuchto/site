@@ -66,24 +66,29 @@ CREATE TABLE IF NOT EXISTS `adverts` (
   KEY `FK_adverts_act` (`act_id`),
   KEY `FK_adverts_city` (`city_id`),
   KEY `FK_adverts_rub` (`rub_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1000014 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1000019 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы komuchto.adverts: 12 rows
+-- Дамп данных таблицы komuchto.adverts: 17 rows
 DELETE FROM `adverts`;
 /*!40000 ALTER TABLE `adverts` DISABLE KEYS */;
 INSERT INTO `adverts` (`id`, `city_id`, `act_id`, `rub_id`, `sub_id`, `user_id`, `phone`, `text`, `img`, `img1`, `img2`, `img3`, `img4`, `marka`, `model`, `body_type`, `transmission`, `year`, `probeg`, `etazh`, `komnaty_count`, `etazh_count`, `etazh_build`, `vid_object`, `type_object`, `plosch`, `price`, `moderate`, `created`, `updated`) VALUES
-	(1000001, 1, 1, 1, 1, 3, 89173238930, 'Продам таз', '20131118102905_3.jpg,thumb/min_20131118102905_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 50000, '0', '2013-11-18 10:29:05', '2013-11-18 10:29:05'),
-	(1000003, 1, 1, 1, 2, 3, 89173238930, 'текст', '20131118153411_3.jpg,thumb/min_20131118153411_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '0', '2013-11-18 15:34:11', '2013-11-18 15:34:11'),
-	(1000004, 1, 1, 1, 1, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122094510_3.jpg,thumb/min_20131122094510_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 150000, '0', '2013-11-22 09:45:10', '2013-11-22 09:45:10'),
-	(1000005, 1, 1, 1, 1, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122094528_3.jpg,thumb/min_20131122094528_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 200000, '0', '2013-11-22 09:45:28', '2013-11-22 09:45:28'),
-	(1000006, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122094542_3.jpg,thumb/min_20131122094542_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 500000, '0', '2013-11-22 09:45:42', '2013-11-22 09:45:42'),
-	(1000007, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122094613_3.jpg,thumb/min_20131122094613_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 500000, '0', '2013-11-22 09:46:13', '2013-11-22 09:46:13'),
-	(1000008, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122094624_3.jpg,thumb/min_20131122094624_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1500000, '0', '2013-11-22 09:46:25', '2013-11-22 09:46:25'),
-	(1000009, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122095551_3.jpg,thumb/min_20131122095551_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 25000, '0', '2013-11-22 09:55:51', '2013-11-22 09:55:51'),
-	(1000010, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122095623_3.jpg,thumb/min_20131122095623_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 225000, '0', '2013-11-22 09:56:23', '2013-11-22 09:56:23'),
-	(1000011, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122095635_3.jpg,thumb/min_20131122095635_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 24025000, '0', '2013-11-22 09:56:35', '2013-11-22 09:56:35'),
-	(1000012, 1, 1, 1, 1, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122095646_3.jpg,thumb/min_20131122095646_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 24025000, '0', '2013-11-22 09:56:46', '2013-11-22 09:56:46'),
-	(1000013, 1, 1, 1, 1, 3, 89173238930, 'Какой-то текст', '20131126160926_3.jpg,thumb/min_20131126160926_3.jpg', '201311261609261_3.jpg,thumb/min_201311261609261_3.jpg', '201311261609262_3.jpg,thumb/min_201311261609262_3.jpg', '201311261609273_3.jpg,thumb/min_201311261609273_3.jpg', '201311261609274_3.jpg,thumb/min_201311261609274_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 102000, '0', '2013-11-26 16:09:27', '2013-11-26 16:09:27');
+	(1000001, 1, 1, 1, 1, 3, 89173238930, 'Продам таз', '20131118102905_3.jpg,thumb/min_20131118102905_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 50000, '1', '2013-11-18 10:29:05', '2013-11-18 10:29:05'),
+	(1000003, 1, 1, 1, 2, 3, 89173238930, 'текст', '20131118153411_3.jpg,thumb/min_20131118153411_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '1', '2013-11-18 15:34:11', '2013-11-18 15:34:11'),
+	(1000004, 1, 1, 1, 1, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122094510_3.jpg,thumb/min_20131122094510_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 150000, '1', '2013-11-22 09:45:10', '2013-11-22 09:45:10'),
+	(1000005, 1, 1, 1, 1, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122094528_3.jpg,thumb/min_20131122094528_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 200000, '1', '2013-11-22 09:45:28', '2013-11-22 09:45:28'),
+	(1000006, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122094542_3.jpg,thumb/min_20131122094542_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 500000, '1', '2013-11-22 09:45:42', '2013-11-22 09:45:42'),
+	(1000007, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122094613_3.jpg,thumb/min_20131122094613_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 500000, '1', '2013-11-22 09:46:13', '2013-11-22 09:46:13'),
+	(1000008, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122094624_3.jpg,thumb/min_20131122094624_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1500000, '1', '2013-11-22 09:46:25', '2013-11-22 09:46:25'),
+	(1000009, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122095551_3.jpg,thumb/min_20131122095551_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 25000, '1', '2013-11-22 09:55:51', '2013-11-22 09:55:51'),
+	(1000010, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122095623_3.jpg,thumb/min_20131122095623_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 225000, '1', '2013-11-22 09:56:23', '2013-11-22 09:56:23'),
+	(1000011, 1, 1, 1, 2, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122095635_3.jpg,thumb/min_20131122095635_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 240250, '1', '2013-11-22 09:56:35', '2013-11-22 09:56:35'),
+	(1000012, 1, 1, 1, 1, 3, 89173238930, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '20131122095646_3.jpg,thumb/min_20131122095646_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 240250, '1', '2013-11-22 09:56:46', '2013-11-22 09:56:46'),
+	(1000013, 1, 1, 1, 1, 3, 89173238930, 'Какой-то текст', '20131126160926_3.jpg,thumb/min_20131126160926_3.jpg', '201311261609261_3.jpg,thumb/min_201311261609261_3.jpg', '201311261609262_3.jpg,thumb/min_201311261609262_3.jpg', '201311261609273_3.jpg,thumb/min_201311261609273_3.jpg', '201311261609274_3.jpg,thumb/min_201311261609274_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 102000, '1', '2013-11-26 16:09:27', '2013-11-26 16:09:27'),
+	(1000014, 2, 1, 1, 1, 3, 89173238930, 'Срочно', '20131202140030_3.jpg,thumb/min_20131202140030_3.jpg', '201312021400311_3.jpg,thumb/min_201312021400311_3.jpg', '201312021400312_3.jpg,thumb/min_201312021400312_3.jpg', '201312021400313_3.jpg,thumb/min_201312021400313_3.jpg', '201312021400314_3.jpg,thumb/min_201312021400314_3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 170000, '1', '2013-12-02 14:00:32', '2013-12-02 14:00:32'),
+	(1000015, 1, 1, 1, 1, 3, 89173238930, 'Текст', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 200000, '1', '2013-12-02 14:18:28', '2013-12-02 14:18:28'),
+	(1000016, 2, 1, 2, 3, 3, 89173238930, 'Квартира', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, 1100000, '1', '2013-12-02 14:28:53', '2013-12-02 14:28:53'),
+	(1000017, 2, 1, 2, 3, 3, 89173238930, 'Квартира', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, 1100000, '1', '2013-12-02 14:35:18', '2013-12-02 14:35:18'),
+	(1000018, 2, 1, 2, 3, 3, 89173238930, 'Квартира', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1100000, '1', '2013-12-02 14:36:02', '2013-12-02 14:36:02');
 /*!40000 ALTER TABLE `adverts` ENABLE KEYS */;
 
 
@@ -148,10 +153,11 @@ CREATE TABLE IF NOT EXISTS `city` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы komuchto.city: ~2 rows (приблизительно)
+-- Дамп данных таблицы komuchto.city: ~3 rows (приблизительно)
 DELETE FROM `city`;
 /*!40000 ALTER TABLE `city` DISABLE KEYS */;
 INSERT INTO `city` (`id`, `region`, `name`) VALUES
+	(-1, NULL, 'Не выбрано'),
 	(1, NULL, 'Саратов'),
 	(2, NULL, 'Энгельс');
 /*!40000 ALTER TABLE `city` ENABLE KEYS */;
@@ -174,6 +180,21 @@ INSERT INTO `favorits` (`user`, `advert`) VALUES
 	(3, 1000010),
 	(3, 1000012);
 /*!40000 ALTER TABLE `favorits` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица komuchto.page
+CREATE TABLE IF NOT EXISTS `page` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descr` varchar(500) DEFAULT NULL,
+  `text` text,
+  `visible` enum('0','1') DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы komuchto.page: ~0 rows (приблизительно)
+DELETE FROM `page`;
+/*!40000 ALTER TABLE `page` DISABLE KEYS */;
+/*!40000 ALTER TABLE `page` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица komuchto.params
@@ -213,9 +234,9 @@ CREATE TABLE IF NOT EXISTS `search` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `query` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10000107 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10000136 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы komuchto.search: 107 rows
+-- Дамп данных таблицы komuchto.search: 136 rows
 DELETE FROM `search`;
 /*!40000 ALTER TABLE `search` DISABLE KEYS */;
 INSERT INTO `search` (`id`, `query`) VALUES
@@ -325,8 +346,53 @@ INSERT INTO `search` (`id`, `query`) VALUES
 	(10000103, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[page]=1'),
 	(10000104, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[sub][0]=1&Adverts[page]=2'),
 	(10000105, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=3263000&Adverts[maxprice]=24025000&Adverts[page]=2'),
-	(10000106, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=4894000&Adverts[maxprice]=24025000&Adverts[page]=');
+	(10000106, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=4894000&Adverts[maxprice]=24025000&Adverts[page]='),
+	(10000107, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[search]='),
+	(10000108, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=24025000'),
+	(10000109, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=2&Adverts[minprice]=0&Adverts[maxprice]=24025000'),
+	(10000110, 'Adverts[rub_id]=2&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=24025000'),
+	(10000111, 'Adverts[rub_id]=3&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=24025000'),
+	(10000112, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[sub][0]=1'),
+	(10000113, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[search]=таз&Adverts[sub][0]=1'),
+	(10000114, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[search]=lorem'),
+	(10000115, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[search]=lorem&Adverts[sub][0]=1'),
+	(10000116, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[search]='),
+	(10000117, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[sub][0]=1&Adverts[search]=Lorem'),
+	(10000118, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[sub][0]=1&Adverts[search]='),
+	(10000119, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[sub][0]=2&Adverts[search]='),
+	(10000120, 'Adverts[rub_id]=2&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[search]='),
+	(10000121, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[search]=g'),
+	(10000122, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[sub][0]=1&Adverts[search]=g'),
+	(10000123, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=24025000&Adverts[transmission]=3'),
+	(10000124, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=8898000&Adverts[maxprice]=24025000&Adverts[transmission]=0'),
+	(10000125, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=8898000&Adverts[maxprice]=24025000&Adverts[sub][0]=1'),
+	(10000126, 'Adverts[rub_id]=2&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=16165000'),
+	(10000127, 'Adverts[rub_id]=2&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=95000'),
+	(10000128, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=11864000'),
+	(10000129, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000'),
+	(10000130, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[sub][0]=1'),
+	(10000131, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[sub][0]=2&Adverts[sub][1]=1'),
+	(10000132, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[sub][0]=2'),
+	(10000133, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1074000&Adverts[transmission]=0'),
+	(10000134, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=417000&Adverts[maxprice]=1074000&Adverts[transmission]=0'),
+	(10000135, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=97000&Adverts[maxprice]=1074000&Adverts[transmission]=0');
 /*!40000 ALTER TABLE `search` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица komuchto.session
+CREATE TABLE IF NOT EXISTS `session` (
+  `id` char(32) NOT NULL,
+  `expire` int(11) DEFAULT NULL,
+  `data` blob,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы komuchto.session: ~1 rows (приблизительно)
+DELETE FROM `session`;
+/*!40000 ALTER TABLE `session` DISABLE KEYS */;
+INSERT INTO `session` (`id`, `expire`, `data`) VALUES
+	('e9jq4scfkshpa0egh582hk5kf1', 1385988381, _binary '');
+/*!40000 ALTER TABLE `session` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица komuchto.sub
@@ -337,10 +403,11 @@ CREATE TABLE IF NOT EXISTS `sub` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы komuchto.sub: ~6 rows (приблизительно)
+-- Дамп данных таблицы komuchto.sub: ~7 rows (приблизительно)
 DELETE FROM `sub`;
 /*!40000 ALTER TABLE `sub` DISABLE KEYS */;
 INSERT INTO `sub` (`id`, `rub`, `name`) VALUES
+	(-1, 0, 'Не выбрано'),
 	(1, 1, 'С пробегом'),
 	(2, 1, 'Новые автомобили'),
 	(3, 2, 'Квартиры'),
@@ -375,9 +442,9 @@ CREATE TABLE IF NOT EXISTS `transmission` (
 DELETE FROM `transmission`;
 /*!40000 ALTER TABLE `transmission` DISABLE KEYS */;
 INSERT INTO `transmission` (`id`, `name`) VALUES
+	(0, 'Не выбрано'),
 	(1, 'Ручная'),
-	(2, 'Автоматическая'),
-	(3, 'Не выбрано');
+	(2, 'Автоматическая');
 /*!40000 ALTER TABLE `transmission` ENABLE KEYS */;
 
 
@@ -418,7 +485,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `service`, `ip`, `city`, `permission`, `identity`, `email`, `name`, `created`, `lastvisited`) VALUES
-	(3, 'undefined', '127.0.0.1', NULL, '2', 'https://www.google.com/accounts/o8/id?id=AItOawn6rLF6HkD0GnV1w8t626mS5Z99WkX30kc', 'admin@garyk.ru', 'Игорь', '2013-11-04 10:34:51', '2013-11-26 16:06:44'),
+	(3, 'undefined', '127.0.0.1', NULL, '2', 'https://www.google.com/accounts/o8/id?id=AItOawn6rLF6HkD0GnV1w8t626mS5Z99WkX30kc', 'admin@garyk.ru', 'Игорь', '2013-11-04 10:34:51', '2013-12-02 15:32:34'),
 	(4, 'undefined', '', '', '0', 'http://openid.yandex.ru/s0ber89/', NULL, 's0ber89', '2013-11-06 09:37:04', '2013-11-06 09:37:04');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
