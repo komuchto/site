@@ -86,6 +86,12 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         $('#rub_find a').click(function(){
             var el = $(this);
             $('#rub_find').hide( "fast", function() {     
+                $("#sub_find").load("/art/subajax", 
+                {Adverts: {rub_id: el.attr('data-id')}}, 
+                function(){
+                    //$('#filters').show();
+                    //$('#rub_find').hide();
+                }, 'post');
                 $('#filters').show(500);
                 $("#Adverts_rub_id option[value='"+el.attr('data-id')+"']").attr('selected','selected');
                 $('#rub_find').css('display','none');

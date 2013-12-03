@@ -7,7 +7,7 @@
     </a>
     
     <div class="info">
-        <a class="fav" href="/fav/<?=$data->id?>"></a>
+        <a class="fav <?=$data->favorits->user?>" href="/fav/<?=$data->id?>"></a>
         <a href="/#!<?=$data->id?>"><?=$data->act->name?> <?=$data->sub->name?></a>
         <span class="date"><?php echo ((Yii::app()->dateFormatter->format('yMd', $data->created) == date('Ymd')) ? 'Сегодня '.Yii::app()->dateFormatter->format('H:m', $data->created) : Yii::app()->dateFormatter->format('d MMMM yyyy H:m', $data->created));?></span>
     <span><?=mb_substr($data->text, 0, 100, 'UTF-8');?></span>

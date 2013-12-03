@@ -8,6 +8,7 @@ class Adverts extends CActiveRecord
     public $minprice;
     public $filterminprice;
     public $filtermaxprice;
+    public $favorits;
     
     public static function model($className=__CLASS__)
     {
@@ -28,6 +29,7 @@ class Adverts extends CActiveRecord
             'rub'=>array(self::BELONGS_TO, 'Rub', 'rub_id'),
             'sub'=>array(self::BELONGS_TO, 'Sub', 'sub_id'),
             'city'=>array(self::BELONGS_TO, 'City', 'city_id'),
+            'favorits'=>array(self::HAS_ONE, 'Favorits', 'advert'),
         );
     }
     
@@ -92,9 +94,16 @@ class Adverts extends CActiveRecord
         }
         
         $criteria = new CDbCriteria;
-        $criteria->with = array('act', 'sub', 'rub');
+        $criteria->with = array('act', 'sub', 'rub', 'favorits');
         $criteria->condition = "t.moderate = '1'";
-        
+
+        if(Yii::app()->User->isGuest){
+            $criteriaFav=new CDbCriteria;
+            $criteriaFav->condition='user=:id';
+            $criteriaFav->params=array(':id'=>3);//Yii::app()->user->id);
+            //$this->favorits = CHtml::listData(Favorits::model()->findAll($criteriaFav), 'id', 'nsmr');
+        }
+
         if(isset($_POST['Adverts']['sort'])) $_GET = $_POST['Adverts'];
         
         if(isset($_POST['Adverts']['search'])) $criteria->compare('text', $_POST['Adverts']['search'], true);
@@ -132,14 +141,14 @@ class Adverts extends CActiveRecord
     
     public function find()
     {
-        $rub = Yii::app()->db->createCommand("SELECT rub.*, count(DISTINCT rub.id), count(adverts.id) as count FROM rub LEFT OUTER JOIN adverts ON  rub.id = adverts.rub_id WHERE adverts.moderate = '1' GROUP BY rub.id")->queryAll(); 
+        $rub = Yii::app()->db->createCommand("SELECT rub.*, count(DISTINCT rub.id), count(adverts.id) as count FROM rub LEFT OUTER JOIN adverts ON  rub.id = adverts.rub_id GROUP BY rub.id")->queryAll(); 
         foreach($rub as $r){
             $rubs[$r['id']] = $r['name'].' <span>('.$r['count'].')</span>';
             $rub_array[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('data-id'=>$r['id']));
         }
         $act = Act::model()->findAll();
         
-        $subs = Yii::app()->db->createCommand("SELECT sub.*, count(DISTINCT sub.id), count(adverts.id) as count FROM sub LEFT OUTER JOIN adverts ON  sub.id = adverts.sub_id WHERE adverts.moderate = '1' and sub.rub = ".(isset($_POST['Adverts']['rub_id'])? (int)$_POST['Adverts']['rub_id'] : '1')." GROUP BY sub.id")->queryAll();
+        $subs = Yii::app()->db->createCommand("SELECT sub.*, count(DISTINCT sub.id), count(adverts.id) as count FROM sub LEFT OUTER JOIN adverts ON  sub.id = adverts.sub_id WHERE sub.rub = ".(isset($_POST['Adverts']['rub_id'])? (int)$_POST['Adverts']['rub_id'] : '1')." GROUP BY sub.id")->queryAll();
         foreach($subs as $r){
             $sub[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('data-id'=>$r['id'], 'onclick'=>'find($(this))', 'class'=>(isset($_POST['Adverts']['sub']) && in_array($r['id'], $_POST['Adverts']['sub']) ? 'active' : '' )));
         }

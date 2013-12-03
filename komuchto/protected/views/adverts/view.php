@@ -17,16 +17,16 @@
 <div id="carousel">
     <ul>
         <?if($model->img1): $img1 = explode(',', $model->img1)?>
-            <li><a href="/komuchto/images/art/<?=$img1[0]?>"><img width="150" src="/komuchto/images/art/<?=$img1[1]?>"></a></li>
+            <li><a href="/komuchto/images/art/<?=$img1[0]?>"><img width="150" height="150" src="/komuchto/images/art/<?=$img1[1]?>"></a></li>
         <?endif;?>
         <?if($model->img2): $img2 = explode(',', $model->img2)?>
-            <li><a href="/komuchto/images/art/<?=$img2[0]?>"><img width="150" src="/komuchto/images/art/<?=$img2[1]?>"></a></li>
+            <li><a href="/komuchto/images/art/<?=$img2[0]?>"><img width="150" height="150" src="/komuchto/images/art/<?=$img2[1]?>"></a></li>
         <?endif;?>
         <?if($model->img3): $img3 = explode(',', $model->img3)?>
-            <li><a href="/komuchto/images/art/<?=$img3[0]?>"><img width="150" src="/komuchto/images/art/<?=$img3[1]?>"></a></li>
+            <li><a href="/komuchto/images/art/<?=$img3[0]?>"><img width="150" height="150" src="/komuchto/images/art/<?=$img3[1]?>"></a></li>
         <?endif;?>
         <?if($model->img4): $img4 = explode(',', $model->img4)?>
-            <li><a href="/komuchto/images/art/<?=$img4[0]?>"><img width="150" src="/komuchto/images/art/<?=$img4[1]?>"></a></li>
+            <li><a href="/komuchto/images/art/<?=$img4[0]?>"><img width="150" height="150" src="/komuchto/images/art/<?=$img4[1]?>"></a></li>
         <?endif;?>
     </ul>
 </div>
@@ -40,5 +40,9 @@
 </div>
 </div>
 <script>
-    $(document).ready(function(){$('#carousel').jCarouselLite();});
+    $(document).ready(function(){$('#carousel').jCarouselLite({
+        btnNext: ".next",
+        btnPrev: ".prev",
+        vertical: true
+    });});
 </script>
