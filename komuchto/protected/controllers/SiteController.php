@@ -11,6 +11,11 @@ class SiteController extends Controller
 	{
 		
 	}
+        
+        public function actionPage()
+        {
+            
+        }
 	
         public function actionError()
         {

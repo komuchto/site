@@ -6,6 +6,10 @@ class Adverts extends CActiveRecord
     public $date;
     public $maxprice;
     public $minprice;
+    public $maxprobeg;
+    public $minprobeg;
+    public $maxvolume;
+    public $minvolume;
     public $filterminprice;
     public $filtermaxprice;
     public $favorits;
@@ -29,7 +33,7 @@ class Adverts extends CActiveRecord
             'rub'=>array(self::BELONGS_TO, 'Rub', 'rub_id'),
             'sub'=>array(self::BELONGS_TO, 'Sub', 'sub_id'),
             'city'=>array(self::BELONGS_TO, 'City', 'city_id'),
-            'favorits'=>array(self::HAS_ONE, 'Favorits', 'advert'),
+            'favorits_adv'=>array(self::HAS_MANY, 'Favorits', 'advert'),
         );
     }
     
@@ -94,14 +98,14 @@ class Adverts extends CActiveRecord
         }
         
         $criteria = new CDbCriteria;
-        $criteria->with = array('act', 'sub', 'rub', 'favorits');
+        $criteria->with = array('act', 'sub', 'rub', 'favorits_adv');
         $criteria->condition = "t.moderate = '1'";
 
-        if(Yii::app()->User->isGuest){
-            $criteriaFav=new CDbCriteria;
-            $criteriaFav->condition='user=:id';
-            $criteriaFav->params=array(':id'=>3);//Yii::app()->user->id);
-            //$this->favorits = CHtml::listData(Favorits::model()->findAll($criteriaFav), 'id', 'nsmr');
+        if(!Yii::app()->User->isGuest){
+            $favorits = Favorits::model()->findAll('user=:id', array(':id'=>Yii::app()->User->id));
+            foreach($favorits as $f){
+                $this->favorits[] = $f->advert;
+            }
         }
 
         if(isset($_POST['Adverts']['sort'])) $_GET = $_POST['Adverts'];
@@ -175,6 +179,26 @@ class Adverts extends CActiveRecord
         
         $this->minprice = (isset($_POST['Adverts']['minprice']) ? $_POST['Adverts']['minprice'] : $this->filterminprice );
         $this->maxprice = (isset($_POST['Adverts']['maxprice']) ? $_POST['Adverts']['maxprice'] : $this->filtermaxprice );
+    }
+    
+    public function probeg()
+    {
+        $criteria = new CDbCriteria;
+
+        $criteria->select='MAX(t.probeg) as maxprobeg, MIN(t.probeg) as minprobeg, count(DISTINCT t.id) as count';
+        $price = $this->findAll($criteria);
+        $this->maxprobeg = $price[0]->maxprobeg;
+        $this->minprobeg = $price[0]->minprobeg;
+    }
+    
+    public function volume()
+    {
+        $criteria = new CDbCriteria;
+
+        $criteria->select='MAX(t.volume) as maxvolume, MIN(t.volume) as minvolume, count(DISTINCT t.id) as count';
+        $price = $this->findAll($criteria);
+        $this->minvolume = round($price[0]->minvolume, 1);
+        $this->maxvolume = round($price[0]->maxvolume, 1);
     }
     
 }

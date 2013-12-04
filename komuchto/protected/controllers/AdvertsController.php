@@ -110,6 +110,117 @@ class AdvertsController extends Controller{
         $this->render('add', array('model'=>$model));
     }
     
+    public function actionEdit()
+    {
+        if(!Yii::app()->user->id)
+        {
+            $this->redirect('/login');
+        }
+        
+        $model = Adverts::model()->findByPk($_GET['id']);    
+        
+        if($model->user_id != Yii::app()->User->id) 
+            throw new CHttpException(403, 'Доступ запрещен!');
+        
+        if (isset($_POST['Adverts']))
+        {
+                $model->user_id = Yii::app()->user->id;
+                foreach($_POST['Adverts'] as $name=>$value){  
+                    $model->$name=$value;  
+                } 
+                
+                if($model->validate())
+                {
+                    if(!empty($_POST['Adverts']['img'])){
+                        $model->img = EUploadedImage::getInstance($model,'img');
+                        $model->img->maxWidth = 800;
+                        $model->img->maxHeight = 600;
+
+                        $model->img->thumb = array(
+                            'maxWidth' => 400,
+                            'maxHeight' => 400,
+                            'prefix' => 'min_',
+                            'dir'=>'thumb'
+                        );
+                        $filename = date('YmdHis').'_'.Yii::app()->user->id;
+                        if ($model->img->saveAs(Yii::getPathOfAlias('webroot').'/images/art/'.$filename.'.jpg'))
+                                $model->img = $filename.'.jpg,thumb/min_'.$filename.'.jpg';
+                    }
+                    if(!empty($_POST['Adverts']['img1'])){
+                        $model->img1 = EUploadedImage::getInstance($model,'img1');
+                        $model->img1->maxWidth = 800;
+                        $model->img1->maxHeight = 600;
+
+                        $model->img1->thumb = array(
+                            'maxWidth' => 400,
+                            'maxHeight' => 400,
+                            'prefix' => 'min_',
+                            'dir'=>'thumb'
+                        );
+                        $filename = date('YmdHis').'1_'.Yii::app()->user->id;
+                        if ($model->img1->saveAs(Yii::getPathOfAlias('webroot').'/images/art/'.$filename.'.jpg'))
+                                $model->img1 = $filename.'.jpg,thumb/min_'.$filename.'.jpg';
+                    
+                    }
+                    if(!empty($_POST['Adverts']['img2'])){
+                        $model->img2 = EUploadedImage::getInstance($model,'img2');
+                        $model->img2->maxWidth = 800;
+                        $model->img2->maxHeight = 600;
+
+                        $model->img2->thumb = array(
+                            'maxWidth' => 400,
+                            'maxHeight' => 400,
+                            'prefix' => 'min_',
+                            'dir'=>'thumb'
+                        );
+                        $filename = date('YmdHis').'2_'.Yii::app()->user->id;
+                        if ($model->img2->saveAs(Yii::getPathOfAlias('webroot').'/images/art/'.$filename.'.jpg'))
+                                $model->img2 = $filename.'.jpg,thumb/min_'.$filename.'.jpg';
+                    }
+                    if(!empty($_POST['Adverts']['img3'])){
+                        $model->img3 = EUploadedImage::getInstance($model,'img3');
+                        $model->img3->maxWidth = 800;
+                        $model->img3->maxHeight = 600;
+
+                        $model->img3->thumb = array(
+                            'maxWidth' => 400,
+                            'maxHeight' => 400,
+                            'prefix' => 'min_',
+                            'dir'=>'thumb'
+                        );
+                        $filename = date('YmdHis').'3_'.Yii::app()->user->id;
+                        if ($model->img3->saveAs(Yii::getPathOfAlias('webroot').'/images/art/'.$filename.'.jpg'))
+                                $model->img3 = $filename.'.jpg,thumb/min_'.$filename.'.jpg';
+                    }
+                    if(!empty($_POST['Adverts']['img4'])){
+                        $model->img4 = EUploadedImage::getInstance($model,'img4');
+                        $model->img4->maxWidth = 800;
+                        $model->img4->maxHeight = 600;
+
+                        $model->img4->thumb = array(
+                            'maxWidth' => 400,
+                            'maxHeight' => 400,
+                            'prefix' => 'min_',
+                            'dir'=>'thumb'
+                        );
+                        $filename = date('YmdHis').'4_'.Yii::app()->user->id;
+                        if ($model->img4->saveAs(Yii::getPathOfAlias('webroot').'/images/art/'.$filename.'.jpg'))
+                                $model->img4 = $filename.'.jpg,thumb/min_'.$filename.'.jpg';
+                    }
+                    
+                    $model->created = date('Y-m-d H:i:s'); 
+                            
+                    if (!$model->save()) {
+                        throw new Exception(CVarDumper::dumpAsString($model->getErrors()));
+                    }
+                }else{
+                    Yii::app()->user->setFlash('success', "<h2>Объявление добавлено! После модерации будет доступно для поиска.</h2>");
+                }
+        }
+        
+        $this->render('add', array('model'=>$model));
+    }
+    
     public function actionView()
     {
         $model = Adverts::model()->findByPk($_GET['id']);
@@ -191,7 +302,10 @@ class AdvertsController extends Controller{
     
     public function actionOtherParamsAjax()
     {
-        $this->render('otherParams', array('rub'=>$_POST['Adverts']['rub_id']));
+        $model = new Adverts;
+        $model->probeg();
+        $model->volume();
+        $this->render('otherParams', array('rub'=>$_POST['Adverts']['rub_id'], 'model'=>$model));
     }
     
     public function actionAddOtherParamsAjax()

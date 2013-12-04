@@ -34,13 +34,12 @@ $(window).bind('hashchange', function(e) {
     render(true);
 });
 
- $('.fav').click(function(){
-    var el = $(this);
-    $.ajax({url: el.attr('href')}).done(function(){
-        el.toggleClass('active');
+var fav = function(el){
+    $.ajax({url: $(el).attr('href')}).done(function(){
+        $(el).toggleClass('active');
     });
     return false;
-});
+}
 
 var find = function(sub, search){
     var query = "";
@@ -85,7 +84,9 @@ var otherParams = function(bool){
     if(bool === true) {$( "#otherParams" ).empty(); return false;}
     $.ajax({url:'art/otherparamsajax', data: $('#find').serialize(),type:'POST',
     success:function(msg){
-        $( "#otherParams" ).html( msg );
+        $( "#otherParams" ).css('display','block').html( msg );
+        $(".otherParams").hide();
+        $(".otherParamsClose").css('display','block');
     }});
     
 }

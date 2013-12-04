@@ -68,6 +68,12 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     <div id="otherParams">
     <?// echo $params['other'];?>
     </div>
+    <?php $this->widget('bootstrap.widgets.TbButton', array(
+        'label'=>'Меньше параметров',
+        'buttonType'=>'link',
+        'type'=>'link',
+        'htmlOptions'=>array('onclick'=>'$("#otherParams").css("display","none").empty();$(".otherParams").show();$(this).hide()','class'=>'otherParamsClose'),
+    )); ?>
 </div>
 <?php $this->endWidget(); ?>
 

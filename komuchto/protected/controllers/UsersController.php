@@ -4,7 +4,6 @@ class UsersController extends Controller
 {
        public function actionLogin()
 	{
-            //if(Yii::app()->user->id) $this->redirect('/users/'+Yii::app()->user->id);
 
             $serviceName = Yii::app()->request->getQuery('service');
             if (isset($serviceName)) {
@@ -48,6 +47,12 @@ class UsersController extends Controller
             }
             $this->render('login');
 	}
+        
+        public function actionLogout()
+        {
+            Yii::app()->user->logout();
+            $this->redirect('/');
+        }
     
         public function actionView()
         {

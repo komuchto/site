@@ -5,7 +5,7 @@
 )); ?>
  
     <?php //echo $form->errorSummary($model); ?>
- 
+    <?=CHtml::link('Выйти', '/logout')?>
     <div class="row">
         <?php echo $form->label($model, 'name', array('label' => 'Псевдоним пользователя')); ?>
         <?php echo $form->textField($model,'name') ?>
