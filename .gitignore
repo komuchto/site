@@ -58,7 +58,7 @@ requirements/views/uk/index.php
 requirements/views/zh/index.php
 requirements/views/zh_cn/index.php
 requirements/views/zh_tw/index.php
-.idea/.name
+.idea
 .idea/encodings.xml
 .idea/frameworkRootSettings.xml
 .idea/komuchto.iml
@@ -67,5 +67,7 @@ requirements/views/zh_tw/index.php
 .idea/scopes/scope_settings.xml
 .idea/vcs.xml
 .idea/workspace.xml
-nbproject/private/private.xml
+nbproject
+komuchto/assets/*
+komuchto/protected/runtime/*
 /nbproject/private/
