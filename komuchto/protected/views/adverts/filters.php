@@ -37,7 +37,6 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
     <!-- Фильтры -->
     <div class="select sub">
-    <?php echo $form->dropDownListRow($model, 'act', CHtml::listData(Act::model()->findAll(),'id','name'), array('labelOptions' => array("label" => false),'onchange'=>'find()')); ?>
     <?php echo $form->dropDownListRow($model, 'city', CHtml::listData(City::model()->findAll(),'id','name'), array('labelOptions' => array("label" => false),'onchange'=>'find()')); ?>
     </div>
     <input type="text" id="amount-range" style="border:0; font-weight:bold;" value="Цена: <?=(!empty($model->minprice) ? $model->minprice : 0 ).'-'.$model->maxprice?>" readonly/>
