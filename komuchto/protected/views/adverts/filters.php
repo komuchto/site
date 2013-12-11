@@ -13,18 +13,6 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 </div>
 <!-- Рубрики -->
 <div id="filters">
-    <!-- Рубрика -->
-    <div class="select">
-    <?php echo $form->dropDownListRow($model, 'rub_id', $params['rub'], array(
-        'labelOptions' => array("label" => false),
-        'encode'=>false,
-        'onchange'=>'find();otherParams(true)', //очищает доп параметры
-        'ajax' => array(
-            'type'=>'POST',
-            'url'=>CController::createUrl('/art/subajax'),
-            'update'=>'#sub_find',
-    ))); ?>
-    </div>
 
     <!-- Подрубрики -->
     <div id="sub_find">
@@ -90,18 +78,18 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         });
         $('#rub_find a').click(function(){
             var el = $(this);
-            $('#rub_find').hide( "fast", function() {     
+
+            if(el.siblings('a.hide').length){
+                el.siblings('a.hide').removeClass('hide').show("fast"); 
+               $('#filters').hide(500);
+            }else{                  
                 $("#sub_find").load("/art/subajax", 
                 {Adverts: {rub_id: el.attr('data-id')}}, 
                 function(){
-                    //$('#filters').show();
-                    //$('#rub_find').hide();
-                }, 'post');
-                $('#filters').show(500);
-                $("#Adverts_rub_id option[value='"+el.attr('data-id')+"']").attr('selected','selected');
-                $('#rub_find').css('display','none');
-                find();
-            });
+                    el.siblings('a').addClass('hide').hide("fast");
+                    $('#filters').show(500);
+                }, 'post');  
+            }    
         });
     });
 </script>

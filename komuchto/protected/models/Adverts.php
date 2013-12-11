@@ -13,6 +13,16 @@ class Adverts extends CActiveRecord
     public $filterminprice;
     public $filtermaxprice;
     public $favorits;
+    public $minetazh; 
+    public $maxetazh;
+    public $minkomnaty_count; 
+    public $maxkomnaty_count;
+    public $minetazh_build; 
+    public $maxetazh_build;
+    public $minplosch; 
+    public $maxplosch;
+            
+            
     
     public static function model($className=__CLASS__)
     {
@@ -87,6 +97,7 @@ class Adverts extends CActiveRecord
     
     public function search()
     {
+        $advertsPerPage = (isset($_POST['height']) && $_POST['height'] > 0) ? floor($_POST['height']) : Yii::app()->params['advertsPerPage'];
         if(isset($_POST['pathname']))
         {
             $query = Search::model()->findByPk($_POST['pathname']);
@@ -109,6 +120,8 @@ class Adverts extends CActiveRecord
         }
 
         if(isset($_POST['Adverts']['sort'])) $_GET = $_POST['Adverts'];
+        
+        if(isset($_POST['Adverts_page'])) $_GET['Adverts_page'] = $_POST['Adverts_page'];
         
         if(isset($_POST['Adverts']['search'])) $criteria->compare('text', $_POST['Adverts']['search'], true);
         if(isset($_POST['Adverts']['act_id']) && $_POST['Adverts']['act_id'] > 0) $criteria->addCondition("t.act_id = ".$_POST['Adverts']['act_id']);
@@ -138,7 +151,7 @@ class Adverts extends CActiveRecord
             'criteria'=>$criteria,
             'sort'=> $sort,
             'pagination' => array(
-                'pageSize' => Yii::app()->params['advertsPerPage'], 
+                'pageSize' => $advertsPerPage, 
             ),
         ));
     }
@@ -148,7 +161,16 @@ class Adverts extends CActiveRecord
         $rub = Yii::app()->db->createCommand("SELECT rub.*, count(DISTINCT rub.id), count(adverts.id) as count FROM rub LEFT OUTER JOIN adverts ON  rub.id = adverts.rub_id GROUP BY rub.id")->queryAll(); 
         foreach($rub as $r){
             $rubs[$r['id']] = $r['name'].' <span>('.$r['count'].')</span>';
-            $rub_array[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('data-id'=>$r['id']));
+            if((isset($_POST['Adverts']['rub_id'])) ? 'active' : '' ){
+                if($r['id'] == $_POST['Adverts']['rub_id'])
+                    $class = 'active';
+                else 
+                    $class = 'hide';
+            }
+            else                
+                $class = '';
+                
+            $rub_array[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('class'=>$class, 'onclick'=>'find(false, false, $(this))', 'data-id'=>$r['id']));
         }
         $act = Act::model()->findAll();
         

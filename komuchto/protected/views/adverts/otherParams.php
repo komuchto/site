@@ -57,7 +57,7 @@
             'options'=>array(
                 'step'=>1,
                 'animate'=>true,
-                'values'=>array($model->minetazh, $model->maxetzh),
+                'values'=>array($model->minetazh, $model->maxetazh),
                 'range'=>true,
                 'min'=>1,
                 'max'=>50,
@@ -84,23 +84,6 @@
             ),
         ));
     
-    echo '<input type="text" id="amount-range-komnaty-count" style="border:0; font-weight:bold;" value="Этаж: '.$model->minkomnaty_count.'-'.$model->maxkomnaty_count.'" readonly/>';
-    $this->widget('zii.widgets.jui.CJuiSliderInput', array(
-            'model'=>$model,
-            'attribute'=>'minkomnaty_count',
-            'maxAttribute'=>'maxkomnaty_count',
-            'event'=>'change',
-            'options'=>array(
-                'step'=>1,
-                'animate'=>true,
-                'values'=>array($model->minkomnaty_count, $model->maxkomnaty_count),
-                'range'=>true,
-                'min'=>1,
-                'max'=>10,
-                'slide'=>'js:function(event,ui){$("#amount-range-komnaty-count").val("Этаж: "+ui.values[0]+\'-\'+ui.values[1])}',
-                'stop'=>'js:function(e,ui){ v=ui.values; jQuery(\'#Adverts_minkomnaty_count\').val(v[0]); jQuery(\'#Adverts_minkomnaty_count_end\').val(v[1]);find() }',
-            ),
-        ));
     echo '<input type="text" id="amount-range-etazh-build" style="border:0; font-weight:bold;" value="Этажей в доме: '.$model->minetazh_build.'-'.$model->maxetazh_build.'" readonly/>';
     $this->widget('zii.widgets.jui.CJuiSliderInput', array(
             'model'=>$model,

@@ -10,7 +10,7 @@ select:focus{-webkit-box-shadow:none;}
 #searchForm button{color:#cc0001; margin-left: -4px; border-left: 0;padding: 11px 10px;}
 #searchForm button:hover, #searchForm button:focus{background: #fff;}
 #searchForm .search{float: right;margin-right: 10px}
-#searchForm a.btn-danger{background: #cc0001;padding: 11px 10px;}
+#searchForm a.btn-danger{background: #cc0001;padding: 11px 10px;margin-right: 2px;}
 #searchForm a.user{background: url(/komuchto/images/user.jpg) no-repeat center #656565; height: 34px; width:20px; border: 0;}
 
 .container .left, .container #content[class^='head']{margin-left: 0}
@@ -23,22 +23,21 @@ select:focus{-webkit-box-shadow:none;}
 #find select, #find select:focus{border:0; border-bottom: 1px solid #dedede; width:250px;height:40px;}
 #find .select.sub select:first-child{border-top: 1px solid #dedede;margin-top:10px;margin-bottom:0;}
 #find .select.sub select, #find #otherParams select{ background: url(/komuchto/images/select.png) no-repeat 75% 50%}
-#find select#Adverts_rub_id{border-bottom: 1px solid #01669a; background: transparent;font-weight: bold;height: 28px;}
+#rub_find a.active{border-bottom: 1px solid #01669a; background: transparent;font-weight: bold;}
 #find select#Adverts_rub_id span{display:block;margin-right: 10px}
 #filters{display:none}
 #sub_find .btn, #rub_find a{border:0; border-left: 3px solid #dedede; margin:1px 0;width: 177px;}
 #rub_find a::after{border: 1px solid #dedede}
 #rub_find a{border-right: 1px solid #dedede}
-#rub_find{margin-top: 27px;}
 #sub_find .btn:hover, #sub_find .btn.active, #rub_find .btn:hover{background-color: #e6eff6; color:#01669a}
 #sub_find .btn.active, #sub_find .btn.active, #rub_find .btn:hover{border-left: 3px solid #01669a;}
 #find .ui-state-default, #find .ui-slider-range{background: #01669a;width:4px;}
 .btn-group, .btn-group .btn{width: 200px;text-align: left}
 .btn-group .btn span{float:right}
 .btn-group .btn:first-child, .btn-group .btn:last-child{border-radius:0;margin-left: -1px;}
-#Adverts_minprice_slider, #Adverts_minprobeg_slider, #Adverts_minvolume_slider{width:160px;height:2px;margin-left: 20px;}
-#Adverts_minprice_slider a, #Adverts_minprobeg_slider a, #Adverts_minvolume_slider a{height:10px;margin-left: -2px;}
-#find #amount-range, #amount-range-probeg, #amount-range-volume{text-align: center;width: 190px;color:#01669a;cursor:default}
+#Adverts_minprice_slider, #Adverts_minprobeg_slider, #Adverts_minvolume_slider, div[id^='_slider']{width:160px;height:2px;margin-left: 20px;}
+#Adverts_minprice_slider a, #Adverts_minprobeg_slider a, #Adverts_minvolume_slider a, div[id^='_slider'] a{height:10px;margin-left: -2px;}
+#find input[id*='amount-range']{text-align: center;width: 190px;color:#01669a;cursor:default}
 #find div.ui-slider{margin-bottom:10px}
 #find .btn-link{width:200px;text-align:center;margin-top:10px}
 #find .otherParams, #find .otherParamsClose{font-weight: bold; text-decoration: underline; border-top:1px solid #dedede; border-bottom: 1px solid #dedede; margin-top: 20px;padding: 10px 0;}

@@ -1,5 +1,9 @@
+var getArtOnPage = function(){
+    return ($(window).height() >= 900) ? ($(window).height() - 256) / 91 : 0;
+}
+
 var findByPathname = function(pathname){
-    
+    var height = '&height='+ getArtOnPage();
     $.ajax({url:'art/listajax',data: 'pathname='+pathname, type:'POST',
     success:function(html){
         $('#content').replaceWith(html);
@@ -22,7 +26,6 @@ var render = function(bool){
         {pathname: hash}, 
         function(){
             $('#filters').show();
-            $('#rub_find').hide();
         }, 'post');
     }
     
@@ -41,7 +44,7 @@ var fav = function(el){
     return false;
 }
 
-var find = function(sub, search){
+var find = function(sub, search, rub, page){
     var query = "";
     var notQuery = 0;
     
@@ -60,6 +63,13 @@ var find = function(sub, search){
         if(notQuery != $(this).attr('data-id')) query += '&Adverts[sub][]='+$(this).attr('data-id');
     });
     
+    //$('#rub_find a.active').each(function(){
+        if(rub && !rub.hasClass('active')) 
+            query += '&Adverts[rub_id]='+rub.attr('data-id');
+        else if(!rub)
+            query += '&Adverts[rub_id]='+$('#rub_find a.active').attr('data-id');
+    //});
+    
     if($('.sorter a.created').hasClass('asc')) query += '&Adverts[sort]=created';
     if($('.sorter a.price').hasClass('asc')) query += '&Adverts[sort]=price';
     if($('.sorter a.price').hasClass('desc')) query += '&Adverts[sort]=price.desc'
@@ -67,6 +77,8 @@ var find = function(sub, search){
     if($('.search input').attr('value') != '') query += '&Adverts[search]='+$('.search input').val();
     //if($('.page.selected')) query += '&Adverts[page]='+$('.page.selected a').text();
     
+    if(page)
+        query += '&Adverts_page='+page;
     
     var data = $('#find').serialize()+(query ? query : "");
     console.log(data);
@@ -74,7 +86,8 @@ var find = function(sub, search){
     success:function(msg){
         window.location.hash = '!'+msg.id;
     }});
-    $.ajax({url:'art/listajax',data: data, type:'POST',
+    var height = '&height='+ getArtOnPage();
+    $.ajax({url:'art/listajax',data: data + height, type:'POST',
     success:function(html){
         $('#content').replaceWith(html);
     }});
@@ -90,3 +103,19 @@ var otherParams = function(bool){
     }});
     
 }
+
+$(window).resize(function(){
+    
+    
+});
+
+$(window).mousewheel(function(event) {
+    var page = ( event.deltaY == 1) ? parseInt($('.page.selected a').html()) - 1 : parseInt($('.page.selected a').html()) + 1;
+    
+    if(event.deltaY == -1 && $(window).scrollTop() == ($(document).height() - $(window).height())) 
+        find(false, false, false, page);
+    if(event.deltaY == 1 && $(window).scrollTop() == 0)
+        find(false, false, false, page);
+});
+
+    

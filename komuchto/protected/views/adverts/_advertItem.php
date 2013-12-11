@@ -1,6 +1,6 @@
 <div class="art">
     <?$img = explode(',', $data->img)?>
-    <a href="/<?=$data->id?>" rel="tooltip" class="art-img">
+    <a href="/#!<?=$data->id?>" rel="tooltip" class="art-img">
         <img src="<?if(!empty($img[1])):?>/komuchto/images/art/<?=$img[1]?><?endif;?>" alt="">
     </a>
     <?

@@ -150,7 +150,7 @@ return array(
 	),
         'params' => array(
             'adminPerPage' => 50,
-            'advertsPerPage' => 10,
+            'advertsPerPage' => 6,
         ),
 
 );
