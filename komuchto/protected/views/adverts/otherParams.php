@@ -47,7 +47,7 @@
         ));
 } ?>
 <?if($_POST['Adverts']['rub_id'] == 2){
-    echo CHtml::dropDownList('Adverts[act]', 0, CHtml::listData(Act::model()->findAll(),'id','name'), array('labelOptions' => array("label" => false),'onchange'=>'find()'));
+    echo CHtml::dropDownList('Adverts[act]', 0, CHtml::listData(Act::model()->findAll(),'id','name'), array('onchange'=>'find()'));
     
     echo '<input type="text" id="amount-range-etazh" style="border:0; font-weight:bold;" value="Этаж: '.$model->minetazh.'-'.$model->maxetazh.'" readonly/>';
     $this->widget('zii.widgets.jui.CJuiSliderInput', array(

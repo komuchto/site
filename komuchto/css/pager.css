@@ -13,3 +13,5 @@
 .pager ul.yiiPager a:hover{background: none}
 .list-view .pager{text-align: center}
 .pager .last, .pager .first{display:none}
+.pager .hidden{visibility: visible;}
+.pager .hidden a{ color: #dedede; cursor: default}
