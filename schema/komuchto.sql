@@ -11,26 +11,25 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Дамп структуры для таблица komuchto.act
+DROP TABLE IF EXISTS `act`;
 CREATE TABLE IF NOT EXISTS `act` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `type` int(11) unsigned DEFAULT '0',
   `name` varchar(255) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы komuchto.act: ~5 rows (приблизительно)
+-- Дамп данных таблицы komuchto.act: ~2 rows (приблизительно)
 DELETE FROM `act`;
 /*!40000 ALTER TABLE `act` DISABLE KEYS */;
 INSERT INTO `act` (`id`, `type`, `name`) VALUES
 	(1, 0, 'Продаю'),
-	(2, 0, 'Куплю'),
-	(3, 0, 'Сдаю'),
-	(4, 0, 'Сниму'),
-	(5, 0, 'Меняю');
+	(2, 0, 'Сдаю');
 /*!40000 ALTER TABLE `act` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица komuchto.adverts
+DROP TABLE IF EXISTS `adverts`;
 CREATE TABLE IF NOT EXISTS `adverts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `city_id` int(11) NOT NULL DEFAULT '0',
@@ -96,6 +95,7 @@ INSERT INTO `adverts` (`id`, `city_id`, `act_id`, `rub_id`, `sub_id`, `user_id`,
 
 
 -- Дамп структуры для таблица komuchto.AuthAssignment
+DROP TABLE IF EXISTS `AuthAssignment`;
 CREATE TABLE IF NOT EXISTS `AuthAssignment` (
   `itemname` varchar(64) NOT NULL,
   `userid` varchar(64) NOT NULL,
@@ -112,6 +112,7 @@ DELETE FROM `AuthAssignment`;
 
 
 -- Дамп структуры для таблица komuchto.AuthItem
+DROP TABLE IF EXISTS `AuthItem`;
 CREATE TABLE IF NOT EXISTS `AuthItem` (
   `name` varchar(64) NOT NULL,
   `type` int(11) NOT NULL,
@@ -133,6 +134,7 @@ INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.AuthItemChild
+DROP TABLE IF EXISTS `AuthItemChild`;
 CREATE TABLE IF NOT EXISTS `AuthItemChild` (
   `parent` varchar(64) NOT NULL,
   `child` varchar(64) NOT NULL,
@@ -149,6 +151,7 @@ DELETE FROM `AuthItemChild`;
 
 
 -- Дамп структуры для таблица komuchto.city
+DROP TABLE IF EXISTS `city`;
 CREATE TABLE IF NOT EXISTS `city` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `region` int(11) unsigned DEFAULT NULL,
@@ -167,6 +170,7 @@ INSERT INTO `city` (`id`, `region`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.drive
+DROP TABLE IF EXISTS `drive`;
 CREATE TABLE IF NOT EXISTS `drive` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -185,6 +189,7 @@ INSERT INTO `drive` (`id`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.favorits
+DROP TABLE IF EXISTS `favorits`;
 CREATE TABLE IF NOT EXISTS `favorits` (
   `user` int(11) unsigned NOT NULL DEFAULT '0',
   `advert` int(11) unsigned NOT NULL DEFAULT '0',
@@ -205,6 +210,7 @@ INSERT INTO `favorits` (`user`, `advert`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.mark
+DROP TABLE IF EXISTS `mark`;
 CREATE TABLE IF NOT EXISTS `mark` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -224,6 +230,7 @@ INSERT INTO `mark` (`id`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.model
+DROP TABLE IF EXISTS `model`;
 CREATE TABLE IF NOT EXISTS `model` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `mark_id` int(11) DEFAULT NULL,
@@ -243,6 +250,7 @@ INSERT INTO `model` (`id`, `mark_id`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.page
+DROP TABLE IF EXISTS `page`;
 CREATE TABLE IF NOT EXISTS `page` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descr` varchar(500) DEFAULT NULL,
@@ -258,6 +266,7 @@ DELETE FROM `page`;
 
 
 -- Дамп структуры для таблица komuchto.params
+DROP TABLE IF EXISTS `params`;
 CREATE TABLE IF NOT EXISTS `params` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `rub_id` int(11) unsigned DEFAULT NULL,
@@ -272,6 +281,7 @@ DELETE FROM `params`;
 
 
 -- Дамп структуры для таблица komuchto.rub
+DROP TABLE IF EXISTS `rub`;
 CREATE TABLE IF NOT EXISTS `rub` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -296,13 +306,14 @@ INSERT INTO `rub` (`id`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.search
+DROP TABLE IF EXISTS `search`;
 CREATE TABLE IF NOT EXISTS `search` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `query` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10000186 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10000254 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы komuchto.search: 186 rows
+-- Дамп данных таблицы komuchto.search: 254 rows
 DELETE FROM `search`;
 /*!40000 ALTER TABLE `search` DISABLE KEYS */;
 INSERT INTO `search` (`id`, `query`) VALUES
@@ -491,11 +502,80 @@ INSERT INTO `search` (`id`, `query`) VALUES
 	(10000182, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=2&Adverts[maxprobeg]=10&Adverts[minvolume]=0&Adverts[maxvolume]=280000'),
 	(10000183, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=2&Adverts[maxprobeg]=10&Adverts[minvolume]=20000&Adverts[maxvolume]=280000'),
 	(10000184, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=50000&Adverts[maxprobeg]=200000&Adverts[minvolume]=0&Adverts[maxvolume]=8.6'),
-	(10000185, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=50000&Adverts[maxprobeg]=200000&Adverts[minvolume]=2.8&Adverts[maxvolume]=8.6');
+	(10000185, 'Adverts[rub_id]=1&Adverts[act]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=50000&Adverts[maxprobeg]=200000&Adverts[minvolume]=2.8&Adverts[maxvolume]=8.6'),
+	(10000186, 'Adverts[rub_id]=1&Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000'),
+	(10000187, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000'),
+	(10000188, 'Adverts[city]=1&Adverts[minprice]=0&Adverts[maxprice]=1500000'),
+	(10000189, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[rub_id]=1'),
+	(10000190, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[rub_id]=2'),
+	(10000191, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[sub][0]=1'),
+	(10000192, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[sub][0]=2&Adverts[sub][1]=1'),
+	(10000193, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[sub][0]=1&Adverts[sub][1]=2&Adverts[rub_id]=1'),
+	(10000194, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[sub][0]=1&Adverts[sub][1]=2&Adverts[rub_id]=2'),
+	(10000195, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[sub][0]=1&Adverts[sub][1]=2'),
+	(10000196, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts_page=11'),
+	(10000197, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts_page=2'),
+	(10000198, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts_page=1'),
+	(10000199, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts_page=3'),
+	(10000200, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts_page=4'),
+	(10000201, 'Adverts[city]=-1&Adverts[minprice]=194000&Adverts[maxprice]=1500000'),
+	(10000202, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[rub_id]=1&Adverts_page=2'),
+	(10000203, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[rub_id]=1&Adverts_page=3'),
+	(10000204, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[rub_id]=1&Adverts_page=1'),
+	(10000205, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[rub_id]=2'),
+	(10000206, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=1&Adverts[maxetazh]=50&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[rub_id]=2'),
+	(10000207, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=1&Adverts[maxetazh]=50&Adverts[minkomnaty_count]=1&Adverts[maxkomnaty_count]=10&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[rub_id]=2'),
+	(10000208, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=1&Adverts[maxetazh]=50&Adverts[minkomnaty_count]=5&Adverts[maxkomnaty_count]=10&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[rub_id]=2'),
+	(10000209, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[maxplosch]=&Adverts[rub_id]=2'),
+	(10000210, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=1&Adverts[maxplosch]=221&Adverts[rub_id]=2'),
+	(10000211, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=1&Adverts[maxplosch]=411&Adverts[rub_id]=2'),
+	(10000212, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=131&Adverts[maxplosch]=411&Adverts[rub_id]=2'),
+	(10000213, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=1&Adverts[maxetazh_build]=14&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=131&Adverts[maxplosch]=411&Adverts[rub_id]=2'),
+	(10000214, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=4&Adverts[maxetazh_build]=14&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=131&Adverts[maxplosch]=411&Adverts[rub_id]=2'),
+	(10000215, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=1&Adverts[maxkomnaty_count]=8&Adverts[minetazh_build]=4&Adverts[maxetazh_build]=14&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=131&Adverts[maxplosch]=411&Adverts[rub_id]=2'),
+	(10000216, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=3&Adverts[maxkomnaty_count]=8&Adverts[minetazh_build]=4&Adverts[maxetazh_build]=14&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=131&Adverts[maxplosch]=411&Adverts[rub_id]=2'),
+	(10000217, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=1&Adverts[maxetazh]=37&Adverts[minkomnaty_count]=3&Adverts[maxkomnaty_count]=8&Adverts[minetazh_build]=4&Adverts[maxetazh_build]=14&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=131&Adverts[maxplosch]=411&Adverts[rub_id]=2'),
+	(10000218, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=15&Adverts[maxetazh]=37&Adverts[minkomnaty_count]=3&Adverts[maxkomnaty_count]=8&Adverts[minetazh_build]=4&Adverts[maxetazh_build]=14&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=131&Adverts[maxplosch]=411&Adverts[rub_id]=2'),
+	(10000219, 'Adverts[city]=-1&Adverts[minprice]=1100000&Adverts[maxprice]=1100000&Adverts[minetazh]=15&Adverts[maxetazh]=37&Adverts[minkomnaty_count]=3&Adverts[maxkomnaty_count]=8&Adverts[minetazh_build]=4&Adverts[maxetazh_build]=14&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=131&Adverts[maxplosch]=411&Adverts[rub_id]=2'),
+	(10000220, 'Adverts[city]=-1&Adverts[minprice]=1100000&Adverts[maxprice]=1100000&Adverts[rub_id]=2'),
+	(10000221, 'Adverts[city]=-1&Adverts[minprice]=1100000&Adverts[maxprice]=1100000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[maxplosch]=&Adverts[rub_id]=2'),
+	(10000222, 'Adverts[city]=-1&Adverts[minprice]=1100000&Adverts[maxprice]=1100000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=1&Adverts[maxplosch]=500&Adverts[rub_id]=2'),
+	(10000223, 'Adverts[city]=-1&Adverts[minprice]=1100000&Adverts[maxprice]=1100000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=91&Adverts[maxplosch]=500&Adverts[rub_id]=2'),
+	(10000224, 'Adverts[city]=-1&Adverts[minprice]=1100000&Adverts[maxprice]=1100000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=1&Adverts[maxetazh_build]=26&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=91&Adverts[maxplosch]=500&Adverts[rub_id]=2'),
+	(10000225, 'Adverts[city]=-1&Adverts[minprice]=1100000&Adverts[maxprice]=1100000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=8&Adverts[maxetazh_build]=26&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=91&Adverts[maxplosch]=500&Adverts[rub_id]=2'),
+	(10000226, 'Adverts[city]=-1&Adverts[minprice]=1100000&Adverts[maxprice]=1100000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=1&Adverts[maxkomnaty_count]=8&Adverts[minetazh_build]=8&Adverts[maxetazh_build]=26&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=91&Adverts[maxplosch]=500&Adverts[rub_id]=2'),
+	(10000227, 'Adverts[city]=-1&Adverts[minprice]=1100000&Adverts[maxprice]=1100000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=1&Adverts[maxkomnaty_count]=10&Adverts[minetazh_build]=8&Adverts[maxetazh_build]=26&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=91&Adverts[maxplosch]=500&Adverts[rub_id]=2'),
+	(10000228, 'Adverts[city]=-1&Adverts[minprice]=1100000&Adverts[maxprice]=1100000&Adverts[minetazh]=1&Adverts[maxetazh]=50&Adverts[minkomnaty_count]=1&Adverts[maxkomnaty_count]=10&Adverts[minetazh_build]=8&Adverts[maxetazh_build]=26&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=91&Adverts[maxplosch]=500&Adverts[rub_id]=2'),
+	(10000229, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[maxplosch]=&Adverts[rub_id]=1&Adverts_page=2'),
+	(10000230, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[maxplosch]=&Adverts[rub_id]=1&Adverts_page=1'),
+	(10000231, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[maxplosch]=&Adverts[rub_id]=1'),
+	(10000232, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[maxplosch]='),
+	(10000233, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=&Adverts[maxprobeg]=&Adverts[minvolume]=&Adverts[maxvolume]=&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[maxplosch]='),
+	(10000234, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[maxplosch]=&Adverts[rub_id]=undefined'),
+	(10000235, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[maxplosch]=&Adverts[sub][0]=1&Adverts[rub_id]=1'),
+	(10000236, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[maxplosch]=&Adverts[rub_id]=1&Adverts_page=3'),
+	(10000237, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=1&Adverts[maxetazh]=41&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[maxplosch]=&Adverts[rub_id]=1'),
+	(10000238, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=1&Adverts[maxetazh]=14&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[maxplosch]=&Adverts[rub_id]=1'),
+	(10000239, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=9&Adverts[maxetazh]=14&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[maxplosch]=&Adverts[rub_id]=1'),
+	(10000240, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[minetazh]=1&Adverts[maxetazh]=36&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[maxplosch]=&Adverts[rub_id]=1'),
+	(10000241, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=&Adverts[maxprobeg]=&Adverts[minvolume]=&Adverts[maxvolume]=&Adverts[minetazh]=1&Adverts[maxetazh]=36&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[maxplosch]=&Adv'),
+	(10000242, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=&Adverts[maxprobeg]=&Adverts[minvolume]=&Adverts[maxvolume]=&Adverts[minetazh]=1&Adverts[maxetazh]=36&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[maxplosch]=&Adv'),
+	(10000243, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=50000&Adverts[maxprobeg]=200000&Adverts[minvolume]=0.8&Adverts[maxvolume]=2.5&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[m'),
+	(10000244, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=50000&Adverts[maxprobeg]=200000&Adverts[minvolume]=0.8&Adverts[maxvolume]=2.5&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[m'),
+	(10000245, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=50000&Adverts[maxprobeg]=200000&Adverts[minvolume]=0.8&Adverts[maxvolume]=2.5&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[m'),
+	(10000246, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=50000&Adverts[maxprobeg]=200000&Adverts[minvolume]=0.8&Adverts[maxvolume]=2.5&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[m'),
+	(10000247, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=50000&Adverts[maxprobeg]=200000&Adverts[minvolume]=0.8&Adverts[maxvolume]=2.5&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[m'),
+	(10000248, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=50000&Adverts[maxprobeg]=200000&Adverts[minvolume]=0.8&Adverts[maxvolume]=2.5&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[m'),
+	(10000249, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=50000&Adverts[maxprobeg]=200000&Adverts[minvolume]=0.8&Adverts[maxvolume]=2.5&Adverts[minetazh]=&Adverts[maxetazh]=&Adverts[minkomnaty_count]=&Adverts[maxkomnaty_count]=&Adverts[minetazh_build]=&Adverts[maxetazh_build]=&Adverts[vid_object]=-1&Adverts[type_object]=-1&Adverts[minplosch]=&Adverts[m'),
+	(10000250, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=50000&Adverts[maxprobeg]=200000&Adverts[minvolume]=0.8&Adverts[maxvolume]=2.5&Adverts[rub_id]=1&Adverts_page=2'),
+	(10000251, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=50000&Adverts[maxprobeg]=200000&Adverts[minvolume]=0.8&Adverts[maxvolume]=2.5&Adverts[rub_id]=1&Adverts_page=1'),
+	(10000252, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=50000&Adverts[maxprobeg]=200000&Adverts[minvolume]=0.8&Adverts[maxvolume]=2.5'),
+	(10000253, 'Adverts[city]=-1&Adverts[minprice]=0&Adverts[maxprice]=1500000&Adverts[mark]=-1&Adverts[transmission]=-1&Adverts[drive]=-1&Adverts[type_body]=-1&Adverts[type_engine]=-1&Adverts[year]=0&Adverts[minprobeg]=50000&Adverts[maxprobeg]=200000&Adverts[minvolume]=0.8&Adverts[maxvolume]=2.5&Adverts[rub_id]=2');
 /*!40000 ALTER TABLE `search` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица komuchto.session
+DROP TABLE IF EXISTS `session`;
 CREATE TABLE IF NOT EXISTS `session` (
   `id` char(32) NOT NULL,
   `expire` int(11) DEFAULT NULL,
@@ -507,11 +587,12 @@ CREATE TABLE IF NOT EXISTS `session` (
 DELETE FROM `session`;
 /*!40000 ALTER TABLE `session` DISABLE KEYS */;
 INSERT INTO `session` (`id`, `expire`, `data`) VALUES
-	('e9jq4scfkshpa0egh582hk5kf1', 1386159357, _binary 0x38623533646364633664613864336562353466653466333730393336383261385F5F69647C733A313A2233223B38623533646364633664613864336562353466653466333730393336383261386964656E746974797C733A38303A2268747470733A2F2F7777772E676F6F676C652E636F6D2F6163636F756E74732F6F382F69643F69643D4149744F61776E36724C4636486B4430476E56317738743632366D53355A3939576B5833306B63223B38623533646364633664613864336562353466653466333730393336383261385F5F6E616D657C733A31303A22D098D0B3D0BED180D18C223B38623533646364633664613864336562353466653466333730393336383261387065726D697373696F6E7C733A313A2232223B);
+	('e9jq4scfkshpa0egh582hk5kf1', 1386765871, _binary '');
 /*!40000 ALTER TABLE `session` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица komuchto.sub
+DROP TABLE IF EXISTS `sub`;
 CREATE TABLE IF NOT EXISTS `sub` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rub` int(11) DEFAULT '0',
@@ -573,6 +654,7 @@ INSERT INTO `sub` (`id`, `rub`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.sub_other
+DROP TABLE IF EXISTS `sub_other`;
 CREATE TABLE IF NOT EXISTS `sub_other` (
   `id` int(11) unsigned NOT NULL,
   `name` varchar(255) DEFAULT NULL,
@@ -587,6 +669,7 @@ DELETE FROM `sub_other`;
 
 
 -- Дамп структуры для таблица komuchto.transmission
+DROP TABLE IF EXISTS `transmission`;
 CREATE TABLE IF NOT EXISTS `transmission` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -604,6 +687,7 @@ INSERT INTO `transmission` (`id`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.type_body
+DROP TABLE IF EXISTS `type_body`;
 CREATE TABLE IF NOT EXISTS `type_body` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -624,6 +708,7 @@ INSERT INTO `type_body` (`id`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.type_engine
+DROP TABLE IF EXISTS `type_engine`;
 CREATE TABLE IF NOT EXISTS `type_engine` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -642,6 +727,7 @@ INSERT INTO `type_engine` (`id`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.type_object
+DROP TABLE IF EXISTS `type_object`;
 CREATE TABLE IF NOT EXISTS `type_object` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -660,6 +746,7 @@ INSERT INTO `type_object` (`id`, `name`) VALUES
 
 
 -- Дамп структуры для таблица komuchto.users
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `service` varchar(255) NOT NULL DEFAULT 'undefined',
@@ -684,6 +771,7 @@ INSERT INTO `users` (`id`, `service`, `ip`, `city`, `permission`, `identity`, `e
 
 
 -- Дамп структуры для таблица komuchto.vid_object
+DROP TABLE IF EXISTS `vid_object`;
 CREATE TABLE IF NOT EXISTS `vid_object` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT '0',

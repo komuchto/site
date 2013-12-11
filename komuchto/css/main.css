@@ -24,7 +24,6 @@ select:focus{-webkit-box-shadow:none;}
 #find .select.sub select:first-child{border-top: 1px solid #dedede;margin-top:10px;margin-bottom:0;}
 #find .select.sub select, #find #otherParams select{ background: url(/komuchto/images/select.png) no-repeat 75% 50%}
 #rub_find a.active{border-bottom: 1px solid #01669a; background: transparent;font-weight: bold;}
-#find select#Adverts_rub_id span{display:block;margin-right: 10px}
 #filters{display:none}
 #sub_find .btn, #rub_find a{border:0; border-left: 3px solid #dedede; margin:1px 0;width: 177px;}
 #rub_find a::after{border: 1px solid #dedede}
@@ -35,14 +34,14 @@ select:focus{-webkit-box-shadow:none;}
 .btn-group, .btn-group .btn{width: 200px;text-align: left}
 .btn-group .btn span{float:right}
 .btn-group .btn:first-child, .btn-group .btn:last-child{border-radius:0;margin-left: -1px;}
-#Adverts_minprice_slider, #Adverts_minprobeg_slider, #Adverts_minvolume_slider, div[id^='_slider']{width:160px;height:2px;margin-left: 20px;}
-#Adverts_minprice_slider a, #Adverts_minprobeg_slider a, #Adverts_minvolume_slider a, div[id^='_slider'] a{height:10px;margin-left: -2px;}
+#Adverts_minprice_slider, #Adverts_minprobeg_slider, #Adverts_minvolume_slider, div[id$='_slider']{width:160px;height:2px;margin-left: 20px;}
+#Adverts_minprice_slider a, #Adverts_minprobeg_slider a, #Adverts_minvolume_slider a, #find div[id$='_slider'] a{height:10px;margin-left: -2px;}
 #find input[id*='amount-range']{text-align: center;width: 190px;color:#01669a;cursor:default}
 #find div.ui-slider{margin-bottom:10px}
 #find .btn-link{width:200px;text-align:center;margin-top:10px}
 #find .otherParams, #find .otherParamsClose{font-weight: bold; text-decoration: underline; border-top:1px solid #dedede; border-bottom: 1px solid #dedede; margin-top: 20px;padding: 10px 0;}
 #find .otherParamsClose{display:none}
-#otherParams{margin-top:20px;border-top:1px solid #dedede;display:none}
+#otherParams{margin-top:20px;border-top:1px solid #dedede;}
 #otherParams select{margin-bottom:0}
 
 .summary{float:left}

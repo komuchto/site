@@ -10,6 +10,17 @@ var findByPathname = function(pathname){
     }});
 }
 
+var otherParams = function(bool){
+    if(bool === true) {$( "#otherParams" ).empty(); return false;}
+    $.ajax({url:'art/otherparamsajax', data: 'Adverts[rub_id]='+bool,type:'POST',
+    success:function(msg){
+        $( "#otherParams" ).css('display','block').html( msg );
+        $(".otherParams").hide();
+        $(".otherParamsClose").css('display','block');
+    }});
+    
+}
+
 var render = function(bool){
     var hash = window.location.hash.substring(2);
     var pathname = window.location.pathname;
@@ -64,10 +75,13 @@ var find = function(sub, search, rub, page){
     });
     
     //$('#rub_find a.active').each(function(){
-        if(rub && !rub.hasClass('active')) 
+        if(rub && !rub.hasClass('active'))
             query += '&Adverts[rub_id]='+rub.attr('data-id');
         else if(!rub)
             query += '&Adverts[rub_id]='+$('#rub_find a.active').attr('data-id');
+        
+        if(rub)
+             otherParams(rub.attr('data-id'));
     //});
     
     if($('.sorter a.created').hasClass('asc')) query += '&Adverts[sort]=created';
@@ -91,17 +105,6 @@ var find = function(sub, search, rub, page){
     success:function(html){
         $('#content').replaceWith(html);
     }});
-}
-
-var otherParams = function(bool){
-    if(bool === true) {$( "#otherParams" ).empty(); return false;}
-    $.ajax({url:'art/otherparamsajax', data: $('#find').serialize(),type:'POST',
-    success:function(msg){
-        $( "#otherParams" ).css('display','block').html( msg );
-        $(".otherParams").hide();
-        $(".otherParamsClose").css('display','block');
-    }});
-    
 }
 
 $(window).resize(function(){

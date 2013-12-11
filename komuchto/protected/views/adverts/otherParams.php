@@ -1,4 +1,5 @@
 <div class="select">
+
 <?if($_POST['Adverts']['rub_id'] == 1){
     echo CHtml::dropDownList('Adverts[mark]', 0, CHtml::listData(Mark::model()->findAll(),'id','name'),array('onchange'=>'find()'));
     echo CHtml::dropDownList('Adverts[transmission]', 0, CHtml::listData(Transmission::model()->findAll(),'id','name'),array('onchange'=>'find()'));
@@ -45,8 +46,8 @@
             ),
         ));
 } ?>
-<?if($_POST['Adverts']['rub_id'] == 2) 
-    echo CHtml::dropDownListRow('Adverts[act]', CHtml::listData(Act::model()->findAll(),'id','name'), array('labelOptions' => array("label" => false),'onchange'=>'find()'));
+<?if($_POST['Adverts']['rub_id'] == 2){
+    echo CHtml::dropDownList('Adverts[act]', 0, CHtml::listData(Act::model()->findAll(),'id','name'), array('labelOptions' => array("label" => false),'onchange'=>'find()'));
     
     echo '<input type="text" id="amount-range-etazh" style="border:0; font-weight:bold;" value="Этаж: '.$model->minetazh.'-'.$model->maxetazh.'" readonly/>';
     $this->widget('zii.widgets.jui.CJuiSliderInput', array(
@@ -66,7 +67,7 @@
             ),
         ));
     
-    echo '<input type="text" id="amount-range-komnaty-count" style="border:0; font-weight:bold;" value="Этаж: '.$model->minkomnaty_count.'-'.$model->maxkomnaty_count.'" readonly/>';
+    echo '<input type="text" id="amount-range-komnaty-count" style="border:0; font-weight:bold;" value="Кол-во комнат: '.$model->minkomnaty_count.'-'.$model->maxkomnaty_count.'" readonly/>';
     $this->widget('zii.widgets.jui.CJuiSliderInput', array(
             'model'=>$model,
             'attribute'=>'minkomnaty_count',
@@ -79,7 +80,7 @@
                 'range'=>true,
                 'min'=>1,
                 'max'=>10,
-                'slide'=>'js:function(event,ui){$("#amount-range-komnaty-count").val("Этаж: "+ui.values[0]+\'-\'+ui.values[1])}',
+                'slide'=>'js:function(event,ui){$("#amount-range-komnaty-count").val("Кол-во комнат: "+ui.values[0]+\'-\'+ui.values[1])}',
                 'stop'=>'js:function(e,ui){ v=ui.values; jQuery(\'#Adverts_minkomnaty_count\').val(v[0]); jQuery(\'#Adverts_minkomnaty_count_end\').val(v[1]);find() }',
             ),
         ));
@@ -97,7 +98,7 @@
                 'range'=>true,
                 'min'=>1,
                 'max'=>30,
-                'slide'=>'js:function(event,ui){$("#amount-range-minetazh-build").val("Этажей в доме: "+ui.values[0]+\'-\'+ui.values[1])}',
+                'slide'=>'js:function(event,ui){$("#amount-range-etazh-build").val("Этажей в доме: "+ui.values[0]+\'-\'+ui.values[1])}',
                 'stop'=>'js:function(e,ui){ v=ui.values; jQuery(\'#Adverts_minetazh_build\').val(v[0]); jQuery(\'#Adverts_minetazh_build_end\').val(v[1]);find() }',
             ),
         ));
@@ -106,8 +107,8 @@
     echo '<input type="text" id="amount-range-plosch" style="border:0; font-weight:bold;" value="Площадь: '.$model->minplosch.'-'.$model->maxplosch.'" readonly/>';
     $this->widget('zii.widgets.jui.CJuiSliderInput', array(
             'model'=>$model,
-            'attribute'=>'minetazh_build',
-            'maxAttribute'=>'maxetazh_build',
+            'attribute'=>'minplosch',
+            'maxAttribute'=>'maxplosch',
             'event'=>'change',
             'options'=>array(
                 'step'=>10,
@@ -116,10 +117,11 @@
                 'range'=>true,
                 'min'=>1,
                 'max'=>500,
-                'slide'=>'js:function(event,ui){$("#amount-range-minetazh-build").val("Этажей в доме: "+ui.values[0]+\'-\'+ui.values[1])}',
+                'slide'=>'js:function(event,ui){$("#amount-range-plosch").val("Площадь: "+ui.values[0]+\'-\'+ui.values[1])}',
                 'stop'=>'js:function(e,ui){ v=ui.values; jQuery(\'#Adverts_minplosch\').val(v[0]); jQuery(\'#Adverts_minplosch_end\').val(v[1]);find() }',
             ),
         ));
+    }
 ?>
 
 </div>

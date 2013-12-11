@@ -46,21 +46,24 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         ));
       ?>
     <!-- Доп Фильтры -->
+    <!--
     <?php $this->widget('bootstrap.widgets.TbButton', array(
         'label'=>'Больше параметров',
         'buttonType'=>'link',
         'type'=>'link',
         'htmlOptions'=>array('onclick'=>'otherParams()','class'=>'otherParams'),
-    )); ?>
+    )); ?>-->
     <div id="otherParams">
-    <?// echo $params['other'];?>
+    <?$this->renderPartial('otherParams', array('model'=>$model))?>
     </div>
+    <!--
     <?php $this->widget('bootstrap.widgets.TbButton', array(
         'label'=>'Меньше параметров',
         'buttonType'=>'link',
         'type'=>'link',
         'htmlOptions'=>array('onclick'=>'$("#otherParams").css("display","none").empty();$(".otherParams").show();$(this).hide()','class'=>'otherParamsClose'),
     )); ?>
+    -->
 </div>
 <?php $this->endWidget(); ?>
 
