@@ -1,11 +1,19 @@
-<div class="left form">
+<?if(!Yii::app()->request->getIsAjaxRequest()):?>
+    <div class="left">
+        <?$this->renderPartial('/adverts/filters', array('model'=>new Adverts))?>
+        <div class="art-info">Объявлений за месяц: <span>549221</span></div>
+    </div>
+<?endif;?>
+
+<div id="content" class="head span8">
+
+<div class="user-form">
 <?php $form=$this->beginWidget('CActiveForm',array(
     'id'=>'account-form',
     'enableAjaxValidation'=>false,
 )); ?>
  
     <?php //echo $form->errorSummary($model); ?>
-    <?=CHtml::link('Выйти', '/logout')?>
     <div class="row">
         <?php echo $form->label($model, 'name', array('label' => 'Псевдоним пользователя')); ?>
         <?php echo $form->textField($model,'name') ?>
@@ -18,11 +26,11 @@
  
     <div class="row submit">
         <?php echo CHtml::submitButton('Изменить'); ?>
+        <?=CHtml::link('Выйти', '/logout')?>
     </div>
  
 <?php $this->endWidget(); ?>
 </div><!-- form -->
-<div id="content" class="span8">
 <h4>Избранные объявления</h4>
 <?php $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$favorits,
@@ -35,3 +43,13 @@
     'itemView'=>'/adverts/_advertItem',
     
 )); ?>
+</div>
+<?if(!Yii::app()->request->getIsAjaxRequest()):?>
+    <div class="right">
+        <a class="btn-link" href="/reklama/">Рекламодателям</a>
+        <img width="173" height="240" src="/komuchto/images/banners/avtolombard.jpg">
+        <img width="173" height="240" src="/komuchto/images/banners/avtolombard.jpg">
+        <!--<img width="173" height="240" src="/komuchto/images/banners/avtolombard.jpg">-->
+        <div class="user-info">Посетителей за месяц: <span>549221</span></div>
+    </div>
+<?endif;?>

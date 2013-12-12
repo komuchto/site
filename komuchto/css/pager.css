@@ -1,3 +1,4 @@
+.pager{position:fixed; bottom:0; width:770px}
 .pager .page{
     width: 10px;
     height: 10px;
@@ -8,10 +9,11 @@
     display:inline-block;
     margin:0 2px;
 }
-.pager .page.selected{background: #01669a}
-.pager ul.yiiPager a{margin-top:10px;border:0;padding:0}
+.pager .page.selected{background: #01669a;}
+.pager .page.selected a{color:#01669a}
+.pager ul.yiiPager a{margin-top:10px;border:0;padding:0;background:none;color:#000;font-weight: bold}
 .pager ul.yiiPager a:hover{background: none}
 .list-view .pager{text-align: center}
 .pager .last, .pager .first{display:none}
 .pager .hidden{visibility: visible;}
-.pager .hidden a{ color: #dedede; cursor: default}
+.pager ul.yiiPager .hidden a{ color: #dedede; cursor: default}

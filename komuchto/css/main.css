@@ -1,4 +1,6 @@
 html, body, .footer{background-color: #fff;}
+html,body,.container {height: 100%;}
+
 input[type='text'], button.btn, a.btn, a.btn.active, select, #find .ui-state-default, a.btn:focus, a.btn:active, a.btn:visited, a.btn:hover {border-radius: 0; box-shadow: none; transition: 0; -webkit-box-shadow:none; box-shadow: none; background: #fff}
 a.btn-link, a.btn-link:hover{border:0; padding:0;color:#01669a; background: none}
 
@@ -14,8 +16,16 @@ select:focus{-webkit-box-shadow:none;}
 #searchForm a.user{background: url(/komuchto/images/user.jpg) no-repeat center #656565; height: 34px; width:20px; border: 0;}
 
 .container .left, .container #content[class^='head']{margin-left: 0}
-.container .left{margin-top: 16px;float:left;width:204px}
+.container .left{margin-top: 16px;float:left;width:204px;}
 .container .right{float:left;width: 175px;margin-left: 20px;}
+
+.container #content h2{margin-top:10px;text-align: center; color:#01669a}
+.container #content .user-form{margin-top:20px}
+.container #content .user-form .row{margin-left:10px}
+.container #content .user-form .row input{clear:both}
+.container .right img{margin:2px 0}
+
+.list-view{position:relative}
 
 .right .btn-link, .right .btn-link:hover{text-decoration:underline;display:block;text-align: right; margin-top:20px;border-bottom:1px solid #dedede;padding-bottom:5px;}
 
@@ -23,10 +33,13 @@ select:focus{-webkit-box-shadow:none;}
 #find select, #find select:focus{border:0; border-bottom: 1px solid #dedede; width:250px;height:40px;}
 #find .select.sub select:first-child{border-top: 1px solid #dedede;margin-top:10px;margin-bottom:0;}
 #find .select.sub select, #find #otherParams select{ background: url(/komuchto/images/select.png) no-repeat 75% 50%}
-#rub_find a.active{border-bottom: 1px solid #01669a; background: transparent;font-weight: bold;}
-#filters{display:none}
-#sub_find .btn, #rub_find a{border:0; border-left: 3px solid #dedede; margin:1px 0;width: 177px;}
-#rub_find a::after{border: 1px solid #dedede}
+#rub_find{margin-top:-3px}
+#rub_find a.active, #rub_find a.active:hover{border:0; border-bottom: 1px solid #01669a; background: transparent;font-weight: bold; color:#01669a;}
+#rub_find a.active:before{height:0}
+#filters{display:none;margin-top: -3px;}
+#sub_find .btn, #rub_find a{border:0; border-left: 3px solid #dedede; margin:2px 0;width: 177px; position: relative;}
+#rub_find a:before, #sub_find a + a:before{content:""; width: 100%; height: 1px; display: block; position:absolute;  background: #dedede; margin-left: -13px; top: -2px}
+#rub_find a:last-child:after, #sub_find a:last-child:after{content:""; width: 100%; height: 1px; display: block; position:absolute;  background: #dedede; margin-left: -13px; bottom: -2px}
 #rub_find a{border-right: 1px solid #dedede}
 #sub_find .btn:hover, #sub_find .btn.active, #rub_find .btn:hover{background-color: #e6eff6; color:#01669a}
 #sub_find .btn.active, #sub_find .btn.active, #rub_find .btn:hover{border-left: 3px solid #01669a;}
@@ -44,18 +57,21 @@ select:focus{-webkit-box-shadow:none;}
 #otherParams{margin-top:20px;border-top:1px solid #dedede;}
 #otherParams select{margin-bottom:0}
 
-.summary{float:left}
+.summary{float:left;font-style: italic}
+.summary span{color:#01669a;}
 .sorter{float:right;width:250px}
 .sorter a{float:right;margin:0 10px}
 .art{border-top:1px solid #cdcdcd;clear:both;padding:5px 0; overflow: hidden;}
 .art img{height:80px}
 .art .art-img{float:left;width:107px}
-.fav{float:left; width:19px; height:18px;background: url(/komuchto/images/fav_d.png) no-repeat}
+.fav{float:left; width:19px; height:18px;background: url(/komuchto/images/fav_d.png) no-repeat; margin-right:8px}
 .fav.active{background: url(/komuchto/images/fav.png) no-repeat}
 .art .info{float:left; padding:0 10px;width: 640px;}
+.art .info a{font-weight: bold}
 .art span{clear:both;float:left}
+.art .info span.text{padding:5px 0}
 .art span.price{font-weight:bold}
-.art span.date{float:right;clear:none}
+.art span.date{float:right;clear:none;color:#aaa}
 
 .artView{border-top:1px solid #cdcdcd;padding:0 0 10px 0}
 a.back{margin-top:26px;display:block}
@@ -75,3 +91,5 @@ a.back{margin-top:26px;display:block}
 #content h4{margin:40px 0 0}
 
 footer{clear:both}
+.art-info, .user-info{font-style: italic; position:fixed; bottom:10px}
+.art-info span, .user-info span{color:#01669a}

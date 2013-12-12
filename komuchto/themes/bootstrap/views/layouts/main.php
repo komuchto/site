@@ -28,8 +28,8 @@
 </head>
 
 <body>
-        <div style="width:950px;height:90px;margin:10px auto;border:1px solid gray;text-align: center;">950x90 <?=$this->city?></div>
 	<div class="container">
+            <div style="width:950px;height:90px;margin:10px auto;border:1px solid gray;text-align: center;">950x90 <?=$this->city?></div>
             <?php /** @var BootActiveForm $form */
             $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
                 'id'=>'searchForm',

@@ -11,9 +11,9 @@ return array(
         'theme'=>'bootstrap',
         'charset'=>'utf-8',
         'language'=>'ru',
-        'preload' => array(
+        /*'preload' => array(
             'debug',
-        ),
+        ),*/
 
 	// autoloading model and component classes
 	'import'=>array(

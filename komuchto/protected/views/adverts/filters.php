@@ -54,7 +54,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         'htmlOptions'=>array('onclick'=>'otherParams()','class'=>'otherParams'),
     )); ?>-->
     <div id="otherParams">
-    <?$this->renderPartial('otherParams', array('model'=>$model))?>
+    <?$this->renderPartial('/adverts/otherParams', array('model'=>$model))?>
     </div>
     <!--
     <?php $this->widget('bootstrap.widgets.TbButton', array(

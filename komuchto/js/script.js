@@ -1,10 +1,16 @@
 var getArtOnPage = function(){
-    return ($(window).height() >= 900) ? ($(window).height() - 256) / 91 : 0;
+    if($(window).height() >= 900){
+        var h = $(window).height() - 256 - $('.items').height();
+        var c = ($(window).height() - 256) / 91;
+        //$('.art').css('height', (h/c+91) + 'px');
+    }
+    $('#content').css('height', ($(window).height() - 256) + 'px')
+    return ($(window).height() >= 900) ? c : 0;
 }
 
 var findByPathname = function(pathname){
     var height = '&height='+ getArtOnPage();
-    $.ajax({url:'art/listajax',data: 'pathname='+pathname, type:'POST',
+    $.ajax({url:'/art/listajax',data: 'pathname='+pathname, type:'POST',
     success:function(html){
         $('#content').replaceWith(html);
     }});
@@ -22,12 +28,12 @@ var otherParams = function(bool){
 }
 
 var render = function(bool){
+
     var hash = window.location.hash.substring(2);
     var pathname = window.location.pathname;
     if(hash < 10000000 && hash > 1000000){
         $("#content").load(pathname + hash, 
-        function(){}, 'post');
-        
+        function(){}, 'post');  
     }
     
     if(bool != true && hash > 10000000){
@@ -96,14 +102,19 @@ var find = function(sub, search, rub, page){
     
     var data = $('#find').serialize()+(query ? query : "");
     console.log(data);
-    $.ajax({url:'art/search', data: data,type:'POST',dataType:'json',
+    $.ajax({url:'/art/search', data: data,type:'POST',dataType:'json',
     success:function(msg){
         window.location.hash = '!'+msg.id;
     }});
     var height = '&height='+ getArtOnPage();
-    $.ajax({url:'art/listajax',data: data + height, type:'POST',
+    $.ajax({url:'/art/listajax',data: data + height, type:'POST',
     success:function(html){
         $('#content').replaceWith(html);
+        if($(window).height() >= 900){
+            var h = $(window).height() - 256 - $('.items').height();
+            var c = ($(window).height() - 256) / 91;
+            $('.art').css('height', (h/c+91) + 'px');
+        }
     }});
 }
 
@@ -115,10 +126,12 @@ $(window).resize(function(){
 $(window).mousewheel(function(event) {
     var page = ( event.deltaY == 1) ? parseInt($('.page.selected a').html()) - 1 : parseInt($('.page.selected a').html()) + 1;
     
+    /*
     if(event.deltaY == -1 && $(window).scrollTop() == ($(document).height() - $(window).height())) 
         find(false, false, false, page);
     if(event.deltaY == 1 && $(window).scrollTop() == 0)
         find(false, false, false, page);
+    */
 });
 
     
