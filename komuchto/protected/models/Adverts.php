@@ -130,6 +130,15 @@ class Adverts extends CActiveRecord
         if(isset($_POST['Adverts']['rub_id']) && $_POST['Adverts']['rub_id'] > 0) $criteria->addCondition("t.rub_id = ".$_POST['Adverts']['rub_id']);
         if(isset($_POST['Adverts']['sub']) && $_POST['Adverts']['sub'] > 0) $criteria->addInCondition("t.sub_id", $_POST['Adverts']['sub']);  
         if(isset($_POST['Adverts']['city']) && $_POST['Adverts']['city'] > 0) $criteria->addCondition("t.city_id=".$_POST['Adverts']['city']);
+        if(isset($_POST['Adverts']['mark']) && $_POST['Adverts']['mark'] > 0) $criteria->addCondition("t.mark=".$_POST['Adverts']['mark']);
+        if(isset($_POST['Adverts']['drive']) && $_POST['Adverts']['drive'] > 0) $criteria->addCondition("t.drive=".$_POST['Adverts']['drive']);
+        if(isset($_POST['Adverts']['type_body']) && $_POST['Adverts']['type_body'] > 0) $criteria->addCondition("t.type_body=".$_POST['Adverts']['type_body']);
+        if(isset($_POST['Adverts']['year']) && $_POST['Adverts']['year'] > 0) $criteria->addCondition("t.year=".$_POST['Adverts']['year']);
+        
+        if(isset($_POST['Adverts']['maxvolume']) && !empty($_POST['Adverts']['maxvolume'])) $criteria->addCondition("t.volume <= ".$_POST['Adverts']['maxvolume']);
+        if(isset($_POST['Adverts']['minvolume']) && !empty($_POST['Adverts']['minvolume'])) $criteria->addCondition("t.volume >= ".(int)$_POST['Adverts']['minvolume']);
+        if(isset($_POST['Adverts']['maxprobeg']) && !empty($_POST['Adverts']['maxprobeg'])) $criteria->addCondition("t.probeg <= ".$_POST['Adverts']['maxprobeg']);
+        if(isset($_POST['Adverts']['minprobeg']) && !empty($_POST['Adverts']['minprobeg'])) $criteria->addCondition("t.probeg >= ".(int)$_POST['Adverts']['minprobeg']);
         
         if(isset($_POST['Adverts']['maxprice']) && !empty($_POST['Adverts']['maxprice'])) $criteria->addCondition("t.price <= ".$_POST['Adverts']['maxprice']);
         if(isset($_POST['Adverts']['minprice']) && !empty($_POST['Adverts']['minprice'])) $criteria->addCondition("t.price >= ".(int)$_POST['Adverts']['minprice']);

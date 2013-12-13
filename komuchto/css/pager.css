@@ -1,4 +1,5 @@
 .pager{position:fixed; bottom:0; width:770px}
+.h900 .pager{position:absolute;}
 .pager .page{
     width: 10px;
     height: 10px;

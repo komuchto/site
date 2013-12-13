@@ -119,8 +119,12 @@ var find = function(sub, search, rub, page){
 }
 
 $(window).resize(function(){
-    
-    
+    /*
+    if($(window).height() < 900)
+        $('body').addClass('h900');
+    else
+        $('body').removeClass('h900');
+    */
 });
 
 $(window).mousewheel(function(event) {
