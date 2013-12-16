@@ -11,6 +11,7 @@
 	<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/application.min.css" rel="stylesheet">
 	<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="<?php echo Yii::app()->baseUrl; ?>/css/bootstrap-select.min.css" rel="stylesheet">
         <link href="<?php echo Yii::app()->baseUrl; ?>/css/main.css" rel="stylesheet">
 
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -24,6 +25,7 @@
 	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo Yii::app()->request->baseUrl; ?>/images/apple-touch-icon-114x114.png">
         <?php Yii::app()->clientScript->registerCoreScript('jquery.ui'); ?>
         <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.mousewheel.js"></script>
+        <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/bootstrap-select.min.js"></script>
         <?Yii::app()->bootstrap->register();?>
 </head>
 
@@ -48,9 +50,24 @@
             <?php $this->endWidget(); ?>
             
             
+            <?if(!Yii::app()->request->getIsAjaxRequest()):?>
+            <div class="left">
+                <?$this->renderPartial('/adverts/filters', array('model'=>new Adverts))?>
+                <div class="art-info">Объявлений за месяц: <span>549221</span></div>
+            </div>
+            <?endif;?>
             
              <?php echo $content; ?>
             
+            <?if(!Yii::app()->request->getIsAjaxRequest()):?>
+                <div class="right">
+                    <a class="btn-link" href="/reklama/">Рекламодателям</a>
+                    <img width="173" height="220" src="/komuchto/images/banners/avtolombard.jpg">
+                    <img width="173" height="220" src="/komuchto/images/banners/zhbk2.jpg">
+                    <img width="173" height="220" src="/komuchto/images/banners/alibi.jpg">
+                    <div class="user-info">Посетителей за месяц: <span>54922</span></div>
+                </div>
+            <?endif;?>
             
             <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/script.js"></script>
         </div>

@@ -25,22 +25,22 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
     <!-- Фильтры -->
     <div class="select sub">
-    <?php echo $form->dropDownListRow($model, 'city', CHtml::listData(City::model()->findAll(),'id','name'), array('labelOptions' => array("label" => false),'onchange'=>'find()')); ?>
+    <?php echo $form->dropDownListRow($model, 'city', CHtml::listData(City::model()->findAll(),'id','name'), array('labelOptions' => array("label" => false),'onchange'=>'find()','class'=>'selectpicker')); ?>
     </div>
-    <input type="text" id="amount-range" style="border:0; font-weight:bold;" value="Цена: <?=(!empty($model->minprice) ? $model->minprice : 0 ).'-'.$model->maxprice?>" readonly/>
+    <div id="amount-range">Цена: <span><?=(!empty($model->minprice) ? $model->minprice : 0 ).'-'.$model->maxprice?></span></div>
     <?php $this->widget('zii.widgets.jui.CJuiSliderInput', array(
             'model'=>$model,
             'attribute'=>'minprice',
             'maxAttribute'=>'maxprice',
             'event'=>'change',
             'options'=>array(
-                'step'=>1000,
+                'step'=>10000,
                 'animate'=>true,
                 'values'=>array((!empty($model->minprice) ? $model->minprice : 0 ),$model->maxprice),
                 'range'=>true,
                 'min'=>(!empty($model->minprice) ? $model->minprice : 0 ),
                 'max'=>$model->maxprice,
-                'slide'=>'js:function(event,ui){$("#amount-range").val("Цена: "+ui.values[0]+\'-\'+ui.values[1])}',
+                'slide'=>'js:function(event,ui){$("#amount-range span").html(ui.values[0]+\'-\'+ui.values[1])}',
                 'stop'=>'js:function(e,ui){ v=ui.values; jQuery(\'#Adverts_minprice\').val(v[0]); jQuery(\'#Adverts_minprice_end\').val(v[1]);find() }',
             ),
         ));
@@ -69,16 +69,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 <script>
     $(document).ready(function(){       
-        $('#Adverts_minprice_slider').slider({
-            'step':1000,
-            'animate':true,
-            'values':[<?=$model->minprice?>,<?=$model->maxprice?>],
-            'range':true,
-            'min':<?=$model->filterminprice?>,
-            'max':<?=$model->filtermaxprice?>,
-            'slide':function(e,ui){$("#amount-range").val('Цена: '+ui.values[0]+'-'+ui.values[1]);},
-            'stop':function(e,ui){ v=ui.values; jQuery('#Adverts_minprice').val(v[0]); jQuery('#Adverts_minprice_end').val(v[1]);find() }
-        });
+       
         $('#rub_find a').click(function(){
             var el = $(this);
 
@@ -86,13 +77,15 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
                 el.siblings('a.hide').removeClass('hide').show("fast"); 
                $('#filters').hide(500);
             }else{                  
+                el.siblings('a').addClass('hide').hide("fast");
+
                 $("#sub_find").load("/art/subajax", 
                 {Adverts: {rub_id: el.attr('data-id')}}, 
                 function(){
-                    el.siblings('a').addClass('hide').hide("fast");
                     $('#filters').show(500);
                 }, 'post');  
             }    
         });
+        $('select:visible').selectpicker();
     });
 </script>

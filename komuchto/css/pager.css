@@ -1,4 +1,4 @@
-.pager{position:fixed; bottom:0; width:770px}
+.pager{position:relative; bottom:0; width:600px}
 .h900 .pager{position:absolute;}
 .pager .page{
     width: 10px;
@@ -17,4 +17,6 @@
 .list-view .pager{text-align: center}
 .pager .last, .pager .first{display:none}
 .pager .hidden{visibility: visible;}
+.pager ul.yiiPager{margin:0}
 .pager ul.yiiPager .hidden a{ color: #dedede; cursor: default}
+.pager ul.yiiPager .next a, .pager ul.yiiPager .previous a{margin-top:0}

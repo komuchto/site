@@ -11,7 +11,7 @@
     }
     $year[-1]='Год выпуска';
     echo CHtml::dropDownList('Adverts[year]', 0, array_reverse($year),array('onchange'=>'find()'));
-    echo '<input type="text" id="amount-range-probeg" style="border:0; font-weight:bold;" value="Пробег: '.$model->minprobeg.'-'.$model->maxprobeg.'" readonly/>';
+    echo '<div id="amount-range-probeg">Пробег: <span>'.$model->minprobeg.'-'.$model->maxprobeg.'</span></div>';
     $this->widget('zii.widgets.jui.CJuiSliderInput', array(
             'model'=>$model,
             'attribute'=>'minprobeg',
@@ -24,11 +24,11 @@
                 'range'=>true,
                 'min'=>0,
                 'max'=>500000,
-                'slide'=>'js:function(event,ui){$("#amount-range-probeg").val("Пробег: "+ui.values[0]+\'-\'+ui.values[1])}',
+                'slide'=>'js:function(event,ui){$("#amount-range-probeg span").html(ui.values[0]+\'-\'+ui.values[1])}',
                 'stop'=>'js:function(e,ui){ v=ui.values; jQuery(\'#Adverts_minprobeg\').val(v[0]); jQuery(\'#Adverts_minprobeg_end\').val(v[1]);find() }',
             ),
         ));
-    echo '<input type="text" id="amount-range-volume" style="border:0; font-weight:bold;" value="Объем двигателя: '.$model->minvolume.'-'.$model->maxvolume.'" readonly/>';
+    echo '<div id="amount-range-volume">Объем двигателя: <span>'.$model->minvolume.'-'.$model->maxvolume.'</span></div>';
     $this->widget('zii.widgets.jui.CJuiSliderInput', array(
             'model'=>$model,
             'attribute'=>'minvolume',
@@ -41,7 +41,7 @@
                 'range'=>true,
                 'min'=>0,
                 'max'=>10,
-                'slide'=>'js:function(event,ui){$("#amount-range-volume").val("Объем двигателя: "+ui.values[0]+\'-\'+ui.values[1])}',
+                'slide'=>'js:function(event,ui){$("#amount-range-volume span").html(ui.values[0]+\'-\'+ui.values[1])}',
                 'stop'=>'js:function(e,ui){ v=ui.values; jQuery(\'#Adverts_minvolume\').val(v[0]); jQuery(\'#Adverts_minvolume_end\').val(v[1]);find() }',
             ),
         ));
@@ -49,7 +49,7 @@
 <?if($_POST['Adverts']['rub_id'] == 2){
     echo CHtml::dropDownList('Adverts[act]', 0, CHtml::listData(Act::model()->findAll(),'id','name'), array('onchange'=>'find()'));
     
-    echo '<input type="text" id="amount-range-etazh" style="border:0; font-weight:bold;" value="Этаж: '.$model->minetazh.'-'.$model->maxetazh.'" readonly/>';
+    echo '<div id="amount-range-etazh"> Этаж: <span>'.$model->minetazh.'-'.$model->maxetazh.'</span></div>';
     $this->widget('zii.widgets.jui.CJuiSliderInput', array(
             'model'=>$model,
             'attribute'=>'minetazh',
@@ -62,12 +62,12 @@
                 'range'=>true,
                 'min'=>1,
                 'max'=>50,
-                'slide'=>'js:function(event,ui){$("#amount-range-etazh").val("Этаж: "+ui.values[0]+\'-\'+ui.values[1])}',
+                'slide'=>'js:function(event,ui){$("#amount-range-etazh span").html(ui.values[0]+\'-\'+ui.values[1])}',
                 'stop'=>'js:function(e,ui){ v=ui.values; jQuery(\'#Adverts_minetazh\').val(v[0]); jQuery(\'#Adverts_minetazh_end\').val(v[1]);find() }',
             ),
         ));
     
-    echo '<input type="text" id="amount-range-komnaty-count" style="border:0; font-weight:bold;" value="Кол-во комнат: '.$model->minkomnaty_count.'-'.$model->maxkomnaty_count.'" readonly/>';
+    echo '<div id="amount-range-komnaty-count">Кол-во комнат: <span>'.$model->minkomnaty_count.'-'.$model->maxkomnaty_count.'</span></div>';
     $this->widget('zii.widgets.jui.CJuiSliderInput', array(
             'model'=>$model,
             'attribute'=>'minkomnaty_count',
@@ -80,12 +80,12 @@
                 'range'=>true,
                 'min'=>1,
                 'max'=>10,
-                'slide'=>'js:function(event,ui){$("#amount-range-komnaty-count").val("Кол-во комнат: "+ui.values[0]+\'-\'+ui.values[1])}',
+                'slide'=>'js:function(event,ui){$("#amount-range-komnaty-count span").html(ui.values[0]+\'-\'+ui.values[1])}',
                 'stop'=>'js:function(e,ui){ v=ui.values; jQuery(\'#Adverts_minkomnaty_count\').val(v[0]); jQuery(\'#Adverts_minkomnaty_count_end\').val(v[1]);find() }',
             ),
         ));
     
-    echo '<input type="text" id="amount-range-etazh-build" style="border:0; font-weight:bold;" value="Этажей в доме: '.$model->minetazh_build.'-'.$model->maxetazh_build.'" readonly/>';
+    echo '<div id="amount-range-etazh-build">Этажей в доме: <span>'.$model->minetazh_build.'-'.$model->maxetazh_build.'</span></div>';
     $this->widget('zii.widgets.jui.CJuiSliderInput', array(
             'model'=>$model,
             'attribute'=>'minetazh_build',
@@ -98,13 +98,13 @@
                 'range'=>true,
                 'min'=>1,
                 'max'=>30,
-                'slide'=>'js:function(event,ui){$("#amount-range-etazh-build").val("Этажей в доме: "+ui.values[0]+\'-\'+ui.values[1])}',
+                'slide'=>'js:function(event,ui){$("#amount-range-etazh-build span").html(ui.values[0]+\'-\'+ui.values[1])}',
                 'stop'=>'js:function(e,ui){ v=ui.values; jQuery(\'#Adverts_minetazh_build\').val(v[0]); jQuery(\'#Adverts_minetazh_build_end\').val(v[1]);find() }',
             ),
         ));
     echo CHtml::dropDownList('Adverts[vid_object]', 0, CHtml::listData(VidObject::model()->findAll(),'id','name'),array('onchange'=>'find()'));
     echo CHtml::dropDownList('Adverts[type_object]', 0, CHtml::listData(TypeObject::model()->findAll(),'id','name'),array('onchange'=>'find()'));
-    echo '<input type="text" id="amount-range-plosch" style="border:0; font-weight:bold;" value="Площадь: '.$model->minplosch.'-'.$model->maxplosch.'" readonly/>';
+    echo '<div id="amount-range-plosch">Площадь: <span>'.$model->minplosch.'-'.$model->maxplosch.'</span></div>';
     $this->widget('zii.widgets.jui.CJuiSliderInput', array(
             'model'=>$model,
             'attribute'=>'minplosch',
@@ -117,7 +117,7 @@
                 'range'=>true,
                 'min'=>1,
                 'max'=>500,
-                'slide'=>'js:function(event,ui){$("#amount-range-plosch").val("Площадь: "+ui.values[0]+\'-\'+ui.values[1])}',
+                'slide'=>'js:function(event,ui){$("#amount-range-plosch span").html(ui.values[0]+\'-\'+ui.values[1])}',
                 'stop'=>'js:function(e,ui){ v=ui.values; jQuery(\'#Adverts_minplosch\').val(v[0]); jQuery(\'#Adverts_minplosch_end\').val(v[1]);find() }',
             ),
         ));
@@ -125,3 +125,9 @@
 ?>
 
 </div>
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/bootstrap-select.min.js"></script>
+<script>
+    $(function(){
+        $('select:visible').selectpicker();
+    });
+</script>

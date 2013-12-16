@@ -35,15 +35,17 @@ var render = function(bool){
         $("#content").load(pathname + hash, 
         function(){}, 'post');  
     }
-    
-    if(bool != true && hash > 10000000){
+
+    if(hash > 10000000){
         findByPathname(hash);
        
-        $(".left").load("/art/filter", 
-        {pathname: hash}, 
-        function(){
-            $('#filters').show();
-        }, 'post');
+       if(bool != true){
+            $(".left").load("/art/filter", 
+            {pathname: hash}, 
+            function(){
+                $('#filters').show();
+            }, 'post');
+       }
     }
     
 }
@@ -138,4 +140,6 @@ $(window).mousewheel(function(event) {
     */
 });
 
+$(document).ready(function(){
     
+});

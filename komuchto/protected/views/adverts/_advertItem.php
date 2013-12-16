@@ -1,4 +1,4 @@
-<div class="art">
+<div class="art" onclick="window.location='/#!<?=$data->id?>'">
     <?$img = explode(',', $data->img)?>
     <a href="/#!<?=$data->id?>" rel="tooltip" class="art-img">
         <img src="<?if(!empty($img[1])):?>/komuchto/images/art/<?=$img[1]?><?endif;?>" alt="">
