@@ -15,21 +15,21 @@ a.btn-link, a.btn-link:hover{border:0; padding:0;color:#01669a; background: none
 
 a.logo{float:left;width:181px;height:44px;background: url(/komuchto/images/logo.png)}
 #searchForm{margin-bottom: 0}
-#searchForm input{width:522px; border-right: 0;background: url(/komuchto/images/lupa.jpg) right no-repeat;padding:10px}
+#searchForm input{width:525px; border-right: 0;background: url(/komuchto/images/lupa.jpg) right no-repeat;padding:10px}
 #searchForm input:focus{-webkit-box-shadow:none;}
 select:focus{-webkit-box-shadow:none;}
 #searchForm button{color:#cc0001; margin-left: -4px; border-left: 0;padding: 11px 10px;}
 #searchForm button:hover, #searchForm button:focus{background: #fff;}
 #searchForm .search{float: right;margin-right: 10px}
-#searchForm a.btn-danger{background: #cc0001;padding: 11px 10px;margin-right: 2px;}
+#searchForm a.btn-danger{background: #cc0001;padding: 11px 7px;margin-right: 2px;}
 #searchForm a.user{background: url(/komuchto/images/user.jpg) no-repeat center #656565; height: 34px; width:20px; border: 0;}
 
 .container{position:relative;max-width:1000px}
 .container .left[class^='head']{margin-left: 0px}
 .container .left{position:relative;float:left;width: 204px;margin-top:46px;min-height: 744px;}
-.container .right{position:relative;float:left;width: 183px;margin-left: 8px;min-height: 790px;}
+.container .right{position:relative;float:left;width: 176px;margin-left: 12px;min-height: 790px;}
 
-.container #content{margin-left: 5px}
+.container #content{margin-left: 8px}
 .container #content h2{margin-top:10px;text-align: center; color:#01669a}
 .container #content .user-form{margin-top:20px}
 .container #content .user-form .row{margin-left:10px}
@@ -109,5 +109,5 @@ a.back{margin-top:26px;display:block}
 #content h4{margin:40px 0 0}
 
 footer{clear:both}
-.art-info, .user-info{font-style: italic; position:absolute; bottom:10px; font-size:12px}
+.art-info, .user-info{font-style: italic; position:absolute; bottom:10px; font-size:11px}
 .art-info span, .user-info span{color:#01669a}

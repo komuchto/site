@@ -125,21 +125,36 @@ class Adverts extends CActiveRecord
         
         if(isset($_POST['Adverts']['search'])) $criteria->compare('text', $_POST['Adverts']['search'], true);
         if(isset($_POST['Adverts']['act_id']) && $_POST['Adverts']['act_id'] > 0) $criteria->addCondition("t.act_id = ".$_POST['Adverts']['act_id']);
-        if(isset($_POST['Adverts']['transmission']) && $_POST['Adverts']['transmission'] > 0) $criteria->addCondition("t.transmission = ".$_POST['Adverts']['transmission']);
-        if(isset($_POST['Adverts']['type_object']) && $_POST['Adverts']['type_object'] > 0) $criteria->addCondition("t.type_object' = ".$_POST['Adverts']['type_object']);
         if(isset($_POST['Adverts']['rub_id']) && $_POST['Adverts']['rub_id'] > 0) $criteria->addCondition("t.rub_id = ".$_POST['Adverts']['rub_id']);
         if(isset($_POST['Adverts']['sub']) && $_POST['Adverts']['sub'] > 0) $criteria->addInCondition("t.sub_id", $_POST['Adverts']['sub']);  
         if(isset($_POST['Adverts']['city']) && $_POST['Adverts']['city'] > 0) $criteria->addCondition("t.city_id=".$_POST['Adverts']['city']);
-        if(isset($_POST['Adverts']['mark']) && $_POST['Adverts']['mark'] > 0) $criteria->addCondition("t.mark=".$_POST['Adverts']['mark']);
-        if(isset($_POST['Adverts']['drive']) && $_POST['Adverts']['drive'] > 0) $criteria->addCondition("t.drive=".$_POST['Adverts']['drive']);
-        if(isset($_POST['Adverts']['type_body']) && $_POST['Adverts']['type_body'] > 0) $criteria->addCondition("t.type_body=".$_POST['Adverts']['type_body']);
-        if(isset($_POST['Adverts']['year']) && $_POST['Adverts']['year'] > 0) $criteria->addCondition("t.year=".$_POST['Adverts']['year']);
         
-        if(isset($_POST['Adverts']['maxvolume']) && !empty($_POST['Adverts']['maxvolume'])) $criteria->addCondition("t.volume <= ".$_POST['Adverts']['maxvolume']);
-        if(isset($_POST['Adverts']['minvolume']) && !empty($_POST['Adverts']['minvolume'])) $criteria->addCondition("t.volume >= ".(int)$_POST['Adverts']['minvolume']);
-        if(isset($_POST['Adverts']['maxprobeg']) && !empty($_POST['Adverts']['maxprobeg'])) $criteria->addCondition("t.probeg <= ".$_POST['Adverts']['maxprobeg']);
-        if(isset($_POST['Adverts']['minprobeg']) && !empty($_POST['Adverts']['minprobeg'])) $criteria->addCondition("t.probeg >= ".(int)$_POST['Adverts']['minprobeg']);
+        if($_POST['Adverts']['rub_id'] == 1)
+        {
+            if(isset($_POST['Adverts']['transmission']) && $_POST['Adverts']['transmission'] > 0) $criteria->addCondition("t.transmission = ".$_POST['Adverts']['transmission']);
+            if(isset($_POST['Adverts']['mark']) && $_POST['Adverts']['mark'] > 0) $criteria->addCondition("t.mark=".$_POST['Adverts']['mark']);
+            if(isset($_POST['Adverts']['drive']) && $_POST['Adverts']['drive'] > 0) $criteria->addCondition("t.drive=".$_POST['Adverts']['drive']);
+            if(isset($_POST['Adverts']['type_body']) && $_POST['Adverts']['type_body'] > 0) $criteria->addCondition("t.type_body=".$_POST['Adverts']['type_body']);
+            if(isset($_POST['Adverts']['year']) && $_POST['Adverts']['year'] > 0) $criteria->addCondition("t.year=".$_POST['Adverts']['year']);
+            if(isset($_POST['Adverts']['maxvolume']) && !empty($_POST['Adverts']['maxvolume'])) $criteria->addCondition("t.volume <= ".$_POST['Adverts']['maxvolume']);
+            if(isset($_POST['Adverts']['minvolume']) && !empty($_POST['Adverts']['minvolume'])) $criteria->addCondition("t.volume >= ".(int)$_POST['Adverts']['minvolume']);
+            if(isset($_POST['Adverts']['maxprobeg']) && !empty($_POST['Adverts']['maxprobeg'])) $criteria->addCondition("t.probeg <= ".$_POST['Adverts']['maxprobeg']);
+            if(isset($_POST['Adverts']['minprobeg']) && !empty($_POST['Adverts']['minprobeg'])) $criteria->addCondition("t.probeg >= ".(int)$_POST['Adverts']['minprobeg']);       
+        }
         
+        if($_POST['Adverts']['rub_id'] == 2)
+        {
+            if(isset($_POST['Adverts']['maxetazh']) && !empty($_POST['Adverts']['maxetazh'])) $criteria->addCondition("t.etazh <= ".$_POST['Adverts']['maxetazh']);
+            if(isset($_POST['Adverts']['minetazh']) && !empty($_POST['Adverts']['minetazh'])) $criteria->addCondition("t.etazh >= ".(int)$_POST['Adverts']['minetazh']);
+            if(isset($_POST['Adverts']['maxkomnaty_count']) && !empty($_POST['Adverts']['maxkomnaty_count'])) $criteria->addCondition("t.komnaty_count <= ".$_POST['Adverts']['maxkomnaty_count']);
+            if(isset($_POST['Adverts']['minkomnaty_count']) && !empty($_POST['Adverts']['minkomnaty_count'])) $criteria->addCondition("t.komnaty_count >= ".(int)$_POST['Adverts']['minkomnaty_count']);
+            if(isset($_POST['Adverts']['maxetazh_build']) && !empty($_POST['Adverts']['maxetazh_build'])) $criteria->addCondition("t.etazh_build <= ".$_POST['Adverts']['maxetazh_build']);
+            if(isset($_POST['Adverts']['minetazh_build']) && !empty($_POST['Adverts']['minetazh_build'])) $criteria->addCondition("t.etazh_build >= ".(int)$_POST['Adverts']['minetazh_build']);
+            if(isset($_POST['Adverts']['maxplosch']) && !empty($_POST['Adverts']['maxplosch'])) $criteria->addCondition("t.plosch <= ".$_POST['Adverts']['maxplosch']);
+            if(isset($_POST['Adverts']['minplosch']) && !empty($_POST['Adverts']['minplosch'])) $criteria->addCondition("t.plosch >= ".(int)$_POST['Adverts']['minplosch']);
+            if(isset($_POST['Adverts']['type_object']) && $_POST['Adverts']['type_object'] > 0) $criteria->addCondition("t.type_object' = ".$_POST['Adverts']['type_object']);
+        }
+          
         if(isset($_POST['Adverts']['maxprice']) && !empty($_POST['Adverts']['maxprice'])) $criteria->addCondition("t.price <= ".$_POST['Adverts']['maxprice']);
         if(isset($_POST['Adverts']['minprice']) && !empty($_POST['Adverts']['minprice'])) $criteria->addCondition("t.price >= ".(int)$_POST['Adverts']['minprice']);
         
@@ -166,7 +181,9 @@ class Adverts extends CActiveRecord
     }
     
     public function find()
-    {
+    {       
+        $this->rub_id = $_POST['Adverts']['rub_id'];
+        
         $rub = Yii::app()->db->createCommand("SELECT rub.*, count(DISTINCT rub.id), count(adverts.id) as count FROM rub LEFT OUTER JOIN adverts ON  rub.id = adverts.rub_id GROUP BY rub.id")->queryAll(); 
         foreach($rub as $r){
             $rubs[$r['id']] = $r['name'].' <span>('.$r['count'].')</span>';
@@ -183,11 +200,13 @@ class Adverts extends CActiveRecord
         }
         $act = Act::model()->findAll();
         
-        $subs = Yii::app()->db->createCommand("SELECT sub.*, count(DISTINCT sub.id), count(adverts.id) as count FROM sub LEFT OUTER JOIN adverts ON  sub.id = adverts.sub_id WHERE sub.rub = ".(isset($_POST['Adverts']['rub_id'])? (int)$_POST['Adverts']['rub_id'] : '1')." GROUP BY sub.id")->queryAll();
+        $subs = Yii::app()->db->createCommand("SELECT sub.*, count(DISTINCT sub.id), count(adverts.id) as count FROM sub LEFT OUTER JOIN adverts ON  sub.id = adverts.sub_id GROUP BY sub.id")->queryAll();
         foreach($subs as $r){
-            $sub[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('data-id'=>$r['id'], 'onclick'=>'find($(this))', 'class'=>(isset($_POST['Adverts']['sub']) && in_array($r['id'], $_POST['Adverts']['sub']) ? 'active' : '' )));
+            $class = (isset($_POST['Adverts']['sub']) && in_array($r['id'], $_POST['Adverts']['sub']) ? 'active' : '' );
+            if($r['rub'] != $_POST['Adverts']['rub_id']) $class .= ' hide';
+            $sub[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('data-id'=>$r['id'], 'data-rub'=>$r['rub'], 'onclick'=>'find($(this))', 'class'=>$class));
         }
-
+        
         return array('rub'=>$rubs, 'act'=>$act, 'sub'=>$sub, 'rub_array'=>$rub_array);
     }
     
@@ -301,5 +320,21 @@ class Adverts extends CActiveRecord
         $this->maxvolume = round($price[0]->maxvolume, 1);
     }
     
+    public function nedv()
+    {
+        $criteria = new CDbCriteria;
+
+        $criteria->select='MAX(t.etazh) as maxetazh, MIN(t.etazh) as minetazh, MAX(t.komnaty_count) as maxkomnaty_count, MIN(t.komnaty_count) as minkomnaty_count, MAX(t.etazh_build) as maxetazh_build, MIN(t.etazh_build) as minetazh_build, MAX(t.plosch) as maxplosch, MIN(t.plosch) as minplosch, count(DISTINCT t.id) as count';
+        $data = $this->findAll($criteria);
+        $this->minetazh = $data[0]->minetazh; 
+        $this->maxetazh = $data[0]->maxetazh;
+        $this->minkomnaty_count = $data[0]->minkomnaty_count; 
+        $this->maxkomnaty_count = $data[0]->maxkomnaty_count;
+        $this->minetazh_build = $data[0]->minetazh_build; 
+        $this->maxetazh_build = $data[0]->maxetazh_build;
+        $this->minplosch = $data[0]->minplosch; 
+        $this->maxplosch = $data[0]->maxplosch;
+    }
+
 }
 ?>

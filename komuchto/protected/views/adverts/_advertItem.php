@@ -14,16 +14,16 @@
         <?if($data->user_id == Yii::app()->User->id):?><a href="/edit/<?=$data->id?>">Редактировать</a><?endif;?>
         <span class="date">
             <?php if(Yii::app()->dateFormatter->format('yMd', $data->created) == date('Ymd')){
-                echo 'Сегодня '.Yii::app()->dateFormatter->format('H:m', $data->created);
+                echo 'Сегодня '.Yii::app()->dateFormatter->format('H:mm', $data->created);
             }
             elseif(Yii::app()->dateFormatter->format('yMd', $data->created) == date('Ymd', strtotime('-1 day'))){
-                echo 'Вчера '.Yii::app()->dateFormatter->format('H:m', $data->created);
+                echo 'Вчера '.Yii::app()->dateFormatter->format('H:mm', $data->created);
             }else{
-                echo Yii::app()->dateFormatter->format('d MMMM yyyy H:m', $data->created);
+                echo Yii::app()->dateFormatter->format('d MMMM yyyy H:mm', $data->created);
             }?>
         </span>
     <span class="text"><?=mb_substr($data->text, 0, 100, 'UTF-8');?></span>
-    <span class="price"><?=$data->price?> руб.</span>
+    <span class="price"><?=number_format($data->price, 0, ' ', ' ')?> руб.</span>
     </div>
     
 </div>

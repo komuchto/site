@@ -14,17 +14,7 @@ var findByPathname = function(pathname){
     success:function(html){
         $('#content').replaceWith(html);
     }});
-}
-
-var otherParams = function(bool){
-    if(bool === true) {$( "#otherParams" ).empty(); return false;}
-    $.ajax({url:'art/otherparamsajax', data: 'Adverts[rub_id]='+bool,type:'POST',
-    success:function(msg){
-        $( "#otherParams" ).css('display','block').html( msg );
-        $(".otherParams").hide();
-        $(".otherParamsClose").css('display','block');
-    }});
-    
+   
 }
 
 var render = function(bool){
@@ -38,19 +28,24 @@ var render = function(bool){
 
     if(hash > 10000000){
         findByPathname(hash);
-       
-       if(bool != true){
-            $(".left").load("/art/filter", 
-            {pathname: hash}, 
-            function(){
-                $('#filters').show();
-            }, 'post');
-       }
+        
+        if(bool === 1){
+            $.ajax({url:'/art/find',data: 'pathname='+hash, type:'POST', dataType:'JSON',
+            success:function(data){
+                $('#rub_find a[data-id!=\''+data.Adverts.rub_id+'\']').addClass('hide');
+                $('#rub_find a[data-id=\''+data.Adverts.rub_id+'\']').addClass('active');
+                $('#sub_find a').hide();
+                $("div[class*='other-rub-']").hide();
+                $('#sub_find a[data-rub=\''+data.Adverts.rub_id+'\']').show(500);
+                $('.other-rub-'+data.Adverts.rub_id).show(500);
+                $('#filters').show(500); 
+            }});
+        }
     }
     
 }
 
-render();
+render(1);
 
 $(window).bind('hashchange', function(e) { 
     render(true);
@@ -88,8 +83,6 @@ var find = function(sub, search, rub, page){
         else if(!rub)
             query += '&Adverts[rub_id]='+$('#rub_find a.active').attr('data-id');
         
-        if(rub)
-             otherParams(rub.attr('data-id'));
     //});
     
     if($('.sorter a.created').hasClass('asc')) query += '&Adverts[sort]=created';
@@ -102,7 +95,7 @@ var find = function(sub, search, rub, page){
     if(page)
         query += '&Adverts_page='+page;
     
-    var data = $('#find').serialize()+(query ? query : "");
+    var data = $('#find').serialize()+(query ? encodeURI(query) : "");
     console.log(data);
     $.ajax({url:'/art/search', data: data,type:'POST',dataType:'json',
     success:function(msg){

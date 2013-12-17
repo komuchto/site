@@ -253,20 +253,14 @@ class AdvertsController extends Controller{
         echo json_encode(array('id'=>$id,'url'=>$uri));
     }
     
-    public function actionFilter()
+    public function actionFind()
     {
         if(isset($_POST['pathname']))
         {
             $query = Search::model()->findByPk($_POST['pathname']);
             parse_str($query->query, $_POST);
         } 
-        $model = new Adverts; 
-        foreach($_POST['Adverts'] as $k=>$v)
-        {
-            if($k != 'sort' && $k != 'search') $model->$k = $v;
-        }
-        $model->minmax();
-        $this->renderPartial('filters', array('model'=>$model));
+        echo json_encode($_POST);
     }
     
     public function actionDynamicrubric()
@@ -329,7 +323,6 @@ class AdvertsController extends Controller{
             }
         }    
     }
-    
     
     public function actionFish()
     {
