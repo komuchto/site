@@ -152,7 +152,7 @@ class Adverts extends CActiveRecord
             if(isset($_POST['Adverts']['minetazh_build']) && !empty($_POST['Adverts']['minetazh_build'])) $criteria->addCondition("t.etazh_build >= ".(int)$_POST['Adverts']['minetazh_build']);
             if(isset($_POST['Adverts']['maxplosch']) && !empty($_POST['Adverts']['maxplosch'])) $criteria->addCondition("t.plosch <= ".$_POST['Adverts']['maxplosch']);
             if(isset($_POST['Adverts']['minplosch']) && !empty($_POST['Adverts']['minplosch'])) $criteria->addCondition("t.plosch >= ".(int)$_POST['Adverts']['minplosch']);
-            if(isset($_POST['Adverts']['type_object']) && $_POST['Adverts']['type_object'] > 0) $criteria->addCondition("t.type_object' = ".$_POST['Adverts']['type_object']);
+            if(isset($_POST['Adverts']['type_object']) && $_POST['Adverts']['type_object'] > 0) $criteria->addCondition("t.type_object = ".$_POST['Adverts']['type_object']);
         }
           
         if(isset($_POST['Adverts']['maxprice']) && !empty($_POST['Adverts']['maxprice'])) $criteria->addCondition("t.price <= ".$_POST['Adverts']['maxprice']);
@@ -196,7 +196,7 @@ class Adverts extends CActiveRecord
             else                
                 $class = '';
                 
-            $rub_array[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('class'=>$class, 'onclick'=>'find(false, false, $(this))', 'data-id'=>$r['id']));
+            $rub_array[] = array('label'=>'<div>'.$r['name']."</div> <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('class'=>$class, 'onclick'=>'find(false, false, $(this))', 'data-id'=>$r['id']));
         }
         $act = Act::model()->findAll();
         
@@ -204,7 +204,7 @@ class Adverts extends CActiveRecord
         foreach($subs as $r){
             $class = (isset($_POST['Adverts']['sub']) && in_array($r['id'], $_POST['Adverts']['sub']) ? 'active' : '' );
             if($r['rub'] != $_POST['Adverts']['rub_id']) $class .= ' hide';
-            $sub[] = array('label'=>$r['name']." <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('data-id'=>$r['id'], 'data-rub'=>$r['rub'], 'onclick'=>'find($(this))', 'class'=>$class));
+            $sub[] = array('label'=>'<div>'.$r['name']."</div> <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('data-id'=>$r['id'], 'data-rub'=>$r['rub'], 'onclick'=>'find($(this))', 'class'=>$class));
         }
         
         return array('rub'=>$rubs, 'act'=>$act, 'sub'=>$sub, 'rub_array'=>$rub_array);

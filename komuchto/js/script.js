@@ -32,6 +32,15 @@ var render = function(bool){
         if(bool === 1){
             $.ajax({url:'/art/find',data: 'pathname='+hash, type:'POST', dataType:'JSON',
             success:function(data){
+                for(var s in data.Adverts.sub){
+                    $("#sub_find a[data-id='"+data.Adverts.sub[s]+"']").addClass('active');
+                }
+                for(var i in data.Adverts){
+                    $("select[name='Adverts["+i+"]'] option[value='"+data.Adverts[i]+"']").attr('selected', 'selected');
+                }
+                $('select').selectpicker('deselectAll');
+                $('select').selectpicker('render');
+                
                 $('#rub_find a[data-id!=\''+data.Adverts.rub_id+'\']').addClass('hide');
                 $('#rub_find a[data-id=\''+data.Adverts.rub_id+'\']').addClass('active');
                 $('#sub_find a').hide();
@@ -58,11 +67,11 @@ var fav = function(el){
     return false;
 }
 
-var find = function(sub, search, rub, page){
+var find = function(sub, search, rub){
     var query = "";
     var notQuery = 0;
     
-    if(sub){
+    if(sub && sub != 'pager'){
         if(sub.hasClass('active') == false)
             query = "&Adverts[sub][]="+sub.attr('data-id');
         else
@@ -90,10 +99,7 @@ var find = function(sub, search, rub, page){
     if($('.sorter a.price').hasClass('desc')) query += '&Adverts[sort]=price.desc'
     
     if($('.search input').attr('value') != '') query += '&Adverts[search]='+$('.search input').val();
-    //if($('.page.selected')) query += '&Adverts[page]='+$('.page.selected a').text();
-    
-    if(page)
-        query += '&Adverts_page='+page;
+    if(sub == 'pager') query += '&Adverts_page='+$('.page.selected a').text();
     
     var data = $('#find').serialize()+(query ? encodeURI(query) : "");
     console.log(data);

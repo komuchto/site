@@ -28,12 +28,20 @@
 <?php $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$favorits,
     'itemView'=>'/adverts/_advertItem',
+    'pager'=>array(
+        'cssFile'=>'/komuchto/css/pager.css',
+        'header'=>''
+    ),
     
 )); ?>
 <h4 style="clear:both">Мои объявления</h4>
 <?php $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$myAdverts,
     'itemView'=>'/adverts/_advertItem',
+    'pager'=>array(
+        'cssFile'=>'/komuchto/css/pager.css',
+        'header'=>''
+    ),
     
 )); ?>
 </div>

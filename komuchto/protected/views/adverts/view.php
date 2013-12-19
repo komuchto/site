@@ -11,11 +11,13 @@
     </div>
     <div class="clearfix"></div>
 <?if(!empty($model->img)):?>
-<?$img = explode(',', $model->img)?>
-<a class="img" href='/komuchto/images/art/<?=$img[0]?>'>
-	<img src="/komuchto/images/art/<?=$img[1]?>">
-</a>
+    <?$img = explode(',', $model->img)?>
+<?else:?>
+    <?$img = array('nofoto.jpg', 'nofoto.jpg')?>
 <?endif;?>
+<a class="img" href='/komuchto/images/art/<?=$img[0]?>'>
+        <img src="/komuchto/images/art/<?=$img[1]?>">
+</a>
 <div id="carousel">
         <?if($model->img1): $img1 = explode(',', $model->img1)?>
             <div class="slide"><a class="img" href="/komuchto/images/art/<?=$img1[0]?>"><img height="50" src="/komuchto/images/art/<?=$img1[1]?>"></a></div>

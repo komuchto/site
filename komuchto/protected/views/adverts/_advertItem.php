@@ -1,5 +1,11 @@
 <div class="art" onclick="window.location='/#!<?=$data->id?>'">
-    <?$img = explode(',', $data->img)?>
+    <?if(!empty($data->img)):?>
+        <?$img = explode(',', $data->img)?>
+    <?else:?>
+        <?$img = array(1=>'nofoto.jpg')?>
+    <?endif;?>
+
+    
     <a href="/#!<?=$data->id?>" rel="tooltip" class="art-img">
         <img src="<?if(!empty($img[1])):?>/komuchto/images/art/<?=$img[1]?><?endif;?>" alt="">
     </a>
