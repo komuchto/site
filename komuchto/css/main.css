@@ -53,12 +53,11 @@ select:focus{-webkit-box-shadow:none;}
 #rub_find a.active:before{height:0}
 #rub_find a.active{margin-top:-37px}
 #filters{display:none;margin-top: -17px;}
-#sub_find .btn, #rub_find a{border:0; border-left: 3px solid #dedede; margin:2px 0;width: 177px; position: relative;}
-#rub_find a:before, #sub_find a + a:before{content:""; width: 100%; height: 1px; display: block; position:absolute;  background: #dedede; margin-left: -13px; top: -2px}
+#sub_find .btn, #rub_find a{border:0; margin:2px 0;width: 177px; position: relative;}
+#rub_find a:before, #sub_find a + a:before{content:""; width: 100%; height: 1px; display: block; position:absolute;  background: #dedede; margin-left: -10px; top: -2px}
 #rub_find a:last-child:after, #sub_find a:last-child:after{content:""; width: 100%; height: 1px; display: block; position:absolute;  background: #dedede; margin-left: -13px; bottom: -2px}
-#rub_find a{border-right: 1px solid #dedede}
 #sub_find .btn:hover, #sub_find .btn.active, #rub_find .btn:hover{background-color: #e6eff6; color:#01669a}
-#sub_find .btn.active, #sub_find .btn.active, #rub_find .btn:hover{border-left: 3px solid #01669a;}
+
 #rub_find a div, #sub_find a div{float:left;width: 125px;word-wrap: break-word;white-space:normal}
 #find .ui-state-default, #find .ui-slider-range{background: #01669a;width:4px;}
 .btn-group, .btn-group .btn{width: 200px;text-align: left}
