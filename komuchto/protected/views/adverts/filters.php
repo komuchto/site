@@ -33,6 +33,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     <div class="select sub">
     <?php// echo $form->dropDownListRow($model, 'city', CHtml::listData(City::model()->findAll(),'id','name'), array('labelOptions' => array("label" => false),'onchange'=>'find()','class'=>'selectpicker')); ?>
     </div>
+    <div class="select">
     <div id="amount-range">Цена: <span><?=(!empty($model->minprice) ? $model->minprice : 0 ).'-'.$model->maxprice?></span></div>
     <?php $this->widget('zii.widgets.jui.CJuiSliderInput', array(
             'model'=>$model,
@@ -51,6 +52,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
             ),
         ));
       ?>
+    </div>
     <!-- Доп Фильтры -->
     <!--
     <?php $this->widget('bootstrap.widgets.TbButton', array(
@@ -209,15 +211,17 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
             var el = $(this);
 
             if(el.siblings('a.hide').length){
-                el.siblings('a.hide').removeClass('hide').show("fast"); 
-               $('#filters').hide(500);
+                el.siblings('a.hide').removeClass('hide').show("fast");
+                $('#sub_find a').removeClass('active');
+                $('#filters').hide();
+                find();
             }else{                  
                 el.siblings('a').addClass('hide').hide("fast");
                 $('#sub_find a').hide();
                 $("div[class*='other-rub-']").hide();
-                $('#sub_find a[data-rub=\''+el.attr('data-id')+'\']').show(500);
-                $('.other-rub-'+el.attr('data-id')).show(500);
-                $('#filters').show(500); 
+                $('#sub_find a[data-rub=\''+el.attr('data-id')+'\']').show();
+                $('.other-rub-'+el.attr('data-id')).show();
+                $('#filters').show(); 
             }    
         });
         

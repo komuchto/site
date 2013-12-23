@@ -14,11 +14,6 @@
         <?php echo $form->label($model, 'city_id', array('label' => 'Город')); ?>
         <?php echo $form->dropDownList($model,'city_id', CHtml::listData(City::model()->findAll(),'id','name')) ?>
     </div>
-    
-    <div class="row">
-        <?php echo $form->label($model, 'act_id', array('label' => 'Действие')); ?>
-        <?php echo $form->dropDownList($model,'act_id', CHtml::listData(Act::model()->findAll('type=:type', array(':type'=>0)),'id','name')) ?>
-    </div>
  
    <div class="row">
         <?php echo $form->label($model, 'rub_id', array('label' => 'Рубрика')); ?>
@@ -26,22 +21,12 @@
             array(
                 'ajax' => array(
                 'type'=>'POST', //request type
-                'url'=>CController::createUrl('/adverts/dynamicrubric'), //url to call.
-                'update'=>'#Adverts_sub_id', //selector to update
+                'url'=>CController::createUrl('/adverts/addotherparamsajax'), //url to call.
+                'update'=>'#other', //selector to update
             ))); ?>
     </div>
     
-    <div class="row">
-        <?php echo $form->label($model, 'sub_id', array('label' => 'Подрубрика')); ?>
-        <?php echo $form->dropDownList($model,'sub_id', CHtml::listData(Sub::model()->findAll('rub=:rub or rub=0', array(':rub'=>1)),'id','name'),
-            array(
-                'ajax' => array(
-                'type'=>'POST', //request type
-                'url'=>CController::createUrl('/adverts/addotherparamsajax'), //url to call.
-                'update'=>'#other', //selector to update
-            )));
-        ?>
-    </div>
+    
     <div id="other">
         
     </div>

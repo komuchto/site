@@ -229,6 +229,8 @@ class Adverts extends CActiveRecord
         
         $this->minprice = (isset($_POST['Adverts']['minprice']) ? $_POST['Adverts']['minprice'] : $this->filterminprice );
         $this->maxprice = (isset($_POST['Adverts']['maxprice']) ? $_POST['Adverts']['maxprice'] : $this->filtermaxprice );
+        $this->minprice = round($this->minprice, -4);
+        $this->maxprice = round($this->maxprice, -4);
     }
     
     public function fish()

@@ -4,12 +4,12 @@ var getArtOnPage = function(){
         var c = ($(window).height() - 256) / 91;
         //$('.art').css('height', (h/c+91) + 'px');
     }
-    $('#content').css('height', ($(window).height() - 256) + 'px')
+    //$('#content').css('height', ($(window).height() - 256) + 'px')
     return ($(window).height() >= 900) ? c : 0;
 }
 
 var findByPathname = function(pathname){
-    var height = '&height='+ getArtOnPage();
+    var height = '&height=0';+ getArtOnPage();
     $.ajax({url:'/art/listajax',data: 'pathname='+pathname, type:'POST',
     success:function(html){
         $('#content').replaceWith(html);
@@ -107,14 +107,14 @@ var find = function(sub, search, rub){
     success:function(msg){
         window.location.hash = '!'+msg.id;
     }});
-    var height = '&height='+ getArtOnPage();
+    var height = '&height=0';//+ getArtOnPage();
     $.ajax({url:'/art/listajax',data: data + height, type:'POST',
     success:function(html){
         $('#content').replaceWith(html);
         if($(window).height() >= 900){
             var h = $(window).height() - 256 - $('.items').height();
             var c = ($(window).height() - 256) / 91;
-            $('.art').css('height', (h/c+91) + 'px');
+            //$('.art').css('height', (h/c+91) + 'px');
         }
     }});
 }

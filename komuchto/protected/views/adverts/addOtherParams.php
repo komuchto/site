@@ -1,4 +1,7 @@
 <div class="row">
+    <?php echo '<label>Подрубрика</label>'.CHtml::dropDownList('Adverts[sub_id]', 0, CHtml::listData(Sub::model()->findAll('rub=:rub or rub=0', array(':rub'=>$_POST['Adverts']['rub_id'])),'id','name'));?>
+</div>
+<div class="row">
 <?if($_POST['Adverts']['rub_id'] == 1)
 {
     echo '<label>Марка</label>'.CHtml::dropDownList('Adverts[mark]', 0, CHtml::listData(Mark::model()->findAll(),'id','name'));
