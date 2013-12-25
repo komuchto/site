@@ -196,7 +196,7 @@ class Adverts extends CActiveRecord
             else                
                 $class = '';
                 
-            $rub_array[] = array('label'=>'<div>'.$r['name']."</div> <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('class'=>$class, 'onclick'=>'find(false, false, $(this))', 'data-id'=>$r['id']));
+            $rub_array[] = array('label'=>'<div class="icon"></div><div>'.$r['name']."</div> <span>(".$r['count'].")</span>", 'encodeLabel'=>false, 'htmlOptions'=>array('class'=>$class, 'onclick'=>'find(false, false, $(this))', 'data-id'=>$r['id']));
         }
         $act = Act::model()->findAll();
         

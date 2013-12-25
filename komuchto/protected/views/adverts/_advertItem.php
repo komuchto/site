@@ -15,7 +15,7 @@
         $favorits_users[] = $f->user;
     ?>
     <div class="info">
-        <a onclick="fav(this);return false" class="fav <?=(in_array(Yii::app()->User->id, $favorits_users) ? "active" : "")?>" href="/fav/<?=$data->id?>"></a>
+        <a class="fav <?=(in_array(Yii::app()->User->id, $favorits_users) ? "active" : "")?>" href="/fav/<?=$data->id?>"></a>
         <a href="/#!<?=$data->id?>"><?=$data->act->name?> <?=  strip_tags($data->sub->name)?></a>
         <?if($data->user_id == Yii::app()->User->id):?><a href="/edit/<?=$data->id?>">Редактировать</a><?endif;?>
         <span class="date">

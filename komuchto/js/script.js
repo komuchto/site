@@ -60,12 +60,12 @@ $(window).bind('hashchange', function(e) {
     render(true);
 });
 
-var fav = function(el){
-    $.ajax({url: $(el).attr('href')}).done(function(){
-        $(el).toggleClass('active');
-    });
+$('a.fav').click(function(event){
+    $(this).toggleClass('active');
+    $.ajax({url: $(this).attr('href')});
+    //event.stopPropagation();
     return false;
-}
+});
 
 var find = function(sub, search, rub){
     var query = "";

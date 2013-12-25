@@ -15,7 +15,7 @@
 <?else:?>
     <?$img = array('nofoto.jpg', 'nofoto.jpg')?>
 <?endif;?>
-<a class="img" href='/komuchto/images/art/<?=$img[0]?>'>
+<a class="head-img" href='/komuchto/images/art/<?=$img[0]?>'>
         <img src="/komuchto/images/art/<?=$img[1]?>">
 </a>
 <div id="carousel">
@@ -35,7 +35,7 @@
 
 <div class="text"><?=$model->text?></div>
 <div class="info">
-<div class="price"><?=$model->price?> руб.</div>
+<div class="price"><?=number_format($model->price, 0, ' ', ' ')?> руб.</div>
 <div class="user">Продавец: <?=$model->user->name?></div>
 <div class="phone">Телефон: <?=$model->phone?></div>
 <div class="city">Город: <?=$model->city->name?></div>
@@ -55,7 +55,7 @@
             });
         }
         $('.artView').magnificPopup({
-                delegate: 'a.img',
+                delegate: 'a.img, a.head-img',
                 type: 'image',
                 gallery: {
                   enabled: true,

@@ -49,6 +49,32 @@ select:focus{-webkit-box-shadow:none;}
 #find .select.sub select:first-child{border-top: 1px solid #dedede;margin-top:10px;margin-bottom:0;}
 #find .select.sub select, #find #otherParams select{ background: url(/komuchto/images/select.png) no-repeat 75% 50%}
 #rub_find{margin-top:-3px}
+
+#rub_find a[data-id='2'] div.icon{background:url(/komuchto/images/icons.png) -16px 0px no-repeat; width:16px; height:14px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='1'] div.icon{background:url(/komuchto/images/icons.png) -16px -15px no-repeat; width:16px; height:14px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='10'] div.icon{background:url(/komuchto/images/icons.png) -16px -29px no-repeat; width:16px; height:15px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='9'] div.icon{background:url(/komuchto/images/icons.png) -16px -45px no-repeat; width:16px; height:15px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='5'] div.icon{background:url(/komuchto/images/icons.png) -16px -60px no-repeat; width:16px; height:14px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='4'] div.icon{background:url(/komuchto/images/icons.png) -16px -75px no-repeat; width:16px; height:16px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='7'] div.icon{background:url(/komuchto/images/icons.png) -16px -91px no-repeat; width:16px; height:15px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='8'] div.icon{background:url(/komuchto/images/icons.png) -16px -107px no-repeat; width:16px; height:15px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='6'] div.icon{background:url(/komuchto/images/icons.png) -16px -122px no-repeat; width:16px; height:16px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='3'] div.icon{background:url(/komuchto/images/icons.png) -16px -138px no-repeat; width:16px; height:14px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='11'] div.icon{background:url(/komuchto/images/icons.png) -16px -152px no-repeat; width:16px; height:16px;margin: 2px 4px 0 0;}
+
+#rub_find a[data-id='2']:hover div.icon{background:url(/komuchto/images/icons.png) 0px 0px no-repeat; width:16px; height:14px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='1']:hover div.icon{background:url(/komuchto/images/icons.png) 0px -15px no-repeat; width:16px; height:14px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='10']:hover div.icon{background:url(/komuchto/images/icons.png) 0px -29px no-repeat; width:16px; height:15px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='9']:hover div.icon{background:url(/komuchto/images/icons.png) 0px -45px no-repeat; width:16px; height:15px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='5']:hover div.icon{background:url(/komuchto/images/icons.png) 0px -60px no-repeat; width:16px; height:14px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='4']:hover div.icon{background:url(/komuchto/images/icons.png) 0px -75px no-repeat; width:16px; height:16px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='7']:hover div.icon{background:url(/komuchto/images/icons.png) 0px -91px no-repeat; width:16px; height:15px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='8']:hover div.icon{background:url(/komuchto/images/icons.png) 0px -107px no-repeat; width:16px; height:15px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='6']:hover div.icon{background:url(/komuchto/images/icons.png) 0px -123px no-repeat; width:16px; height:16px;margin: 2px 4px 0 0;}
+#rub_find a[data-id='3']:hover div.icon{background:url(/komuchto/images/icons.png) 0px -140px no-repeat; width:16px; height:13px;margin: 4px 4px 0 0;}
+#rub_find a[data-id='11']:hover div.icon{background:url(/komuchto/images/icons.png) 0px -153px no-repeat; width:16px; height:16px;margin: 2px 4px 0 0;}
+#rub_find a.active div.icon, #rub_find a.active:hover div.icon{background:url(/komuchto/images/rub.png)no-repeat; width:16px; height:16px;margin: 2px 4px 0 0;}
+
 #rub_find a.active, #rub_find a.active:hover{border:0; border-bottom: 1px solid #01669a; background: transparent;font-weight: bold; color:#01669a;}
 #rub_find a.active:before{height:0}
 #rub_find a.active{margin-top:-37px}
@@ -81,8 +107,8 @@ select:focus{-webkit-box-shadow:none;}
 .art{border-top:1px solid #dedede;clear:both;padding:5px 0; overflow: hidden;}
 .art img{height:107px;max-width:none;margin:0 auto}
 .art .art-img{float:left;width:107px;height:107px;overflow:hidden;}
-.fav{float:left; width:19px; height:18px;background: url(/komuchto/images/fav_d.png) no-repeat; margin-left:8px}
-.fav.active{background: url(/komuchto/images/fav.png) no-repeat}
+.fav{float:left; width:16px; height:18px;background: url(/komuchto/images/fav.png) -16px no-repeat; margin:-1px 12px 0px 8px; }
+.fav.active{background: url(/komuchto/images/fav.png) no-repeat; width:16px;margin-top:0px}
 .art:hover{background: #e6eff6;cursor:pointer}
 .art .info{padding: 0 5px;width: 586px;}
 .art .info a{font-weight: bold}
@@ -96,8 +122,10 @@ a.back{margin-top:26px;display:block}
 .artView .date{float:right;padding:5px}
 .artView .artHead .title{font-size:18px; color:#0088cc; float:left; padding:15px 5px}
 .artView .artHead .fav{margin-top:15px}
+.artView .head-img{float: left; width:448px;height:420px;text-align: center;border: 1px solid #dedede;position:relative}
+.artView .head-img img{position:absolute;margin:auto;top:0;bottom:0;left:0;right:0;}
 .artView div.price{font-size:20px; font-weight:bold; color: #0088cc; padding:20px 0}
-.artView .text{margin:10px 0}
+.artView .text{margin:10px 0;clear:both}
 .artView .bx-wrapper{float:right}
 .artView .bx-wrapper img, .artView .bx-wrapper ul{margin:0}
 .artView .bx-wrapper img{margin: 5px 0}
