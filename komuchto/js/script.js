@@ -99,8 +99,8 @@ var find = function(sub, search, rub){
     if($('.sorter a.price').hasClass('desc')) query += '&Adverts[sort]=price.desc'
     
     if($('.search input').attr('value') != '') query += '&Adverts[search]='+$('.search input').val();
-    if(sub == 'pager') query += '&Adverts_page='+$('.page.selected a').text();
-    
+    if(sub == 'pager') query += '&'+$('.pager .selected a').attr('href').split('?')[1];
+
     var data = $('#find').serialize()+(query ? encodeURI(query) : "");
     console.log(data);
     $.ajax({url:'/art/search', data: data,type:'POST',dataType:'json',

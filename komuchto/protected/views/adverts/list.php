@@ -16,7 +16,7 @@
 </div>
 <script>
     $(function(){
-        $('li.page a').click(function(){
+        $('.pager li a').click(function(){
           $(this).parent('li').addClass('selected').siblings('li').removeClass('selected');
           find('pager')
           return false;
