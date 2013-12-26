@@ -31,6 +31,10 @@ return array(
 	'defaultController'=>'site',
 	// application components
 	'components'=>array(
+            'sphinx' => array(
+                'class' => 'system.db.CDbConnection',
+                'connectionString' => 'mysql:host=localhost;port=3312',
+            ),
             'session' => array (
                 'sessionName' => 'PHPSESSID',
                 'class'=> 'CDbHttpSession',

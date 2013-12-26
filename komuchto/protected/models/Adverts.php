@@ -97,6 +97,7 @@ class Adverts extends CActiveRecord
     
     public function search()
     {
+
         $advertsPerPage = (isset($_POST['height']) && $_POST['height'] > 0) ? floor($_POST['height']) : Yii::app()->params['advertsPerPage'];
         if(isset($_POST['pathname']))
         {
@@ -111,7 +112,26 @@ class Adverts extends CActiveRecord
         $criteria = new CDbCriteria;
         $criteria->with = array('act', 'sub', 'rub', 'favorits_adv');
         $criteria->condition = "t.moderate = '1'";
+        
+        //sphinx
+        if(isset($_POST['Adverts']['search']))
+        {
+            $sSql = 'SELECT id
+                FROM advertsIndex
+                WHERE
+                    MATCH(' . Yii::app()->sphinx->quoteValue($_POST['Adverts']['search']) . ')';
 
+            $ids = Yii::app()->sphinx
+              ->createCommand($sSql)
+              ->queryColumn();
+            
+            $criteria = new CDbCriteria;
+            $criteria->with = array('act', 'sub', 'rub', 'favorits_adv');
+            $criteria->condition = "t.moderate = '1'";
+            $criteria->addInCondition('t.id', $ids);
+        }
+        //endsphinx
+        
         if(!Yii::app()->User->isGuest){
             $favorits = Favorits::model()->findAll('user=:id', array(':id'=>Yii::app()->User->id));
             foreach($favorits as $f){
@@ -123,13 +143,13 @@ class Adverts extends CActiveRecord
         
         if(isset($_POST['Adverts_page'])) $_GET['Adverts_page'] = $_POST['Adverts_page'];
         
-        if(isset($_POST['Adverts']['search'])) $criteria->compare('text', $_POST['Adverts']['search'], true);
+        //if(isset($_POST['Adverts']['search'])) $criteria->compare('text', $_POST['Adverts']['search'], true);
         if(isset($_POST['Adverts']['act_id']) && $_POST['Adverts']['act_id'] > 0) $criteria->addCondition("t.act_id = ".$_POST['Adverts']['act_id']);
         if(isset($_POST['Adverts']['rub_id']) && $_POST['Adverts']['rub_id'] > 0) $criteria->addCondition("t.rub_id = ".$_POST['Adverts']['rub_id']);
         if(isset($_POST['Adverts']['sub']) && $_POST['Adverts']['sub'] > 0) $criteria->addInCondition("t.sub_id", $_POST['Adverts']['sub']);  
         if(isset($_POST['Adverts']['city']) && $_POST['Adverts']['city'] > 0) $criteria->addCondition("t.city_id=".$_POST['Adverts']['city']);
         
-        if($_POST['Adverts']['rub_id'] == 1)
+        if($_POST['Adverts']['rub_id'] == 1 && !isset($_POST['Adverts']['search']))
         {
             if(isset($_POST['Adverts']['transmission']) && $_POST['Adverts']['transmission'] > 0) $criteria->addCondition("t.transmission = ".$_POST['Adverts']['transmission']);
             if(isset($_POST['Adverts']['mark']) && $_POST['Adverts']['mark'] > 0) $criteria->addCondition("t.mark=".$_POST['Adverts']['mark']);
@@ -142,7 +162,7 @@ class Adverts extends CActiveRecord
             if(isset($_POST['Adverts']['minprobeg']) && !empty($_POST['Adverts']['minprobeg'])) $criteria->addCondition("t.probeg >= ".(int)$_POST['Adverts']['minprobeg']);       
         }
         
-        if($_POST['Adverts']['rub_id'] == 2)
+        if($_POST['Adverts']['rub_id'] == 2 && !isset($_POST['Adverts']['search']))
         {
             if(isset($_POST['Adverts']['maxetazh']) && !empty($_POST['Adverts']['maxetazh'])) $criteria->addCondition("t.etazh <= ".$_POST['Adverts']['maxetazh']);
             if(isset($_POST['Adverts']['minetazh']) && !empty($_POST['Adverts']['minetazh'])) $criteria->addCondition("t.etazh >= ".(int)$_POST['Adverts']['minetazh']);
